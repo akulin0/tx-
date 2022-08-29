@@ -1,0 +1,7 @@
+
+打包  改版本号，  改域名正式
+包名：com.mfc.dorami
+签名文件账号密码：
+   storePassword '20210609'
+   keyPassword '20210609'
+   keyAlias 'dorami'

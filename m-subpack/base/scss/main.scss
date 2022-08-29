@@ -1,0 +1,35 @@
+@import "@/m-subpack/base/scss/iconfont.css";
+.page{
+	background-color: #fff;
+	min-height: 100vh;
+}
+
+.content {
+	padding: 0 42rpx;
+}
+
+.base-button {
+	margin-top: 80rpx;
+	height: 96rpx;
+	font-size: 30rpx;
+}
+
+.input-box {
+	height: 84rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #DCDCDC;
+	margin-bottom: 10rpx;
+
+	input {
+		flex: 1;
+		height: 100%;
+	}
+}
+
+.input-error {
+	height: 32rpx;
+	font-size: 24rpx;
+	color: $uni-color-error;
+}

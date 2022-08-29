@@ -1,0 +1,1185 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index", //首页
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/network-list", //网络管理
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/add-netword", //添加网络
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		
+		{
+			"path": "pages/index/copyKey", //备份钱包-私钥
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/confirmKey", //备份钱包-确认私钥
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/tokenList", //转账-代币列表
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/login", //登录
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/market/market", //市场
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/market/marketSearch", //市场-搜索
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/market/exchangeDetail", //市场-交易详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+
+		{
+			"path": "pages/find/find", //发现
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/myDApps", //发现-myDApps
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/share", //发现-分享
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/test", //测试
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/myCollection", //发现-我的收藏
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+
+		{
+			"path": "pages/find/search", //发现-搜索
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/tabList", //发现-tab列表
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/find/detail", //发现-详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		//应用中心
+		// {
+		// 	"path": "pages/find/app_center", //发现-应用中心
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationStyle": "custom",
+		// 		"app-plus": {
+		// 			"bounce": "none",
+		// 			"scrollIndicator": "none",
+		// 			"navigationBarTextStyle": "black"
+		// 		}
+		// 	}
+		// },
+		//我的资产
+		{
+			"path": "pages/appCenter/myAssets", //发现-myAssets
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/my", //我的
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/message", //公告
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/messageDetails", //公告详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		}, {
+			"path": "pages/my/wallet", //钱包管理
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/addressBook", //地址本
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/addressEdit", //地址本添加、编辑
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/addmoney", //地址本添加钱包
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		}, {
+			"path": "pages/index/addcreate", //钱包创建方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/copymoney", //备份钱包
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/copypass", //备份助记词
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/verifpass", //验证助记词
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/hint", //风险提示
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/myInfo", //个人资料
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/nickname", //昵称
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/myCode", //我的二维码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/account", //我的账户
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/recharge", //充值
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/withdraw", //提现
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/setting", //设置
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/bingPhone", //绑定手机
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/mailbox", //绑定邮箱
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/mailboxCode", //邮箱验证码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/passEdit", //修改登录密码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/Import", //导入方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/Import1", //导入方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/Import2", //导入方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/Import3", //导入方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/hotToken", //导入方式
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/forgetPass", //忘记交易密码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/wordFind", //助记词找回
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/codeFind", //验证码找回
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/language", //多语言
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/bindMobild", //绑定手机
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/bindMail", //绑定手机
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/setting/mobile", //更换手机
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/userMoney", //登录
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/directTransfer", //直接转账
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/accountLogin", //账号登录
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/creatWallet", //创建钱包
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/phoneRegister", //手机邮箱注册
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/wordLogin", //助记词登录
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/login/setPass", //设置资金密码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/getMoney", //收款
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/TokenDetails", //Token详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		
+		
+		{
+			"path": "pages/index/TransactionDetails", //交易详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/index/bitExchange", //Token详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "#FFFFFF"
+				}
+			}
+		},
+		{
+			"path": "pages/index/remark", //备注
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/walletDetail", //钱包详情
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/exportKey", //钱包详情-导出keyStore
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/wallet/resetPass", //钱包详情-重置密码
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+
+
+
+		{
+			"path": "pages/webView",
+			"style": {
+				"enablePullDownRefresh": false,
+				// "navigationBarTitleText": "我的客服",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		// {
+		// 	"path": "pages/test",
+		// 	"style": {
+		// 		"enablePullDownRefresh": false,
+		// 		"navigationBarTitleText": "文章详情",
+		// 		"navigationBarTextStyle": "black",
+		// 		"navigationBarBackgroundColor": "#FFFFFF",
+		// 		"app-plus": {
+		// 			"bounce": "none",
+		// 			"scrollIndicator": "none"
+		// 		}
+		// 	}
+		// },
+		{
+			"path": "pages/my/setting/server",
+			"style": {
+				"enablePullDownRefresh": false,
+				// "navigationBarTitleText": "我的客服",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/my/agreementList",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/customer",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/invite", //邀请好友
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/market/editMarket", //市场-编辑
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/agreement", //市场-编辑
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+
+        {
+            "path" : "pages/doc/doc",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/setting/bindGoogle",
+           "style": {
+          	"enablePullDownRefresh": false,
+          	"navigationStyle": "custom",
+          	"app-plus": {
+          		"bounce": "none",
+          		"scrollIndicator": "none",
+          		"navigationBarTextStyle": "black"
+          	}
+          }
+            
+        },{
+		    "path" : "pages/my/setting/bindGoogleChange",
+		   "style": {
+		  	"enablePullDownRefresh": false,
+		  	"navigationStyle": "custom",
+		  	"app-plus": {
+		  		"bounce": "none",
+		  		"scrollIndicator": "none",
+		  		"navigationBarTextStyle": "black"
+		  	}
+		  }
+		    
+		},
+		{
+		    "path" : "pages/my/setting/backupConfirm",
+		   "style": {
+		  	"enablePullDownRefresh": false,
+		  	"navigationStyle": "custom",
+		  	"app-plus": {
+		  		"bounce": "none",
+		  		"scrollIndicator": "none",
+		  		"navigationBarTextStyle": "black"
+		  	}
+		  }
+		    
+		},
+		{
+		    "path" : "pages/my/setting/safety",
+		   "style": {
+		  	"enablePullDownRefresh": false,
+		  	"navigationStyle": "custom",
+		  	"app-plus": {
+		  		"bounce": "none",
+		  		"scrollIndicator": "none",
+		  		"navigationBarTextStyle": "black"
+		  	}
+		  }
+		    
+		}
+        ,{
+            "path" : "pages/login/genwallet/genwallet",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+		"color": "#CCCCCC",
+		"selectedColor": "#049EFF",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"height": "50px",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabBar/homes.png",
+				"selectedIconPath": "static/tabBar/homes_.png",
+				"text": "资产"
+			},
+			{
+				"pagePath": "pages/market/market",
+				"iconPath": "static/tabBar/markets.png",
+				"selectedIconPath": "static/tabBar/markets_.png",
+				"text": "市场"
+			},
+			{
+				"pagePath": "pages/find/find",
+				"iconPath": "static/tabBar/finds.png",
+				"selectedIconPath": "static/tabBar/finds_.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabBar/messages.png",
+				"selectedIconPath": "static/tabBar/messages_.png",
+				"text": "电报"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/tabBar/mys.png",
+				"selectedIconPath": "static/tabBar/mys_.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "telegram pocket",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom":
+		//easycom
+		{
+			"^u-(.*)": "@/m-common/uview-ui/components/u-$1/u-$1.vue",
+			"^base-(.*)": "@/m-common/common/components/$1.vue",
+			"^chat-(.*)": "@/m-chat/chat/components/$1.vue"
+		}
+		//easycom
+	},
+	"subPackages": [{
+		"root": "m-subpack",
+		"pages":
+			//subPackages
+			[{
+				"path": "base/pages/address/index",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/address/addSite",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/u-avatar-cropper/u-avatar-cropper",
+				"style": {
+					"navigationBarTitleText": "选择图片"
+				}
+			}, {
+				"path": "base/pages/setting/nickname",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/setting/realAuth",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/setting/Alipay",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/setting/bindMobile",
+				"style": {
+					"navigationStyle": "custom"
+				}
+				
+			}, {
+				"path": "base/pages/setting/recommended",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			},
+
+			{
+				"path": "base/pages/share",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/setting/mobile",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/setting/index",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/Login",
+				"style": {
+					"navigationStyle": "custom",
+					"app-plus": {
+						"animationType": "slide-out-bottom"
+					}
+				}
+			}, {
+				"path": "base/pages/agreementList",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/forgotPassword",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/register",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/agreement",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/citySelect",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/customer",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "base/pages/pklshare",
+				"style": {
+					"navigationStyle": "custom"
+				}
+			}]
+		//subPackages
+	}]
+
+}

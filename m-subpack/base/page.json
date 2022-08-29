@@ -1,0 +1,121 @@
+{
+	"theme": "./m-subpack/base/theme.scss",
+	"pages": [{
+			"path":"base/pages/address/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/address/addSite",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/u-avatar-cropper/u-avatar-cropper",
+			"style": {
+				"navigationBarTitleText": "选择图片"
+			}
+		},
+		{
+			"path":"base/pages/setting/nickname",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/realAuth",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/Alipay",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/bindMobile",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/recommended",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/share",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/pklshare",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/mobile",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/setting/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/Login",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"animationType": "slide-out-bottom"
+				}
+			}
+		},
+		{
+			"path":"base/pages/agreementList",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/forgotPassword",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/register",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/agreement",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/citySelect",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path":"base/pages/customer",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	]
+}
