@@ -137,9 +137,10 @@
 		methods: {
 			clickbtn(e) {
 				if (e != 1) {
-					uni.navigateTo({
-						url: e,
-					});
+          this.toPage(e)
+					// uni.navigateTo({
+					// 	url: e,
+					// });
 				} else {
 
 					// #ifdef APP-PLUS
@@ -268,9 +269,10 @@
 				})
 			},
 			toPage(url){
-				uni.navigateTo({
-					url:'/pages/my/setting/server?url='+url
-				})
+        this.toPage('/pages/my/setting/server?url='+url)
+				// uni.navigateTo({
+				// 	url:'/pages/my/setting/server?url='+url
+				// })
 			}
 		},
 	};

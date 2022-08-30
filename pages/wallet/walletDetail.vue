@@ -207,12 +207,7 @@
 					url: '/pages/wallet/resetPass'
 				})
 			},
-			//修改密码-重置密码 
-			toPage(url) {
-				uni.navigateTo({
-					url: url
-				})
-			},
+			//修改密码-重置密码
 
 			//导出弹框  mode : 0:更改钱包名 1私钥  2助记词 3keyStore 4 删除钱包
 			showCheck(mode) {

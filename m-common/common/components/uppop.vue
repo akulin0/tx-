@@ -35,9 +35,7 @@
 				
 			},
 			goagr(url) {
-				uni.navigateTo({
-				  url,
-				});
+        this.toPage(url)
 			}
 		}
 		

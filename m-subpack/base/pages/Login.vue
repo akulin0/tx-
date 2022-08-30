@@ -121,9 +121,7 @@
 				});
 			},
 			goTo(url) {
-				uni.navigateTo({
-					url
-				})
+        this.toPage(url)
 			},
 			changeLoginTypes(item){
 				this.ActiveLoginTypes = item.type;

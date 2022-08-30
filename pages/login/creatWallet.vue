@@ -192,17 +192,11 @@
 				
 				
 			},
-			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
-			},
+
 			finishs(e) {
 				console.log('输入结束，当前值为：' + e);
 				this.show = false
-				uni.navigateTo({
-					url: 'index'
-				})
+        this.toPage('index')
 			}
 		}
 	}

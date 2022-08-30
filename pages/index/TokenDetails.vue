@@ -228,9 +228,7 @@
 				}
 			})
 			if(data){
-				uni.navigateTo({
-					url:`/pages/index/TransactionDetails?Info=${JSON.stringify(data)}`
-				})
+        this.toPage(`/pages/index/TransactionDetails?Info=${JSON.stringify(data)}`)
 			}
 			
 		}
@@ -250,11 +248,6 @@
 				this.getList()
 				return
 			}
-		}
-		toPage(url) {
-			uni.navigateTo({
-				url: url
-			})
 		}
 	}
 

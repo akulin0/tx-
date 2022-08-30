@@ -136,11 +136,6 @@
 					})
 				}
 			},
-			toPage(url){
-				uni.navigateTo({
-					url:url
-				})
-			}
 		}
 
 	}

@@ -214,9 +214,7 @@ export default {
         // console.log(111111);
         this.getData(true);
       } else {
-        uni.navigateTo({
-          url,
-        });
+        this.toPage(url)
       }
     },
     qiut() {

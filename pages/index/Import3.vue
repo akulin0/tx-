@@ -89,9 +89,7 @@
 				});
 			},
 			topage(url){
-				uni.navigateTo({
-					url
-				})
+        this.toPage(url)
 			},
 			//获取钱包列表
 			async getWalletList() {

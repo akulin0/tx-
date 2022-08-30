@@ -148,14 +148,10 @@
 					if(this.info.email){
 						return
 					}else{
-						uni.navigateTo({
-							url: url
-						})
+            this.toPage(url)
 					}
 				}else{
-					uni.navigateTo({
-						url: url
-					})
+          this.toPage(url)
 				}
 
 			},

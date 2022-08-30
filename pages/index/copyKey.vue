@@ -34,9 +34,10 @@
 		methods: {
 			async next() {
 				this.$refs.button.hideLoading()
-				uni.navigateTo({
-					url: '/pages/index/confirmKey'
-				})
+        this.toPage('/pages/index/confirmKey')
+        // uni.navigateTo({
+				// 	url: '/pages/index/confirmKey'
+				// })
 			},
 			// 复制
 			copy() {

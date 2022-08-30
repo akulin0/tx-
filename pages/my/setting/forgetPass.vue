@@ -41,13 +41,6 @@
 		onPullDownRefresh() {
 
 		},
-		methods: {
-			toPage(url) {
-				uni.navigateTo({
-					url: url
-				})
-			},
-		}
 
 	}
 </script>

@@ -23,6 +23,7 @@
 import {
 		request
 	} from "@/m-subpack/base";
+import {toPage} from "../libs/utils";
 export default {
   data() {
     return {
@@ -244,9 +245,7 @@ export default {
     toLink(item) {
       if (item.id === 'logo') {
         // 跳转至我的资产页
-        uni.navigateTo({
-          url: '/pages/appCenter/myAssets'
-        })
+        this.toPage(url)
 
       } else {
         // 显示提示框

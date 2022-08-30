@@ -31,9 +31,10 @@
 		methods:{
 			goDetail(item){
 				console.log(item)
-				uni.navigateTo({
-					url:'/pages/message/msgDetail/msgDetail?id='+item.id
-				})
+        this.toPage('/pages/message/msgDetail/msgDetail?id='+item.id)
+				// uni.navigateTo({
+				// 	url:'/pages/message/msgDetail/msgDetail?id='+item.id
+				// })
 			}
 		}
 	}

@@ -343,9 +343,10 @@
 							} else if (href.indexOf('http') == 0 || href.indexOf('//') == 0)
 								return true;
 							else
-								uni.navigateTo({
-									url: href
-								})
+                this.toPage(href)
+								// uni.navigateTo({
+								// 	url: href
+								// })
 						}
 						return false;
 					}
@@ -593,9 +594,10 @@
 							} else if (href.includes('://'))
 								plus.runtime.openWeb(href);
 							else
-								uni.navigateTo({
-									url: href
-								})
+                this.toPage(href)
+								// uni.navigateTo({
+								// 	url: href
+								// })
 						}
 						break;
 					case 'error':

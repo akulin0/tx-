@@ -112,9 +112,7 @@
 		methods: {
 			//搜索
 			toPage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			},
 			clickCategory(type){
 				this.data.net_category = type;
@@ -155,15 +153,15 @@
 						method: 'post',
 						data: this.data
 					})
+        this.toPage('/pages/index/network-list')
 
-					uni.navigateTo({
-						url: '/pages/index/network-list'
-					})
+
+        // uni.navigateTo({
+				// 		url: '/pages/index/network-list'
+				// 	})
 			},
 			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			},
 			clickCancel(){
 				this.show = false;

@@ -487,9 +487,7 @@
 
 
 		goTo(url) {
-			uni.navigateTo({
-				url: url
-			})
+      this.toPage(url)
 		}
 
 		open() {

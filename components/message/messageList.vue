@@ -31,9 +31,10 @@
 		methods:{
 			goDetail(item){
 				let item_ = JSON.stringify(item)
-				uni.navigateTo({
-					url:'/pages/message/chatDetail/chatDetail?item='+item_
-				})
+        this.toPage('/pages/message/chatDetail/chatDetail?item='+item_)
+				// uni.navigateTo({
+				// 	url:'/pages/message/chatDetail/chatDetail?item='+item_
+				// })
 			}
 		}
 	}

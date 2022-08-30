@@ -69,9 +69,7 @@ export default {
   },
   methods: {
     goTo(url) {
-      uni.navigateTo({
-        url,
-      });
+      this.toPage(url)
     },
     async loginCode() {
       uni.$emit("__login", "code");

@@ -208,9 +208,11 @@
 						// uni.navigateTo({
 						// 	url: 'copypass?category=' + this.category
 						// })
-						uni.navigateTo({
-							url: '/pages/my/wallet'
-						})
+            this.toPage('/pages/my/wallet')
+
+            // uni.navigateTo({
+						// 	url: '/pages/my/wallet'
+						// })
 					}
 					
 				} catch (e) {
@@ -219,9 +221,8 @@
 
 			},
 			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
+
 			},
 		}
 	}

@@ -134,9 +134,7 @@ export default {
     },
     goTo(url) {
       // debugger
-      uni.navigateTo({
-        url,
-      });
+      this.toPage(url)
     },
     async sends() {
       this.verification("userName", this.formData.userName);

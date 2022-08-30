@@ -201,9 +201,7 @@
 			},
 			//页面跳转
 			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)``
 			}
 		}
 	}

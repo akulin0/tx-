@@ -144,9 +144,7 @@
 			},
 			toPage(index, url) {
 				if (index != 1) {
-					uni.navigateTo({
-						url: url
-					})
+          this.toPage(url)
 				}
 			}
 		}

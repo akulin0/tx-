@@ -183,9 +183,7 @@
 				}
 
 				// debugger
-				uni.navigateTo({
-					url,
-				});
+        this.toPage(url)
 			},
 
 			changeAgreement() {

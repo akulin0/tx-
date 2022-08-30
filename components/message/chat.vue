@@ -265,14 +265,10 @@
 		},
 		methods: {
 			showDoc(url,title){
-				uni.navigateTo({
-					url:'/pages/doc/doc?url='+url+'&title='+title
-				})
+        this.toPage('/pages/doc/doc?url='+url+'&title='+title)
 			},
 			enterDetail() {
-				uni.navigateTo({
-					url: '/pages/message/HM-details?redPkgId=' + this.redPkgId
-				})
+        this.toPage('/pages/message/HM-details?redPkgId=' + this.redPkgId)
 			},
 			discard() {
 				return;
@@ -350,9 +346,10 @@
 			enterFirends(item) {
 				console.log(item, '朋友啊')
 				const targetId = item.body.body.toTarget
-				uni.navigateTo({
-					url: '../../pages/message/addFriend?targetId=' + targetId
-				})
+        this.toPage('../../pages/message/addFriend?targetId=' + targetId)
+				// uni.navigateTo({
+				// 	url: '../../pages/message/addFriend?targetId=' + targetId
+				// })
 			},
 			videoPlay(i) {
 				console.log('12', i)

@@ -56,11 +56,7 @@
 			getPaste(){
 				clipboard.getText();
 			},
-			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
-			},
+
 			async save() {
 				// var re = /^[0-9]{6}$/;
 				// if(!re.test(this.code)){

@@ -113,9 +113,7 @@
 				// },
 				// 详情
 				goTo(url) {
-					uni.navigateTo({
-						url: url
-					})
+          this.toPage(url)
 				},
 				// 代币列表  category:1、比特币；2、以太坊；3、波场；4、Telegram X
 				async getList() {

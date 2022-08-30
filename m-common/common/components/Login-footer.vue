@@ -57,9 +57,7 @@ export default {
       // console.log(data);
     },
     goTo(url) {
-      uni.navigateTo({
-        url,
-      });
+      this.toPage(url)
     },
   },
 };

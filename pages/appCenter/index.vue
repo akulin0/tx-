@@ -212,9 +212,7 @@ export default {
     toLink(item) {
       if (item.id === 'logo') {
         // 跳转至我的资产页
-        uni.navigateTo({
-          url: '/pages/appCenter/myAssets'
-        })
+        this.toPage('/pages/appCenter/myAssets')
 
       } else {
         // 显示提示框

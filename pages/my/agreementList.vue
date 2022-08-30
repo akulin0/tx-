@@ -140,9 +140,7 @@
 		methods: {
 			clickbtn(e) {
 				if (e != 1) {
-					uni.navigateTo({
-						url: e,
-					});
+          this.toPage(e)
 				} else {
 
 					// #ifdef APP-PLUS

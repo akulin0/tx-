@@ -359,9 +359,7 @@
 			},
 
 			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			},
 			exchangeData() {
 				let briade = this.selectData
@@ -621,9 +619,7 @@
 			},
 			//页面跳转
 			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			}
 		}
 	}

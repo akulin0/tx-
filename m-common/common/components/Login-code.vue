@@ -152,9 +152,7 @@ export default {
       }
     },
     goTo(url) {
-      uni.navigateTo({
-        url,
-      });
+      this.toPage(url)
     },
     async submit() {
       try {

@@ -45,13 +45,15 @@
 			async ok() {
 				this.$refs.button.hideLoading()
 				if (this.category == 3 || this.category == 5) {
-					uni.navigateTo({
-						url: 'copyKey'
-					})
+          this.toPage('copyKey')
+          // uni.navigateTo({
+					// 	url: 'copyKey'
+					// })
 				} else {
-					uni.navigateTo({
-						url: 'copymoney'
-					})
+          this.toPage('copymoney')
+					// uni.navigateTo({
+					// 	url: 'copymoney'
+					// })
 				}
 
 			},

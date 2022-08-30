@@ -307,10 +307,7 @@
 		// 底部列表 -查看更多
 		checkMore() {
 			let obj = this.tabList[this.tabCur];
-			
-			uni.navigateTo({
-				url: '/pages/find/tabList?info=' + JSON.stringify(obj)
-			});
+      this.toPage('/pages/find/tabList?info=' + JSON.stringify(obj))
 		},
 		//点击Dapp  isshow:不支持弹框 showMsg 提醒弹框
 		async goApp(item) {
@@ -512,9 +509,7 @@
 			// this.openWebUrl(url);
 			// window.android.openDApp(url);
 			// window.location = url;
-			uni.navigateTo({
-				url: '/pages/webView?url=' + url
-			})
+      this.toPage('/pages/webView?url=' + url)
 		},
 		toCenter() {
 			// this.openWebUrl(url);
@@ -555,9 +550,7 @@
 			if (url.startsWith('https')) {
 				uni.setStorageSync('DLMWallet', this.walletInfo);
 				// debugger
-				uni.navigateTo({
-					url:'/pages/webView?url='+ url
-				});
+        this.toPage('/pages/webView?url='+ url)
 				return;
 			}
 

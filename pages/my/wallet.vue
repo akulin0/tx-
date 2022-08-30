@@ -181,10 +181,7 @@
 				})
 			} else {
 				this.showAdd = false
-				uni.navigateTo({
-					url: url
-				})
-
+        this.toPage(url)
 			}
 		}
 		

@@ -206,11 +206,6 @@
 
 			},
 			//页面跳转
-			topage(url) {
-				uni.navigateTo({
-					url: url
-				})
-			}
 		}
 	}
 </script>

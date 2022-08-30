@@ -126,9 +126,10 @@
 				this.category = item.wallet_category
 				if (item.wallet_category == this.walletInfo.category || item.wallet_category == 0) {
 					if (item.state == 2) {
-						uni.navigateTo({
-							url: '/pages/webView?url=' + item.url
-						})
+            this.toPage('/pages/webView?url=' + item.url)
+						// uni.navigateTo({
+						// 	url: '/pages/webView?url=' + item.url
+						// })
 					} else {
 						if(this.$i18n.locale == 'en-US'){
 							this.content = `Risk warning： the page you visit will enter a third-party DAPP《${item.title}》Please carefully understand the "Privacy Policy" and "User Agreement" of the third-party DAPP, and participate carefully at your own risk!`;
@@ -151,9 +152,10 @@
 			//type:1 跳转第三方app  2切换钱包
 			goPage(type) {
 				if (type == 1) {
-					uni.navigateTo({
-						url: '/pages/webView?url=' + this.item.url
-					})
+          this.toPage('/pages/webView?url=' + this.item.url)
+					// uni.navigateTo({
+					// 	url: '/pages/webView?url=' + this.item.url
+					// })
 					this.addDapp()
 				} else {
 					// 不支持当前钱包 -选择钱包弹框
@@ -178,9 +180,10 @@
 			changeWallet() {
 				this.walletInfo = uni.getStorageSync("currentWallet")
 				if (this.item.state == 2) {
-					uni.navigateTo({
-						url: '/pages/webView?url=' + this.item.url
-					})
+          this.toPage('/pages/webView?url=' + this.item.url)
+					// uni.navigateTo({
+					// 	url: '/pages/webView?url=' + this.item.url
+					// })
 				} else {
 					this.content =
 						`提示：您所访问的页面将进入第三方DApp《${this.item.title}》,您在第三方Dapp上的使用行为将适用该第三方DApp的《隐私政策》和《用户协议》，由《${item.title}》直接并单独向您承担责任。`

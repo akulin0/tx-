@@ -68,9 +68,7 @@
 			goTx() {
 				uni.$emit("__showIndexPop", false);
 				uni.showTabBar();
-				uni.navigateTo({
-					url: "/pages/my/myWallet?state=1",
-				});
+        this.toPage("/pages/my/myWallet?state=1")
 			},
 			close() {
 				uni.$emit("__login", "");

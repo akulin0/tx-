@@ -63,14 +63,16 @@
 				console.log(this.siteList)
 			},
 			toAddSite() {
-				uni.navigateTo({
-					url: 'addSite'
-				});
+        this.toPage('addSite')
+				// uni.navigateTo({
+				// 	url: 'addSite'
+				// });
 			},
 			edit(item) {
-				uni.navigateTo({
-					url: 'addSite?id='+item.id
-				});
+        this.toPage('addSite?id='+item.id)
+				// uni.navigateTo({
+				// 	url: 'addSite?id='+item.id
+				// });
 			},
 			async getAddress(item) {
 				if (this.type == 1) {

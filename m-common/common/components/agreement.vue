@@ -35,9 +35,7 @@
 				uni.$emit("__agreement", false,type);
 			},
 			goagr(url) {
-				uni.navigateTo({
-					url,
-				});
+        this.toPage(url)
 			}
 		}
 

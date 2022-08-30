@@ -45,9 +45,10 @@
 		methods: {
 			gocode() {
 				this.$refs.button.hideLoading()
-				uni.navigateTo({
-					url: 'verifpass?type=' + this.type
-				})
+        this.toPage('verifpass?type=' + this.type)
+        // uni.navigateTo({
+				// 	url: 'verifpass?type=' + this.type
+				// })
 			},
 			copy() {
 				var _this=this

@@ -112,9 +112,7 @@
 				this.type = !this.type
 			},
 			toPage(url) {
-				uni.navigateTo({
-					url: url,
-				})
+        this.toPage(url)
 				let s = "http://192.168.2.162:8080/#" + url
 				if (navigator.userAgent.includes("TelegramXAPP")) {
 					if ((url === '/pages/login/wordLogin' || url === '/pages/login/accountLogin')) {

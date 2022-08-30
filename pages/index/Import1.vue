@@ -114,9 +114,7 @@
 				this.name = this.name + '-' + tip
 			},
 			topage(url){
-				uni.navigateTo({
-					url
-				})
+        this.toPage(url)
 			},
 			scan() {
 				uni.scanCode({

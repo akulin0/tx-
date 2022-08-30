@@ -230,9 +230,7 @@
 				this.show = false
 				uni.showTabBar()
 				this.showOther = true
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			},
 			copy(v) {
 				uni.setClipboardData({

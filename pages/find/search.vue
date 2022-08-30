@@ -153,9 +153,7 @@
 				console.log("item", item);
 				//链接
 				if (!item.support) {
-					uni.navigateTo({
-						url: '/pages/webView?url=' + item.url
-					})
+          this.toPage('/pages/webView?url=' + item.url)
 				//APP
 				} else {
 					 this.item = item;
@@ -175,18 +173,14 @@
 						uni.setStorageSync('historyList', this.historyList);
 					}
 					if(this.item.url == '/pages/hisbag/index'){
-						uni.navigateTo({
-							url: this.item.url
-						})
+            this.toPage(this.item.url)
 						return;
 					}else{
 						this.getWalletPrivateKey(this.item.url);
 					}
 					
 				} else {
-					uni.navigateTo({
-						url: '/pages/my/wallet'
-					})
+          this.toPage('/pages/my/wallet')
 				}
 
 			},
@@ -309,9 +303,7 @@
 			// 点击热门标签
 			hotGo(item) {
 				if(item.name == 'Domiswap'){
-					uni.navigateTo({
-						url: item.url
-					})
+          this.toPage(item.url)
 				}else if(item.name == 'Uniswap'){
 					let info = {
 						"id" : 2,

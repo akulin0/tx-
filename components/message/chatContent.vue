@@ -64,9 +64,10 @@
 				if(isHttp) {
 					if(this.contents[0].indexOf('http://') == 0 && this.contents[0].lastIndexOf('.com') == this.contents[0].length-4) {
 						let _url = v[0]
-						uni.navigateTo({
-							url: "/pages/webView?url=" + _url,
-						});
+            this.toPage("/pages/webView?url=" + _url)
+						// uni.navigateTo({
+						// 	url: "/pages/webView?url=" + _url,
+						// });
 					} 
 						
 					
@@ -74,9 +75,10 @@
 				if(isHttps) {
 					if(this.contents[0].indexOf('https://') == 0 && this.contents[0].lastIndexOf('.com') == this.contents[0].length-4) {
 						let _url = v[0]
-						uni.navigateTo({
-							url: "/pages/webView?url=" + _url,
-						});
+            this.toPage("/pages/webView?url=" + _url)
+						// uni.navigateTo({
+						// 	url: "/pages/webView?url=" + _url,
+						// });
 					} 
 				}
 				

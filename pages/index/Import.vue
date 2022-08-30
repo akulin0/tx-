@@ -60,10 +60,8 @@
 		methods: {
 			//页面跳转
 			topage(url) {
-				uni.navigateTo({
-					url: url + '?name=' + this.walletInfo.name + "&title=" + this.walletInfo.title + "&category=" + this
-						.walletInfo.category
-				})
+        this.toPage(url + '?name=' + this.walletInfo.name + "&title=" + this.walletInfo.title + "&category=" + this
+            .walletInfo.category)
 			}
 		}
 	}

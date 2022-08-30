@@ -85,24 +85,24 @@ export const Assets = () => {
 	
 	//所有钱包地址
 	target.prototype.getWallet = async function(){
-		if(walletAll.length==0){
-			let {
-				data,
-				errorMessage
-			} = await request({
-				url: '/wallet-get-all-wallet-list',
-				method: 'get',
-			});
-			
-			walletAll  = data.map((item) => {
-				item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30)
-			
-				return item
-			
-			})
-	
-			
-		}
+		// if(walletAll.length==0){
+		// 	let {
+		// 		data,
+		// 		errorMessage
+		// 	} = await request({
+		// 		url: '/wallet-get-all-wallet-list',
+		// 		method: 'get',
+		// 	});
+		//
+		// 	walletAll  = data.map((item) => {
+		// 		item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30)
+		//
+		// 		return item
+		//
+		// 	})
+		//
+		//
+		// }
 		this.walletAll = walletAll;
 		this.currentWallet = null;
 		for(let item of  walletAll){

@@ -85,14 +85,10 @@
 				this.delList = newData;
 			},
 			getadd(){
-				uni.navigateTo({
-					url: '/pages/index/add-netword'
-				})
+        this.toPage('/pages/index/add-netword')
 			},
 			toPage(url) {
-				uni.navigateTo({
-					url: url
-				})
+        this.toPage(url)
 			},
 			async clickOperate(item, type){
 				let {

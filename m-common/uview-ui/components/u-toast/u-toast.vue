@@ -116,9 +116,10 @@
 							url: this.tmpConfig.url
 						});
 					} else {
-						uni.navigateTo({
-							url: this.tmpConfig.url
-						});
+            this.toPage(this.tmpConfig.url)
+						// uni.navigateTo({
+						// 	url: this.tmpConfig.url
+						// });
 					}
 				} else if(this.tmpConfig.back) {
 					// 回退到上一页

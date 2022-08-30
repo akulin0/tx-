@@ -101,9 +101,7 @@ export default {
       }
     },
     goTo(url) {
-      uni.navigateTo({
-        url,
-      });
+      this.toPage(url)
     },
     async submit() {
       if (!this.$refs.footer.isAgreement) {
