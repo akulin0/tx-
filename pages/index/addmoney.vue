@@ -62,7 +62,10 @@
 	import {
 		request
 	} from "@/m-subpack/base";
-	import Md5 from "@/components/md5.js"
+	import {createWallet} from '../../libs/ethers';
+	import {saveConfig} from '../../libs/utils';
+
+  import Md5 from "@/components/md5.js"
 	import {clearWallet} from "@/decorator/wallet"
 	var tip = null;
 	export default {
@@ -173,22 +176,27 @@
 						})
 						this.$refs.button.hideLoading();
 					}else{
-						let {
-							data,
-							errorMessage
-						} = await request({
-							url: '/wallet-create',
-							method: 'post',
-							data: {
-								"alert": this.data.demo,
-								"category": this.category,
-								"name": this.data.name,
-								"password": this.data.pass,
-								"rpassword":this.data.repass,
-								"type": 1
-							}
-						})
-						clearWallet();
+					  // 创建
+            const data = await createWallet(this.data.pass)
+            // 储存
+            saveConfig(data.address,data.keystore)
+
+						// let {
+						// 	data,
+						// 	errorMessage
+						// } = await request({
+						// 	url: '/wallet-create',
+						// 	method: 'post',
+						// 	data: {
+						// 		"alert": this.data.demo,
+						// 		"category": this.category,
+						// 		"name": this.data.name,
+						// 		"password": this.data.pass,
+						// 		"rpassword":this.data.repass,
+						// 		"type": 1
+						// 	}
+						// })
+						// clearWallet();
 						setTimeout(() => {
 							uni.showToast({
 								title: this.$t('ibinz.msg36',["操作成功"]),

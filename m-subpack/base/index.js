@@ -296,17 +296,17 @@ export const request = async (option) => {
 		// });
 
 		//注册页tonken
-		LoginOut(true);
+		// LoginOut(true);
 
 		// #endif
 		// #ifdef  MP-WEIXIN
-		if (isLogin()) {
-			await wxToken();
-			return await request(option);
-		}
+		// if (isLogin()) {
+		// 	await wxToken();
+		// 	return await request(option);
+		// }
 		// #endif
 		// return data;
-		throw data;
+		// throw data;
 	} else if (data.errorCode === 403) {
 		//验证字典
 		uni.setStorageSync("safetyList", data.data);
@@ -327,24 +327,24 @@ export const request = async (option) => {
 	}
 	console.log(statusCode, data);
 
-	switch (statusCode) {
-		case 401:
-			// #ifndef  MP-WEIXIN
-			uni.showToast({
-				title: "登录已失效",
-				icon: "none",
-			});
-			LoginOut(true);
-			// #endif
-			// #ifdef  MP-WEIXIN
-			if (isLogin()) {
-				await wxToken();
-				return await request(option);
-			}
-			// #endif
-			break;
-		default:
-	}
+	// switch (statusCode) {
+	// 	case 401:
+	// 		// #ifndef  MP-WEIXIN
+	// 		uni.showToast({
+	// 			title: "登录已失效",
+	// 			icon: "none",
+	// 		});
+	// 		LoginOut(true);
+	// 		// #endif
+	// 		// #ifdef  MP-WEIXIN
+	// 		if (isLogin()) {
+	// 			await wxToken();
+	// 			return await request(option);
+	// 		}
+	// 		// #endif
+	// 		break;
+	// 	default:
+	// }
 	throw statusCode;
 };
 

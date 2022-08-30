@@ -53,30 +53,28 @@ export default {
     uni.setStorageSync('isPassword', true);
 
     //当前时间 获取对比是不是 登录进入
-    let newTasp = new Date().getTime();
-    let timestamp = uni.getStorageSync('timestamp') ? uni.getStorageSync('timestamp') : new Date().getTime();
-    uni.setStorageSync('isTimestamp', newTasp - timestamp);
+    // let newTasp = new Date().getTime();
+    // let timestamp = uni.getStorageSync('timestamp') ? uni.getStorageSync('timestamp') : new Date().getTime();
+    // uni.setStorageSync('isTimestamp', newTasp - timestamp);
 
-
-    let s = uni.$on('toPage', function (data) {
-      console.log('监听', typeof data);
-      return data;
-    });
+    //
+    // let s = uni.$on('toPage', function (data) {
+    //   console.log('监听', typeof data);
+    //   return data;
+    // });
+    this.hideTabBar()
 
     if(!isLogin()){
       this.login();
     }
 
-    if (navigator.userAgent.includes('TelegramXAPP')) {
-      uni.hideTabBar();
 
-      // android.startNewActivity(true, s);
-    }
 
   },
 
 
   onShow: function () {
+    this.hideTabBar()
     uni.$on('downstream_message', item => {
       uni.vibrateLong({
         success: function () {
@@ -102,6 +100,12 @@ export default {
         Login(data.token);
       } catch (e) {
 
+      }
+    },
+    // 隐藏tabbar
+    hideTabBar(){
+      if (navigator.userAgent.includes('TelegramXAPP')) {
+        uni.hideTabBar();
       }
     }
   }
