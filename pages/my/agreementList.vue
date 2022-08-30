@@ -1,6 +1,5 @@
 <template>
 	<view class="agreementList page">
-		<u-navbar :is-back="true" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true"></u-navbar>
 		<!-- logo -->
 		<view class="logo">
 			<image :src="Logo" mode=""></image>

@@ -1,8 +1,7 @@
 <!-- 地址本 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
-			 :custom-back="goBack"></u-navbar>
+
 		<!-- <base-Item :init="true"  :size="size" @getData="getList" class="goodslists">
 			<view slot="content" slot-scope="{ data }"> -->
 		<view class="content">

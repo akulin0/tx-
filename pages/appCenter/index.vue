@@ -7,7 +7,6 @@
         <view class="item" :class="{'logo': item.id === 'logo'}" @click="toLink(item)" v-for="(item,key) in i.child"
               :key="key">
           <view class="icon" :style="{backgroundImage: 'url('+item.icon+')'}">
-            <image v-if="item.id === 'logo'" :src="item.icon" mode="widthFix"></image>
           </view>
           <view class="name">{{ item.name }}</view>
         </view>
@@ -298,16 +297,4 @@ export default {
     letter-spacing: 1rpx;
   }
 }
-
-.logo {
-  .icon {
-    background-image: none !important;
-    width: 58rpx !important;
-
-    image {
-      width: 100%;
-    }
-  }
-}
-
 </style>

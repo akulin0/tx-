@@ -1,6 +1,6 @@
 <template>
   <view class="myAssets">
-	<u-navbar :is-back="true" :is-fixed="true" title="我的资产"></u-navbar>
+    <u-navbar :is-back="true" :is-fixed="true" title="我的资产"></u-navbar>
     <view class="box">
       <view class="item">
         <view class="title">
@@ -8,17 +8,17 @@
           <text>USDT</text>
         </view>
         <view class="value">{{ usdtVal }}</view>
-		</view>
-	  </view>
-	<view class="box">
-		  <view class="item">
-			<view class="title">
-			  <image class="icon" src="/static/appCenter/ic-wallet.png"></image>
-			  <text>TXD</text>
-			</view>
-			<view class="value">{{ val }}</view>
-		  </view>
-	</view>
+      </view>
+    </view>
+    <view class="box">
+      <view class="item">
+        <view class="title">
+          <image class="icon" src="/static/appCenter/ic-wallet.png"></image>
+          <text>TXD</text>
+        </view>
+        <view class="value">{{ val }}</view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -26,7 +26,7 @@
 export default {
   data() {
     return {
-	
+
       usdtVal: 2999,
       val: 353,
     };
@@ -48,8 +48,8 @@ export default {
     box-shadow: 0 4rpx 16rpx 2rpx rgba(0, 0, 0, 0.03);
     border-radius: 20rpx;
     border: solid 1rpx #e8e8e8;
-	height: 138.2rpx;
-	width: 690rpx;
+    height: 138.2rpx;
+    width: 690rpx;
 
     .item {
       // padding: 48rpx 12rpx;
@@ -57,8 +57,9 @@ export default {
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(0, 0, 0, .1);
-	  width: 100%;
-	  height: 138.2rpx;
+      width: 100%;
+      height: 138.2rpx;
+
       &:last-child {
         border-bottom: 0;
       }
@@ -70,20 +71,6 @@ export default {
       margin-right: 31rpx;
       position: relative;
       overflow: hidden;
-		
-      &.t:before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 2rpx 0;
-        font-size: 24rpx;
-        color: #FFFFFF;
-        content: 'TX4D';
-        display: block;
-        background: rgba(0, 0, 0, 0.6);
-        text-align: center;
-      }
     }
 
     .title {
@@ -91,13 +78,13 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-	  margin: auto 43rpx;
+      margin: auto 43rpx;
     }
 
     .value {
       font-size: 48rpx;
       letter-spacing: 2rpx;
-	  margin: auto 56rpx;
+      margin: auto 56rpx;
     }
   }
 }

@@ -285,6 +285,7 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"管理钱包",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
@@ -297,6 +298,7 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"地址簿",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
@@ -904,6 +906,7 @@
 			"style": {
 				"enablePullDownRefresh": true,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"意见反馈",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
@@ -916,6 +919,7 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"邀请好友",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
@@ -1146,7 +1150,14 @@
 			}, {
 				"path": "base/pages/agreementList",
 				"style": {
-					"navigationStyle": "custom"
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom",
+					"navigationBarTitleText":"关于我们",
+					"app-plus": {
+						"bounce": "none",
+						"scrollIndicator": "none",
+						"navigationBarTextStyle": "black"
+					}
 				}
 			}, {
 				"path": "base/pages/forgotPassword",

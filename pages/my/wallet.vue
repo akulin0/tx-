@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
-			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
+<!--		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"-->
+<!--			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>-->
 		<view class="moneyList">
 			<view class="m-nav flexs">
 				<view v-for="(item,index) in bitlist" :key="index" >

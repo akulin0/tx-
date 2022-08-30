@@ -68,20 +68,6 @@ export default {
       margin-right: 48rpx;
       position: relative;
       overflow: hidden;
-
-      &.t:before {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 2rpx 0;
-        font-size: 24rpx;
-        color: #FFFFFF;
-        content: 'TX4D';
-        display: block;
-        background: rgba(0, 0, 0, 0.6);
-        text-align: center;
-      }
     }
 
     .title {

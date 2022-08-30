@@ -1,12 +1,12 @@
 <template>
 	<view class="chat-details">
 		<!-- 头部 -->
-		<u-navbar :is-back="false" :title="
-        toTargetName" :title-width="600">
-			<view class="slot-wrap" @click="back">
-				<image src="/static/message/retrun.png.png" mode="" style="width: 17rpx;height: 30rpx;"></image>
-			</view>
-		</u-navbar>
+<!--		<u-navbar :is-back="false" :title="-->
+<!--        toTargetName" :title-width="600">-->
+<!--			<view class="slot-wrap" @click="back">-->
+<!--				<image src="/static/message/retrun.png.png" mode="" style="width: 17rpx;height: 30rpx;"></image>-->
+<!--			</view>-->
+<!--		</u-navbar>-->
 		<!-- <view class="hint-box">{{ $t("hisbag.txt97", ["提示：因数字资产属于风险行业，请在能接受风险范围内理性参与！"]) }}</view> -->
 		<!-- 消息内容 -->
 		<view class="chatMsg"  @click="changeIsmore" :style="{

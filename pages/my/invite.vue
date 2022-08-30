@@ -1,6 +1,5 @@
 <template>
 	<view class="invite page">
-		<u-navbar :is-back="true" title="邀请好友" style="border-bottom: 1px solid #E6E6E6;" class="invite-title" :title-bold="true"></u-navbar>
 		<view class="picture">
 			<image src="../../static/my/invite/pupian.png" class="tupian"></image>
 			<image src="../../static/my/invite/二维码.png" class="erwei"></image>
