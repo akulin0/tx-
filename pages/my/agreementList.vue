@@ -20,7 +20,6 @@
 			</u-cell-group>
 			<view v-if="isUpdata" @click="isUpdata=false" style="height: 100vh;width: 100%; position: fixed;top: 0upx;left: 0;display: flex;align-items: center;justify-content: center;z-index: 77777777;">
 				<view class="" style="background: #000000;z-index: 66666;opacity: 0.5;width: 100%;height: 100vh;position: fixed;position: fixed;top: 0upx;z-index: 7777777777777;">
-
 				</view>
 				<view class="upbg" @click.stop style="z-index: 99999999999999999;">
 

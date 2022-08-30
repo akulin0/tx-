@@ -1,8 +1,8 @@
 <!-- 地址本编辑、添加 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
-			 :custom-back="goBack"></u-navbar>
+<!--		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"-->
+<!--			 :custom-back="goBack"></u-navbar>-->
 		<view class="content">
 			<!-- <picker @change="bindPickerChange" :value="index" :range="array" :range-key="'title'">
 				<view class="flex-j-a pick">

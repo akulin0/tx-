@@ -1,8 +1,8 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
-				style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
+<!--			<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"-->
+<!--				style="border-bottom: 1px solid #E6E6E6;"></u-navbar>-->
 				<view style="padding: 30rpx;" v-if="type != 5">
 					<rich-text :nodes="content"></rich-text>
 					
@@ -39,18 +39,23 @@
 			switch (this.type) {
 				case '1':
 					this.navTitle = this.$t('ibinz.msg146', ['用户协议'])
+					uni.setNavigationBarTitle({title:'用户协议'})
 					break;
 				case '2':
 					this.navTitle = this.$t('ibinz.msg147',['隐私政策'])
+					uni.setNavigationBarTitle({title:'隐私政策'})
 					break;
 				case '3':
 					this.navTitle = this.$t('ibinz.msg148',['关于我们'])
+					uni.setNavigationBarTitle({title:'关于我们'})
 					break;
 				case '4':
 					this.navTitle = this.$t('ibinz.msg161', ['风险提示'])
+					uni.setNavigationBarTitle({title:'风险提示'})
 					break;
 				case '5':
 					this.navTitle = this.$t("hisbag.txt10", ["关于"])
+					uni.setNavigationBarTitle({title:'关于'})
 					break;
 				default:
 					break;

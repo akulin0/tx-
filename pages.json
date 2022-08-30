@@ -311,6 +311,8 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"添加",
+
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
