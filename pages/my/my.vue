@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 			<view class="big-box">
-				<view v-for="(item,index) in list"  class="flex-j-a list-box" @click="topage(item.url)">
+				<view v-for="(item,index) in list"  class="flex-j-a list-box" @click="toPage(item.url)">
 					<view class="align">
 						<image :src="item.img" mode="" style="width: 40rpx;height: 40rpx;margin-right: 32rpx;" class="list-picture"></image>
 						<view class="tex">{{item.title}}</view>
@@ -31,7 +31,7 @@
 	} from "@/m-subpack/base";
 
 
-	export default {
+  export default {
 
 
 
@@ -108,17 +108,6 @@
 				this.info = {
 					...data
 				}
-			},
-			//页面跳转
-			topage(url) {
-				if (navigator.userAgent.includes("TelegramXAPP")) {
-          android.startNewActivity(true, `${window.location.host}/#${url}`);
-				}else {
-				  uni.navigateTo({
-            url
-          })
-        }
-
 			},
 			copy(id) {
 				var _this = this

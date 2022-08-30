@@ -8,6 +8,8 @@ import App from './App'
 // // 应用基础组件
 // import base from "subpack:base";
 
+import {toPage} from './libs/utils';
+
 
 
 import uView from "@/m-common/uview-ui"
@@ -20,7 +22,13 @@ import i18n from '@/lang/index'
 
 App.mpType = 'app'
 
+Vue.mixin({
+    methods:{
+        // 跳转页面
+        toPage,
+    }
 
+})
 
 const app = new Vue({
 	i18n,

@@ -106,6 +106,7 @@
 	import DApps from '@/components/DApps.vue';
 	// import CryptoJS from "crypto-js";
 	import openPage from '@/js/flutter/openPage.js';
+  import {toPage} from '../../libs/utils';
 
 	export default {
 		data() {
@@ -301,9 +302,7 @@
 		},
 		// 跳转
 		goTo(url) {
-			uni.navigateTo({
-				url: url
-			});
+      toPage(url)
 		},
 		// 底部列表 -查看更多
 		checkMore() {
