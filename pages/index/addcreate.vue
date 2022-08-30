@@ -2,9 +2,8 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title="title" :title-width="227" class="zhiti":title-bold="true">
-			</u-navbar>
-			
+<!--			<u-navbar :is-back="true" :title="title" :title-width="227" class="zhiti":title-bold="true">-->
+<!--			</u-navbar>-->
 			<view style="margin-top: 70rpx;">
 				<view class="flexs list" v-for="(item,index) in list" :key="index" @click="current(item,index)">
 					<view class="flexs" style="align-items: center;margin-left: 30rpx;">
@@ -30,7 +29,7 @@
 		data() {
 			return {
 				//category 1、比特币；2、以太坊；3、波场；4、Telegram X
-				title:this.$t('ibinz.msg63', ["选择钱包体系"]),
+
 				list: [],
 				type: 0
 			}
@@ -38,6 +37,7 @@
 		onLoad(o) {
 			//type: 1创建钱包 2 导入钱包 4 地址本编辑
 			this.type = o.type;
+      uni.setNavigationBarTitle({title:'用户协议'}),
 			this.getList();
 		},
 		
