@@ -27,7 +27,8 @@ export const changeApi = (newHost) => {
 }
 
 
-export const emojiList = [{
+export const emojiList = [
+	{
 		name: "悲伤",
 		icon: "bg-beishang",
 		pic: "/static/emoji/bg-beishang.png",

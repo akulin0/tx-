@@ -29,30 +29,30 @@ const app = new Vue({
 app.$mount()
 
 
-let methodChannel;
+// let methodChannel;
 
-import {
-	MethodChannel
-} from '@/js/flutter/flutter.js';
-try {
-	methodChannel = new MethodChannel('topMain');
-} catch (e) {}
-
-
-let methodChannelData;
+// import {
+// 	MethodChannel
+// } from '@/js/flutter/flutter.js';
+// try {
+// 	methodChannel = new MethodChannel('topMain');
+// } catch (e) {}
 
 
+// let methodChannelData;
 
-methodChannel.$on('flutterView', e => {
-	console.log('flutterView', e);
-	console.log("flutterView",methodChannelData);
-	if (e.callbackId) {
-		// callbackId存在说明，需要回调数据
-		methodChannel.callback(e.callbackId, methodChannelData);
-	} else {
-		uni.showToast({
-			title: JSON.stringify(e),
-			icon: 'none'
-		});
-	}
-});
+
+
+// methodChannel.$on('flutterView', e => {
+// 	console.log('flutterView', e);
+// 	console.log("flutterView",methodChannelData);
+// 	if (e.callbackId) {
+// 		// callbackId存在说明，需要回调数据
+// 		methodChannel.callback(e.callbackId, methodChannelData);
+// 	} else {
+// 		uni.showToast({
+// 			title: JSON.stringify(e),
+// 			icon: 'none'
+// 		});
+// 	}
+// });

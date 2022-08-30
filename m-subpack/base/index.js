@@ -7,7 +7,7 @@ import {
 
 import md5Libs from "@/m-common/uview-ui/libs/function/md5";
 
-import {clearWallet} from "@/decorator/wallet"
+import { clearWallet } from "@/decorator/wallet"
 
 /**
  * 获取检查登录状态
@@ -78,20 +78,16 @@ export const LoginOut = (link) => {
 	// });
 	uni.removeStorageSync("token");
 	clearWallet();
-	// uni.clearStorage();
+	uni.clearStorage();
 	if (link) {
-		if (project == 'DUOLAIMI') {
-			uni.reLaunch({
-				url: "/pages/login/login",
-			});
-		} else if (isMustLogin) {
+		if (isMustLogin) {
 			LoginView();
 		} else {
-			
-				uni.switchTab({
-					url: "/pages/index/index",
-				});
-			
+
+			uni.switchTab({
+				url: "/pages/index/index",
+			});
+
 
 		}
 	}
@@ -127,15 +123,7 @@ export const infoRequest = async (option) => {
 	// const key = md5(JSON.stringify(option))
 	// if(!!cache[key]) return;
 	// cache[key] = key;
-	// #ifdef  MP-WEIXIN
-	// console.log(11111);
-	let token = uni.getStorageSync("token");
-	if (!token) {
-		token = await wxToken();
-	}
 
-	// console.log(2222);
-	// #endif
 
 	// #ifndef  MP-WEIXIN
 
@@ -152,11 +140,11 @@ export const infoRequest = async (option) => {
 	option.dataType = "json";
 	option.header = option.header || {};
 	//语言
-	let lang =  uni.getStorageSync('CURRENT_LANG') == 'en-US' ? ' en' : 'zh-Hans';
+	let lang = uni.getStorageSync('CURRENT_LANG') == 'en-US' ? ' en' : 'zh-Hans';
 	if (token) {
 		//加入header
 		option.header = {
-			... option.header,
+			...option.header,
 			Authorization: token,
 			lang: lang
 		};
@@ -219,44 +207,33 @@ export const infoRequest = async (option) => {
 	throw statusCode;
 };
 export const genSignParams = (inObject) => {
-	if(!inObject){
+	if (!inObject) {
 		return;
 	}
-			var sorter = function (inObject) {
-				var sortedJson = {};
-				var sortedKeys = Object.keys(inObject).sort();
-				for (var i = 0; i < sortedKeys.length; i++) {
-					sortedJson[sortedKeys[i]] = inObject[sortedKeys[i]]
-				}
-				return sortedJson;
-			}
-			
-			var sortedParam = sorter(inObject);
-			
-			var needSignatureStr = "";
-			for (var key in sortedParam) {
-				var value = sortedParam[key];
-				needSignatureStr = needSignatureStr + key + '=' + (value.toString()).replace(/(^\s*)|(\s*$)/g,"") + '&';
-			}
-			return needSignatureStr;
-		};
+	var sorter = function(inObject) {
+		var sortedJson = {};
+		var sortedKeys = Object.keys(inObject).sort();
+		for (var i = 0; i < sortedKeys.length; i++) {
+			sortedJson[sortedKeys[i]] = inObject[sortedKeys[i]]
+		}
+		return sortedJson;
+	}
+
+	var sortedParam = sorter(inObject);
+
+	var needSignatureStr = "";
+	for (var key in sortedParam) {
+		var value = sortedParam[key];
+		needSignatureStr = needSignatureStr + key + '=' + (value.toString()).replace(/(^\s*)|(\s*$)/g, "") + '&';
+	}
+	return needSignatureStr;
+};
 
 
 export const request = async (option) => {
-	// #ifdef  MP-WEIXIN
-	let token = uni.getStorageSync("token");
-	if (!token) {
-		token = await wxToken();
-	}
 
-
-	// #endif
-
-	// #ifndef  MP-WEIXIN
-	
 	const token = uni.getStorageSync("token");
-	// #endif
-	
+
 	if (!option.url.startsWith("http")) {
 		option.url = `${apiHost}${option.url}`;
 		if (option.params) {
@@ -267,30 +244,30 @@ export const request = async (option) => {
 	option.dataType = "json";
 	option.header = option.header || {};
 	//语言
-	let lang =  uni.getStorageSync('CURRENT_LANG') == 'en-US' ? ' en' : 'zh';
+	let lang = uni.getStorageSync('CURRENT_LANG') == 'en-US' ? ' en' : 'zh';
 
 	if (token) {
 		//加入header
 		option.header = {
-			... option.header,
+			...option.header,
 			Authorization: token,
 		};
 	}
 	option.header.lang = lang;
 	option.header.token = project;
-	
+
 	//参数排序存储 sign
 
 	let timestamp = new Date().getTime();
-	
+
 	option.header.timestamp = timestamp;
-	
-	let dataObj = {...option.data || option.params, timestamp:timestamp};
+
+	let dataObj = { ...option.data || option.params, timestamp: timestamp };
 	//去掉对象的空对象值
-	let  myFunction = (item, index)=> {
+	let myFunction = (item, index) => {
 
 		var key = dataObj[item];
-		if(key === null || key === "" || key === undefined){
+		if (key === null || key === "" || key === undefined) {
 			delete dataObj[item];
 		}
 	};
@@ -305,7 +282,7 @@ export const request = async (option) => {
 		statusCode
 	}] = await uni.request(option);
 
-	
+
 	if (data.errorCode === 0) {
 		console.log("errorCode")
 		uni.setStorageSync("safetyList", []);
@@ -317,10 +294,10 @@ export const request = async (option) => {
 		// 	title: "登录已失效",
 		// 	icon: "none",
 		// });
-		
+
 		//注册页tonken
 		LoginOut(true);
-		
+
 		// #endif
 		// #ifdef  MP-WEIXIN
 		if (isLogin()) {
@@ -330,7 +307,7 @@ export const request = async (option) => {
 		// #endif
 		// return data;
 		throw data;
-	} else if(data.errorCode === 403){
+	} else if (data.errorCode === 403) {
 		//验证字典
 		uni.setStorageSync("safetyList", data.data);
 		//存储参数
@@ -338,7 +315,7 @@ export const request = async (option) => {
 		uni.navigateTo({
 			url: `/pages/my/setting/safety`
 		})
-		
+
 	} else if (!!data.errorCode) {
 		if (!option.hideToast) {
 			uni.showToast({
@@ -472,11 +449,11 @@ export const sleep = (ms) => {
 	});
 };
 //去掉首位空格
-export const trimStr = (str)=>{
+export const trimStr = (str) => {
 	console.log(str, 'str');
-	
+
 	const reg = /(^\s*)|(\s*$)/g;
-  return str.replace(reg,"");
+	return str.replace(reg, "");
 };
 //手机号验证
 export const mobileVar = (value) => {

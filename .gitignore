@@ -1,3 +1,7 @@
 /unpackage
 /node_modules
 package-lock.json
+.idea
+.hbuilderx/
+unpackage/
+dist/
