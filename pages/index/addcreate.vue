@@ -29,7 +29,6 @@
 		data() {
 			return {
 				//category 1、比特币；2、以太坊；3、波场；4、Telegram X
-
 				list: [],
 				type: 0
 			}
@@ -37,7 +36,7 @@
 		onLoad(o) {
 			//type: 1创建钱包 2 导入钱包 4 地址本编辑
 			this.type = o.type;
-      uni.setNavigationBarTitle({title:'用户协议'}),
+      uni.setNavigationBarTitle({title:'选择钱包体系'})
 			this.getList();
 		},
 		
