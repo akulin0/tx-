@@ -62,6 +62,8 @@
 		request
 	} from "@/m-subpack/base";
 	import Md5 from "@/components/md5.js"
+  import {createWalletByMnemonic, createWalletByPrivateKey, saveWallet} from '../../libs/wallet';
+
 	
 	import {clearWallet} from "@/decorator/wallet"
 	var tip = null;
@@ -176,23 +178,50 @@
 					return
 				}
 				try {
-					const {
-						data,
-						errorMessage
-					} = await request({
-						url: '/wallet-import',
-						method: 'POST',
-						data: {
-							"alert": this.alert,
-							"content": this.content,
-							"name": this.name,
-							// "password": this.password,
-							"password": this.password,
-							"rpassword": this.rpassword,
-							"category": this.category,
-							"type": 2
-						}
-					})
+					// const {
+					// 	data,
+					// 	errorMessage
+					// } = await request({
+					// 	url: '/wallet-import',
+					// 	method: 'POST',
+					// 	data: {
+					// 		"alert": this.alert,
+					// 		"content": this.content,
+					// 		"name": this.name,
+					// 		// "password": this.password,
+					// 		"password": this.password,
+					// 		"rpassword": this.rpassword,
+					// 		"category": this.category,
+					// 		"type": 2
+					// 	}
+					// })
+
+          const wallet = await createWalletByMnemonic(this.content)
+
+          let {
+            data,
+            errorMessage
+          } = await request({
+            url: '/wallet-create',
+            method: 'post',
+            data: {
+              address: wallet.address,
+              'alert': this.data.demo,
+              'category': this.category,
+              'name': this.name,
+              'type': 1
+            }
+          });
+
+          // 保存
+          await saveWallet(Object.assign({
+            name: this.name,
+            chainName: this.chainName,
+            remark: this.alert,
+            pwd: this.password,
+            id: data.id
+          }, wallet));
+
 					this.$refs.button.hideLoading()
 					uni.showToast({
 						title: this.$t('home.txt131', ['导入成功']),

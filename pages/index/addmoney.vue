@@ -11,7 +11,7 @@
           <!--                 class="bgcol"/>-->
 
           <!-- 输入框里的默认值 -->
-          <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx"
+          <input type="text" placeholder="请输入" placeholder-style="color:#B3B3B3;font-size:28rpx"
                  class="bgcol" v-model="data.name"/>
         </view>
         <view class="input-item" style="height: 246rpx;position: relative;">
@@ -26,7 +26,7 @@
                  placeholder="请输入密码，至少8位" placeholder-style="color:#B3B3B3;font-size:26rpx" class="i-items"
                  v-model="data.pass"/>
           <input type="password" style="height: 68rpx;margin-top: 32rpx;" maxlength="20"
-                 :placeholder="searchText2" placeholder-style="color:#B3B3B3;font-size:26rpx" class="i-items"
+                 placeholder="请输入" placeholder-style="color:#B3B3B3;font-size:26rpx" class="i-items"
                  v-model="data.repass"/>
         </view>
         <view class="input-item">
@@ -116,7 +116,7 @@ export default {
           'category': this.category,
         }
       });
-      tip = (data.length + 1);
+      tip = (data?.length || 0 + 1);
       this.data.name = this.name + '-' + tip;
     },
     // 密码强度
@@ -179,15 +179,6 @@ export default {
         } else {
           // 创建
           const wallet = await createWallet(this.data.pass);
-          // 保存
-          await saveWallet(Object.assign({
-            name: this.data.name,
-            chainName: this.name,
-            remark: this.data.demo,
-            pwd: this.data.pass
-          }, wallet));
-
-
           let {
             data,
             errorMessage
@@ -205,6 +196,17 @@ export default {
               'type': 1
             }
           });
+
+
+          // 保存
+          await saveWallet(Object.assign({
+            name: this.data.name,
+            chainName: this.name,
+            remark: this.data.demo,
+            pwd: this.data.pass,
+            id: data.id
+          }, wallet));
+
 
           clearWallet();
           uni.showToast({
@@ -227,8 +229,10 @@ export default {
 
           setTimeout(() => {
             this.$refs.button.hideLoading();
-
-            this.toPage(`/pages/my/wallet?chainName=${this.name}`);
+            uni.switchTab({
+              url: '/pages/index/index'
+            });
+            // this.toPage(`/pages/my/wallet?chainName=${this.name}`);
           }, 2000);
 
         }
