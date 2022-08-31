@@ -550,7 +550,7 @@
 			if (url.startsWith('https')) {
 				uni.setStorageSync('DLMWallet', this.walletInfo);
 				// debugger
-        this.toPage('/pages/webView?url='+ url)
+				this.toPage('/pages/webView?url='+ url)
 				return;
 			}
 
@@ -619,7 +619,8 @@
 	}
 
 	.main {
-		// padding-bottom: 50rpx;
+		padding-bottom: 50rpx;
+		
 	}
 
 	swiper {

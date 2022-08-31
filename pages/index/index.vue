@@ -607,6 +607,8 @@
 
 	.index {
 		padding: 0 30rpx;
+		width:1200rpx;
+		margin:0 auto;
 	}
 
 	.noWallet {

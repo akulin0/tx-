@@ -17,7 +17,7 @@
 						<view class="font-l cancel-btn flex-center" @click="show=false">{{$t('home.txt24',["取消"])}}</view>
 					</u-popup>
 				</view>
-        <image src="/static/my/advert.png" class="advert"></image>
+				<image src="/static/my/advert.png" class="advert" @click="skip()"></image>
 			</view>
 
 	</base-layout>
@@ -134,6 +134,10 @@
 				uni.makePhoneCall({
 					phoneNumber: '028-2356-4556' //仅为示例
 				});
+			},
+			skip () {
+				console.log("点击")
+				window.location.href = '/www.telegramx.cc'
 			}
 		}
 	}
