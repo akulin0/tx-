@@ -17,6 +17,7 @@
 						<view class="font-l cancel-btn flex-center" @click="show=false">{{$t('home.txt24',["取消"])}}</view>
 					</u-popup>
 				</view>
+        <image src="/static/my/advert.png" class="advert"></image>
 			</view>
 
 	</base-layout>
@@ -29,13 +30,12 @@
 		request,
 		infoRequest
 	} from "@/m-subpack/base";
+  import Image from "../../m-common/common/components/image";
 
 
   export default {
-
-
-
-		data() {
+    components: {Image},
+    data() {
 			return {
 				list: [{
 						img: '/static/my/icon1.png',
@@ -371,4 +371,10 @@
 		flex-direction: column;
 		align-items: center;
 	}
+
+  .advert {
+    width: 690rpx;
+    height: 387rpx;
+    margin-top: 300rpx;
+  }
 </style>
