@@ -379,6 +379,7 @@ page {
   padding: 20rpx;
   text-align: center;
   color: #ccc;
+  margin: 20rpx;
 }
 
 .plr30 {

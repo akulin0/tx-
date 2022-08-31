@@ -37,9 +37,17 @@ export default {
               icon: '/static/appCenter/logo.png',
               name: '我的资产',
               path: '',
-              url: '',
+              url: '/pages/appCenter/myAssets',
               num: '95'
             },
+			{
+			  id: 'logo',
+			  icon: '/static/appCenter/ic-exchangeRate.png',
+			  name: '汇率换算',
+			  path: '',
+			  url: '/pages/appCenter/converter',
+			  num: '80'
+			},
             {
               id: '',
               icon: '/static/appCenter/ic-phone.png',
@@ -87,14 +95,6 @@ export default {
               url: '',
               num: '1'
             },
-			{
-			  id: '',
-			  icon: '/static/appCenter/ic-exchangeRate.png',
-			  name: '汇率换算',
-			  path: '',
-			  url: '',
-			  num: '80'
-			},
           ]
         },
         {
@@ -245,7 +245,7 @@ export default {
     toLink(item) {
       if (item.id === 'logo') {
         // 跳转至我的资产页
-        this.toPage(url)
+        this.toPage(item.url)
 
       } else {
         // 显示提示框

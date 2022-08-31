@@ -144,8 +144,8 @@
 			<view class="noWallet">
 				<view class="noWallettitle">{{ $t("home.txt10", ["数字资产钱包"])}}</view>
 				<view class="noWallettip">{{ $t("home.txt11", ["支持多条主链生态"])}}</view>
-				<view class="flex-j-a" @click="goTo('/pages/index/addcreate?type=2')" style="padding: 30rpx;">
-					<view class="flex-j-a">
+				<view class="flex-j-right" @click="goTo('/pages/index/addcreate?type=2')" style="padding: 30rpx;">
+					<view class="flex-j-right">
 						<image src="/static/index/tip1.png" style="width: 50rpx;height: 48rpx;" mode=""></image>
 						<view style="margin-left: 20rpx;">
 							<view style="font-size: 30rpx;font-weight: 500;color: #333333;">{{
@@ -159,8 +159,8 @@
 					<u-icon name="arrow-right" size="30"></u-icon>
 				</view>
 				<view style="height: 1px; width: 620rpx;margin-left: 100rpx;background-color: #f1f1f1;"></view>
-				<view class="flex-j-a" @click="goTo('/pages/index/addcreate?type=1')" style="padding: 30rpx;">
-					<view class="flex-j-a">
+				<view class="flex-j-right" @click="goTo('/pages/index/addcreate?type=1')" style="padding: 30rpx;">
+					<view class="flex-j-right">
 						<image src="/static/index/tip2.png" style="width: 50rpx;height: 48rpx;" mode=""></image>
 						<view style="margin-left: 20rpx;">
 							<view style="font-size: 30rpx;font-weight: 500;color: #333333;">
@@ -1179,5 +1179,11 @@
 		flex-direction: column;
 		align-items: flex-end;
 		justify-content: center;
+	}
+	
+	.flex-j-right {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 </style>
