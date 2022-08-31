@@ -3,7 +3,8 @@
 		<view class="night-text">
       <img class="night-logo" src="/static/my/dark.png" alt="moon">
 			<view class="text-top">
-				深色模式
+        暗夜模式
+        <view style=" color: #0e8bfb; font-size: 16px;">(限免)</view>
 			</view>
 			<view class="text-bottom">
         文字柔和，色彩更适应夜晚，避免刺眼
@@ -62,6 +63,9 @@ export default{
         font-weight: bold;
         letter-spacing: 4rpx;
         color: #FFFFFF;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
       }
       & .text-bottom{
         font-size:28rpx;

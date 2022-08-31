@@ -1,17 +1,15 @@
 <template>
-	<view class="index">
+	<view :class="[btn === false?'index':'index-night']">
 		<view v-if="walletInfo && token">
-
-			<view class="header flexs headpiece">
+			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
-
 					<span>
-						<image class="icon-switch" src="../../static/index/31right.png"></image>
+						<image class="icon-switch" :src="[btn === false?require('../../static/index/31right.png'):require('../../static/index/night/fh-n.png')]"></image>
 					</span>
 				</view>
 				<view class="flexs headerimg">
-					<image src="/static/index/money.png" @click="goTo('addcreate?type=1')" mode=""></image>
+					<image :src="[btn === false?require('../../static/index/money.png'):require('../../static/index/night/qb-n.png')]" @click="goTo('addcreate?type=1')" mode=""></image>
 					<!-- <image src="/static/index/sao.png" @click="scan()" mode=""></image> -->
 				</view>
 			</view>
@@ -243,6 +241,7 @@
 </template>
 
 <script lang="ts">
+
 	import {
 		Assets
 	} from "@/decorator/wallet"
@@ -269,6 +268,12 @@
 	})
 	@Assets()
 	export default class Idnex extends Vue {
+    data(){
+      return{
+        btn: localStorage.getItem("btn") !== "false",
+        img1:require('../../static/index/31right.png'),
+      }
+    };
 		token = '';
 		showMoney = true;
 		pass: any = '';
@@ -282,7 +287,6 @@
 		IsReadyUpdate = true;
 		updateProgress = 0;
 		coinLists = [];
-
 		onShow() {
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
@@ -290,9 +294,7 @@
 			if (uni.getStorageSync("isHot") == 1) {
 				this.getCoinAllList();
 			}
-
 			this.init();
-
 			// #ifdef APP-PLUS
 			const _this = this;
 			plus.runtime.getProperty(plus.runtime.appid, (wgtinfo) => {
@@ -606,10 +608,21 @@
 	}
 
 	.index {
-		padding: 0 30rpx;
-		width:1200rpx;
-		margin:0 auto;
+		width:100%;
+    height: 94vh;
+		display: flex;
+    flex-direction: column;
+    align-items: center;
 	}
+  .index-night{
+    width:100%;
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
+  }
 
 	.noWallet {
 		width: 750rpx;
@@ -1001,6 +1014,48 @@
 		}
 
 	}
+  .header-night {
+    height: 90rpx;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: var(--status-bar-height);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin: 0 -30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    padding-bottom: 20rpx;
+
+    .changes {
+      width: 118rpx;
+      height: 65rpx;
+      border-radius: 32rpx;
+      border: #FFFFFF 1px solid;
+      color: #F3F3F3;
+      font-size: 25.17rpx;
+      // font-weight: 62;
+      // line-height: 20rpx;
+      justify-content: space-between;
+
+      .text-sty {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        top: 14rpx;
+      }
+    }
+
+    .headerimg {
+      image {
+        width: 48rpx;
+        height: 48rpx;
+        right: 12rpx;
+      }
+    }
+
+  }
 	.rows{
 		
 		display: flex;
