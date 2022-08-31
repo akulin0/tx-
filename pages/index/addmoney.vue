@@ -7,12 +7,12 @@
       <view style="padding: 0 30rpx;">
         <view class="input-item">
           <view class="commonfont">{{ $t('home.txt30', ['钱包名称']) }} ({{ 'Telegram Pocket' }})</view>
-          <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx;"
-                 class="bgcol"/>
+<!--          <input type="text" placeholder="输入钱包名称" placeholder-style="color:#B3B3B3;font-size:28rpx;"-->
+<!--                 class="bgcol"/>-->
 
           <!-- 输入框里的默认值 -->
-          <!-- <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx"
-            class="bgcol" v-model="data.name" /> -->
+           <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx"
+            class="bgcol" v-model="data.name" />
         </view>
         <view class="input-item" style="height: 246rpx;position: relative;">
           <!-- 密码强度 -->
@@ -178,17 +178,17 @@ export default {
           this.$refs.button.hideLoading();
         } else {
           // 创建
-          const data = await createWallet(this.data.pass);
+          const wallet = await createWallet(this.data.pass);
           // 保存
           await saveWallet(Object.assign({
             name: this.data.name,
             chainName: this.name,
             remark: this.data.demo,
             pwd: this.data.pass
-          }, data));
+          }, wallet));
 
 
-
+          //
           // let {
           // 	data,
           // 	errorMessage
@@ -204,10 +204,12 @@ export default {
           // 		"type": 1
           // 	}
           // })
-          // clearWallet();
+
+          clearWallet();
           uni.showToast({
             title: this.$t('ibinz.msg36', ['操作成功']),
-            duration: 1000
+            duration: 1000,
+            icon: 'none'
           });
 
           setTimeout(() => {

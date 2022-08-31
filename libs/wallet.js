@@ -61,6 +61,25 @@ export function saveWallet({name, remark, pwd, chainName, address, privateKey, p
     });
 }
 
+export async function editWallet(chainName, address, updateData = {}) {
+    try {
+        const list = getWalletList(chainName);
+
+        list.forEach(i => {
+            if (i.address === address) {
+                i.name = updateData.name || i.name;
+                i.remark = updateData.remark || i.remark;
+            }
+        });
+        saveConfig(chainName, list);
+        if (updateData.pwd) {
+            saveConfig(`${chainName}-${address}-pwd`, updateData.pwd);
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 /**
  * @description 获取本地钱包地址
  * @author lecoler
@@ -70,6 +89,18 @@ export function saveWallet({name, remark, pwd, chainName, address, privateKey, p
  */
 export function getWalletList(chainName) {
     return getConfig(chainName) || [];
+}
+
+export function getWalletInfo(chainName, address) {
+    return new Promise((resolve, reject) => {
+        const list = getWalletList(chainName);
+        const item = list.filter(i => i.address === address)[0];
+        if (item) {
+            resolve(item);
+        } else {
+            reject(null);
+        }
+    });
 }
 
 /**
