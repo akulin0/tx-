@@ -125,20 +125,12 @@
 
 
 <script lang="ts">
-	import {
-		Vue,
-		Prop,
-		Component
-	} from "vue-property-decorator";
-	import {
-		request
-	} from "@/m-subpack/base";
-	import {
-		Assets
-	} from "@/decorator/wallet"
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import {request} from '@/m-subpack/base';
+import {Assets} from '@/decorator/wallet';
+import {createWallet, getWalletList, saveWallet} from '../libs/wallet.js';
 
-
-	@Component()
+@Component()
 	@Assets()
 	export default class Wellet extends Vue {
 
@@ -254,8 +246,6 @@
 		//创建钱包
 		async getsubmit() {
 
-
-
 			if (!this.data.name) {
 				this.hintname = this.$t('home.txt31', ['请输入钱包名称']);
 			}
@@ -267,21 +257,33 @@
 			} else if (this.data.pass.length < 8 || this.data.repass.length < 8) {
 				this.hintpwd = this.$t('ibinz.msg32', ['密码至少8个字符,包含大小写字母和数字']);
 			} else {
-				let {
-					data,
-					errorMessage
-				} = await request({
-					url: '/wallet-create',
-					method: 'post',
-					data: {
-						"alert": this.data.demo,
-						"category": this.currentCategory,
-						"name": this.data.name,
-						"password": this.data.pass,
-						"rpassword": this.data.repass,
-						"type": 1
-					}
-				})
+
+        // 创建
+        const wallet = await createWallet(this.data.pass);
+        // 保存
+        await saveWallet(Object.assign({
+          name: this.data.name,
+          chainName: this.currentText,
+          remark: this.data.demo,
+          pwd: this.data.pass
+        }, wallet));
+
+				// let {
+				// 	data,
+				// 	errorMessage
+				// } = await request({
+				// 	url: '/wallet-create',
+				// 	method: 'post',
+				// 	data: {
+				// 		"alert": this.data.demo,
+				// 		"category": this.currentCategory,
+				// 		"name": this.data.name,
+				// 		"password": this.data.pass,
+				// 		"rpassword": this.data.repass,
+				// 		"type": 1
+				// 	}
+				// })
+
 				this.data = {
 					pass: '',
 					name: "",
@@ -295,25 +297,48 @@
 			}
 		}
 		async getwalletList(category) {
-			this.walletList = [];
-			let {
-				data,
-				errorMessage
-			} = await request({
-				url: '/wallet-get-all-wallet-list',
-				method: 'get',
-				data: {
-					category: category
-				}
-			});
 
-			let walletList = data.map((item) => {
-				item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30)
 
-				return item
+      // let {
+      // 		data,
+      // 		errorMessage
+      // 	} = await request({
+      // 		url: '/wallet-get-all-wallet-list',
+      // 		method: 'get',
+      // 		data: {
+      // 			category: category
+      // 		}
+      // 	});
+      console.log(this.currentText);
+      this.walletList = [];
 
-			})
-			this.walletList = walletList;
+      const data = await getWalletList(this.currentText);
+
+      this.walletList = data.map((item) => {
+        item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
+
+        return item;
+
+      });
+
+			// let {
+			// 	data,
+			// 	errorMessage
+			// } = await request({
+			// 	url: '/wallet-get-all-wallet-list',
+			// 	method: 'get',
+			// 	data: {
+			// 		category: category
+			// 	}
+			// });
+
+			// let walletList = data.map((item) => {
+			// 	item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30)
+      //
+			// 	return item
+      //
+			// })
+			// this.walletList = walletList;
 		}
 		async getList() {
 			let {
@@ -340,9 +365,9 @@
 
 		changeSelect(item) {
 			this.currentCategory = item.category;
-			this.getwalletList(item.category);
 			this.currentText = this.currentCategoryText[this.currentCategory];
-		}
+      this.getwalletList(item.category);
+    }
 
 		async changeMoney() {
 			if (process.env.NODE_ENV !== 'development') {

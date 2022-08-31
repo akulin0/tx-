@@ -44,7 +44,7 @@
         <!--        </view>-->
 
       </view>
-      <view class="btn flex-center color-r font-l" @click="showCheck(4)">{{ $t('ibinz.msg22', ['删除钱包']) }}</view>
+<!--      <view class="btn flex-center color-r font-l" @click="showCheck(4)">{{ $t('ibinz.msg22', ['删除钱包']) }}</view>-->
       <!--导出助记词 私钥 key弹框 -->
       <u-modal v-model="show" :show-cancel-button="true" :title="title" @confirm="sure">
         <view class="slot-content slot">
@@ -154,8 +154,9 @@ export default {
     // category 1、 比特币； 2、 以太坊； 3、 波场； 4、 Telegram X
     // 获取钱包的详情
     async walletDetail() {
-      let currentWallet = uni.getStorageSync('currentWallet');
-      console.log('当前选中的钱包', currentWallet);
+      // let currentWallet = uni.getStorageSync('currentWallet');
+
+      // console.log('当前选中的钱包', currentWallet);
 
       // let {
       // 	data,
@@ -176,7 +177,7 @@ export default {
       // if (this.walletId == currentWallet.id) {
       // 	currentWallet.name = this.walletInfo.name
       // 	console.log('bbbbb', currentWallet);
-      // 	uni.setStorageSync("currentWallet", currentWallet)
+
       // }
 
     },
@@ -268,11 +269,11 @@ export default {
             this.keyContent = key;
           } else if (this.mode == 2) { // 助记词
             const data = await getWalletMnemonic(this.chainName, this.walletInfo.address);
-            if(!data){
+            if (!data) {
               return uni.showToast({
                 title: '错误，不存在助记词',
                 icon: 'none'
-              })
+              });
             }
             uni.setStorageSync('mnemonics', data);
             uni.setStorageSync('mnemonicsType', 2);
@@ -280,11 +281,11 @@ export default {
 
           } else if (this.mode == 3) {
             const data = await getWalletKeystore(this.chainName, this.walletInfo.address);
-            if(!data){
+            if (!data) {
               return uni.showToast({
                 title: '错误，不存在keystore',
                 icon: 'none'
-              })
+              });
             }
             uni.setStorageSync('keystore', data);
             toPage('/pages/wallet/exportKey');
