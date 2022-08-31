@@ -1,10 +1,10 @@
 <template>
 	<view class="index">
-		<view v-if="currentWallet && token">
+		<view v-if="walletInfo && token">
 
 			<view class="header flexs headpiece">
 				<view class="changes flexs header-img" @click="open">
-					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{currentWallet.name}}</span>
+					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
 
 					<span>
 						<image class="icon-switch" src="../../static/index/31right.png"></image>
@@ -90,7 +90,7 @@
 					<!-- <view class="line2"></view> -->
 					<view class="vertical"></view>
 					<view style="font-weight: bold;">
-						{{currentWallet.category_name}}{{$t("home.txt8", ["资产"])}}
+						{{walletInfo.category_name}}{{$t("home.txt8", ["资产"])}}
 					</view>
 					<!-- <u-icon @click="refreshWalletkBalance()" name="reload" style="margin-left: 10rpx;" size="30"> -->
 					</u-icon>
@@ -284,7 +284,7 @@
 		coinLists = [];
 
 		onShow() {
-			this.token = uni.getStorageSync("token");
+      this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
 			this.isTimestamp = uni.getStorageSync("isTimestamp");
 			if (uni.getStorageSync("isHot") == 1) {

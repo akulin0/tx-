@@ -7,12 +7,12 @@
       <view style="padding: 0 30rpx;">
         <view class="input-item">
           <view class="commonfont">{{ $t('home.txt30', ['钱包名称']) }} ({{ 'Telegram Pocket' }})</view>
-<!--          <input type="text" placeholder="输入钱包名称" placeholder-style="color:#B3B3B3;font-size:28rpx;"-->
-<!--                 class="bgcol"/>-->
+          <!--          <input type="text" placeholder="输入钱包名称" placeholder-style="color:#B3B3B3;font-size:28rpx;"-->
+          <!--                 class="bgcol"/>-->
 
           <!-- 输入框里的默认值 -->
-           <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx"
-            class="bgcol" v-model="data.name" />
+          <input type="text" :placeholder="searchText" placeholder-style="color:#B3B3B3;font-size:28rpx"
+                 class="bgcol" v-model="data.name"/>
         </view>
         <view class="input-item" style="height: 246rpx;position: relative;">
           <!-- 密码强度 -->
@@ -188,22 +188,23 @@ export default {
           }, wallet));
 
 
-          //
-          // let {
-          // 	data,
-          // 	errorMessage
-          // } = await request({
-          // 	url: '/wallet-create',
-          // 	method: 'post',
-          // 	data: {
-          // 		"alert": this.data.demo,
-          // 		"category": this.category,
-          // 		"name": this.data.name,
-          // 		"password": this.data.pass,
-          // 		"rpassword":this.data.repass,
-          // 		"type": 1
-          // 	}
-          // })
+          let {
+            data,
+            errorMessage
+          } = await request({
+            url: '/wallet-create',
+            method: 'post',
+            data: {
+              address: wallet.address,
+              chainName: this.name,
+              'alert': this.data.demo,
+              'category': this.category,
+              'name': this.data.name,
+              // "password": this.data.pass,
+              // "rpassword":this.data.repass,
+              'type': 1
+            }
+          });
 
           clearWallet();
           uni.showToast({
@@ -212,10 +213,22 @@ export default {
             icon: 'none'
           });
 
+
+          const currentWallet = {
+            address: wallet.address,
+            category_name: this.name,
+            category: this.category,
+            name: this.data.name,
+            id: data.id
+          };
+
+          uni.setStorageSync('currentWallet', currentWallet);
+
+
           setTimeout(() => {
             this.$refs.button.hideLoading();
 
-            this.toPage('/pages/my/wallet')
+            this.toPage(`/pages/my/wallet?chainName=${this.name}`);
           }, 2000);
 
         }

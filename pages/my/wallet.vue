@@ -111,8 +111,8 @@ export default class Idnex extends Vue {
   addressx = 0;
   addres = 0;
 
-  onLoad() {
-
+  onLoad({chainName}) {
+    // this.currentText = chainName || 'BSC'
   }
 
   async onShow() {
