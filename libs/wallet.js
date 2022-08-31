@@ -39,7 +39,7 @@ export async function createWallet(password) {
  * @param info:Object 信息，钱包名字、钱包密码提示信息、钱包密码、链名称、地址、私钥、公钥、助记词、keystore
  * @return Promise
  */
-export function saveWallet({name, remark, pwd, chainName, address, privateKey, publicKey, mnemonic, keystore}) {
+export function saveWallet({id,name, remark, pwd, chainName, address, privateKey, publicKey, mnemonic, keystore}) {
     return new Promise((resolve, reject) => {
         try {
             const walletList = getWalletList(chainName);
@@ -47,6 +47,7 @@ export function saveWallet({name, remark, pwd, chainName, address, privateKey, p
                 address: address,
                 name: name,
                 remark: remark,
+                id: id
             });
             saveConfig(chainName, walletList);
             saveConfig(`${chainName}-${address}-privateKey`, privateKey);

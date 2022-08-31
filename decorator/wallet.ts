@@ -18,8 +18,9 @@ export const Assets = () => {
 	
 	//获取当前的选择的钱包的代币
 	target.prototype.getCoinList = async function(){
-		let _coinList = coinList[this.currentWallet.id] || [];
-	
+		const currentWallet = uni.getStorageSync('currentWallet')
+		let _coinList = coinList[currentWallet.id] || [];
+
 		
 			let {
 				data,
@@ -28,7 +29,7 @@ export const Assets = () => {
 				url: '/walletGetCoinBalanceByWalletId',
 				method: 'get',
 				data: {
-					"wallet_id":this.currentWallet.id,
+					"wallet_id":currentWallet.id,
 				}
 			})
 			_coinList = data.list;
@@ -43,7 +44,7 @@ export const Assets = () => {
 		
 		
 		// debugger
-		coinList[this.currentWallet.id] = _coinList;
+		coinList[currentWallet.id] = _coinList;
 	}
 	
 	//获取资产余额

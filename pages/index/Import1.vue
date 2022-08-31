@@ -65,6 +65,7 @@
 	var tip = null;
 	
 	import {clearWallet} from "@/decorator/wallet"
+  import {createWalletByPrivateKey, saveWallet} from '../../libs/wallet';
 	export default {
 		data() {
 			return {
@@ -87,11 +88,13 @@
 				placeholder3: this.$t('home.txt33', ['请再次输入密码']),
 				placeholder4: this.$t('home.txt35', ['请输入密码提示信息（可不填）']),
 				btnTitle: this.$t('ibinz.msg13', ['导入钱包']),
+        chainName: ''
 			}
 		},
 		onLoad(o) {
 			console.log("私钥导入", o);
 			this.name = o.name
+      this.chainName = o.name
 			this.title = o.title
 			this.category = o.category
 			this.getWalletList()
@@ -176,22 +179,50 @@
 					return
 				}
 				try {
-					const {
-						data,
-						errorMessage
-					} = await request({
-						url: '/wallet-import',
-						method: 'POST',
-						data: {
-							"alert": this.alert,
-							"content": this.content,
-							"name": this.name,
-							"password": this.password,
-							"rpassword": this.rpassword,
-							"category": this.category,
-							"type": 1
-						}
-					})
+					// const {
+					// 	data,
+					// 	errorMessage
+					// } = await request({
+					// 	url: '/wallet-import',
+					// 	method: 'POST',
+					// 	data: {
+					// 		"alert": this.alert,
+					// 		"content": this.content,
+					// 		"name": this.name,
+					// 		"password": this.password,
+					// 		"rpassword": this.rpassword,
+					// 		"category": this.category,
+					// 		"type": 1
+					// 	}
+					// })
+
+
+          const wallet = await createWalletByPrivateKey(this.content)
+
+          let {
+            data,
+            errorMessage
+          } = await request({
+            url: '/wallet-create',
+            method: 'post',
+            data: {
+              address: wallet.address,
+              'alert': this.data.demo,
+              'category': this.category,
+              'name': this.name,
+              'type': 1
+            }
+          });
+
+          // 保存
+          await saveWallet(Object.assign({
+            name: this.name,
+            chainName: this.chainName,
+            remark: this.alert,
+            pwd: this.password,
+            id: data.id
+          }, wallet));
+
 					this.$refs.button.hideLoading()
 					uni.showToast({
 						title: this.$t('home.txt131', ['导入成功']),
