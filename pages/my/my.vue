@@ -1,7 +1,7 @@
 <!-- 我的页面 -->
 <template>
 	<base-layout>
-			<view class="big-box">
+			<view :class="[btn === false ? 'big-box':'big-box-night']">
 				<view v-for="(item,index) in list"  class="flex-j-a list-box" @click="toPage(item.url)">
 					<view class="align">
 						<image :src="item.img" mode="" style="width: 40rpx;height: 40rpx;margin-right: 32rpx;" class="list-picture"></image>
@@ -19,7 +19,6 @@
 				</view>
 				<image src="/static/my/advert.png" class="advert" @click="skip()"></image>
 			</view>
-
 	</base-layout>
 </template>
 
@@ -32,11 +31,11 @@
 	} from "@/m-subpack/base";
   import Image from "../../m-common/common/components/image";
 
-
   export default {
     components: {Image},
     data() {
 			return {
+        btn: localStorage.getItem("btn") !== "false",
 				list: [{
 						img: '/static/my/icon1.png',
 						title: this.$t('ibinz.msg2',["管理钱包"]),
@@ -371,6 +370,7 @@
 	}
 
 	.big-box {
+    height: 94vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -380,5 +380,14 @@
     width: 690rpx;
     height: 387rpx;
     margin-top: 300rpx;
+  }
+
+  .big-box-night {
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
   }
 </style>

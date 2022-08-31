@@ -18,5 +18,10 @@
     "vue-i18n": "^8.24.4",
     "vue-property-decorator": "^9.1.2",
     "weapp.socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "node-sass": "^7.0.1",
+    "sass-loader": "^13.0.2",
+    "sass-resources-loader": "^2.2.5"
   }
 }

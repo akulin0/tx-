@@ -28,7 +28,7 @@
 		justify-content: center;
 		font-size: 28rpx;
 		color: #ADADAD;
-		min-height: 60vh;
+		min-height: 76vh;
 		image {
 			width: 420rpx;
 			height: 320rpx;

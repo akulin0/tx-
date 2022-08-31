@@ -10,6 +10,8 @@ import App from './App'
 
 import {toPage} from './libs/utils';
 
+import "./style/nightMode.scss";
+
 
 
 import uView from "@/m-common/uview-ui"

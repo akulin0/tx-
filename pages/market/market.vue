@@ -1,7 +1,7 @@
 <template>
-	<base-layout class="content-main">
+	<base-layout :class="[btn===false?'content-main':'content-main-night']">
 		<view class="sticky">
-			<u-navbar :is-back="false" :is-fixed="true">
+			<u-navbar class="nav-top" :is-back="false" :is-fixed="true">
 				<view class="topNavbar">
 					<view class="navbar">
 						<view class="item color-main font-l" :class="{active:index==topNavCur}"
@@ -89,6 +89,7 @@
 	export default {
 		data() {
 			return {
+        btn: localStorage.getItem("btn") !== "false",
 				topNavCur: 0, // 顶部tab-默认Defi
 				topNavList: [{
 						name: "DeFi",
@@ -425,7 +426,19 @@
 		overflow: hidden;
 		background-color: #FFFFFF;
 	}
-
+  //.sticky-night {
+  //  position: sticky;
+  //  top: 0;
+  //  z-index: 999;
+  //  flex: 1;
+  //  flex-direction: column;
+  //  overflow: hidden;
+  //}
+  .content-main-night{
+    padding-bottom: 80rpx;
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
+  }
 	.content-main {
 		padding-bottom: 80rpx;
 	}

@@ -1,5 +1,5 @@
 <template>
-	<view class="agreementList page">
+	<view :class="[btn === false?'agreementList page':'agreementList-night page']">
 		<!-- logo -->
 		<view class="logo">
 			<image :src="Logo" mode=""></image>
@@ -95,6 +95,7 @@
 				chatAppKey,
 				phone: '400-0000-000',
 				token: '',
+        btn: localStorage.getItem("btn") !== "false",
 				info: {},
 				versionCode: "",
 				isUpdata: false,
@@ -287,7 +288,17 @@
 	.agreementList {
 		background-color: #fff;
 		min-height: 100vh;
+    padding-top: 100rpx;
+
 	}
+  .agreementList-night {
+    background-color: #fff;
+    min-height: 100vh;
+    padding-top: 100rpx;
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
+
+  }
 
 	.logo {
 		display: flex;

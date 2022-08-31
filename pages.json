@@ -908,6 +908,20 @@
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom",
+				"navigationBarTitleText":"关于我们",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
+			"path": "pages/my/nightMode",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"navigationBarTitleText":"暗夜模式",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
