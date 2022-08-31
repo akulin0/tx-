@@ -246,6 +246,18 @@
 			}
 		},
 		{
+			"path": "pages/appCenter/converter", //发现-汇率换算
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
 			"path": "pages/my/my", //我的
 			"style": {
 				"enablePullDownRefresh": false,
