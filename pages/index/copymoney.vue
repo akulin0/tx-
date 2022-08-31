@@ -40,7 +40,7 @@
 		},
 		onLoad(opt) {
 			let data = uni.getStorageSync('mnemonics')
-			this.word = data.split(' ')
+      this.word = data.phrase.split(' ')
 		},
 		methods: {
 			gocode() {

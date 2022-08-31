@@ -22,8 +22,7 @@
       </view>
       <!-- list导出方式： -->
       <view style="margin-top: 24rpx;">
-        <view class="list flex-j-a font-t" @click="showCheck(2)"
-              v-if="category==1 || category==2 || category==4 ">
+        <view class="list flex-j-a font-t" @click="showCheck(2)">
           <view>{{ $t('ibinz.msg17', ['导出助记词']) }}</view>
           <image src="/static/my/more.png" mode=""></image>
         </view>
@@ -31,18 +30,18 @@
           <view>{{ $t('ibinz.msg18', ['导出私钥']) }}</view>
           <image src="/static/my/more.png" mode=""></image>
         </view>
-        <view class="list flex-j-a font-t" @click="showCheck(3)" v-if="category==2 || category==4 ">
+        <view class="list flex-j-a font-t" @click="showCheck(3)">
           <view>{{ $t('ibinz.msg19', ['导出Keystore']) }}</view>
           <image src="/static/my/more.png" mode=""></image>
         </view>
-        <view class="list flex-j-a font-t" @click="toPage('/pages/my/setting/passEdit?type=1')">
-          <view>{{ $t('ibinz.msg20', ['修改密码']) }}</view>
-          <image src="/static/my/more.png" mode=""></image>
-        </view>
-        <view class="list flex-j-a font-t" @click="toPage('/pages/wallet/resetPass')">
-          <view>{{ $t('ibinz.msg21', ['重置密码']) }}</view>
-          <image src="/static/my/more.png" mode=""></image>
-        </view>
+        <!--        <view class="list flex-j-a font-t" @click="toPage('/pages/my/setting/passEdit?type=1')">-->
+        <!--          <view>{{ $t('ibinz.msg20', ['修改密码']) }}</view>-->
+        <!--          <image src="/static/my/more.png" mode=""></image>-->
+        <!--        </view>-->
+        <!--        <view class="list flex-j-a font-t" @click="toPage('/pages/wallet/resetPass')">-->
+        <!--          <view>{{ $t('ibinz.msg21', ['重置密码']) }}</view>-->
+        <!--          <image src="/static/my/more.png" mode=""></image>-->
+        <!--        </view>-->
 
       </view>
       <view class="btn flex-center color-r font-l" @click="showCheck(4)">{{ $t('ibinz.msg22', ['删除钱包']) }}</view>
@@ -87,7 +86,8 @@
 import uQRCode from '@/m-subpack/base/libs/uqrcode.js';
 import {request} from '@/m-subpack/base';
 import {clearWallet} from '@/decorator/wallet';
-import {editWallet, getWalletInfo, getWalletPrivateKey} from '../../libs/wallet';
+import {editWallet, getWalletInfo, getWalletKeystore, getWalletMnemonic, getWalletPrivateKey} from '../../libs/wallet';
+import {toPage} from '../../libs/utils';
 
 export default {
   data() {
@@ -138,8 +138,8 @@ export default {
     this.category = opt.category;
 
     this.keyContent = '';
-    if(this.keyContent){
-    	this.show1 = true;
+    if (this.keyContent) {
+      this.show1 = true;
     }
     // this.walletId = opt.id
     // console.log("钱包id", this.walletId);
@@ -166,7 +166,7 @@ export default {
       // 		id: this.walletId,
       // 	}
       // })
-      this.walletInfo = await getWalletInfo(this.chainName, this.walletInfo.address)
+      this.walletInfo = await getWalletInfo(this.chainName, this.walletInfo.address);
       // console.log(" 钱包详情", this.walletInfo);
       // this.category = data.category
       // this.imgList.map(item => {
@@ -260,27 +260,34 @@ export default {
           // 1、私钥
           if (this.mode == 1) {
 
-            const key = await getWalletPrivateKey(this.chainName,this.walletInfo.address)
+            const key = await getWalletPrivateKey(this.chainName, this.walletInfo.address);
 
             this.show = false;
             this.keyContent = key;
             this.show1 = true;
             this.keyContent = key;
-            // uni.showModal({
-            //   title: '私钥',
-            //   content: key,
-            // })
           } else if (this.mode == 2) { // 助记词
+            const data = await getWalletMnemonic(this.chainName, this.walletInfo.address);
+            if(!data){
+              return uni.showToast({
+                title: '错误，不存在助记词',
+                icon: 'none'
+              })
+            }
             uni.setStorageSync('mnemonics', data);
             uni.setStorageSync('mnemonicsType', 2);
-            uni.navigateTo({
-              url: '/pages/index/copypass'
-            });
+            toPage('/pages/index/copypass');
+
           } else if (this.mode == 3) {
+            const data = await getWalletKeystore(this.chainName, this.walletInfo.address);
+            if(!data){
+              return uni.showToast({
+                title: '错误，不存在keystore',
+                icon: 'none'
+              })
+            }
             uni.setStorageSync('keystore', data);
-            uni.navigateTo({
-              url: '/pages/wallet/exportKey'
-            });
+            toPage('/pages/wallet/exportKey');
           }
         } catch (e) {
           // uni.showToast({
