@@ -15,6 +15,7 @@
 	import {
 		request
 	} from "@/m-subpack/base";
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -47,10 +48,9 @@
 						}
 					})
 					this.$refs.button.hideLoading()
-					uni.switchTab({
-						url: '/pages/index/index'
-					});
-				} catch (e) {
+          toTabBar('/pages/index/index',0)
+
+        } catch (e) {
 					uni.showToast({
 						title: e.errorMessage,
 						icon: "none"

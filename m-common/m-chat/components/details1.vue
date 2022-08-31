@@ -67,6 +67,7 @@
 	import {
 		userHead
 	} from "@/config";
+  import {toTabBar} from '../../../libs/utils';
 	const recorderManager = uni.getRecorderManager();
 	const innerAudioContext = uni.createInnerAudioContext();
 
@@ -216,10 +217,12 @@
 				
 			},
 			back() {
-				uni.switchTab({
-					url: '/pages/my/my'
-				})
-			},
+				// uni.switchTab({
+				// 	url: '/pages/my/my'
+				// })
+        toTabBar('/pages/my/my',4)
+
+      },
 			stopTalking(payload) {
 				this.audio = payload.audio
 				if (payload.status) {

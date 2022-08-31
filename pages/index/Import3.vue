@@ -50,6 +50,7 @@
 	} from "@/m-subpack/base";
 	import Md5 from "@/components/md5.js"
 	import {clearWallet} from "@/decorator/wallet"
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -179,10 +180,9 @@
 					})
 					clearWallet();
 					setTimeout(() => {
-						uni.switchTab({
-							url: '/pages/index/index'
-						});
-					}, 1000);
+            toTabBar('/pages/index/index',0)
+
+          }, 1000);
 				} catch (e) {
 					this.$refs.button.hideLoading()
 					uni.showToast({

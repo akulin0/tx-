@@ -34,6 +34,7 @@
 		request, md5
 	} from "@/m-subpack/base";
 	import Helper from "@/function.js"
+  import {toTabBar} from '../../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -117,10 +118,9 @@
 										}
 										
 										
-										uni.switchTab({
-											url: '/pages/index/index'
-										})
-									}else{
+
+                    toTabBar('/pages/index/index',0)
+                  }else{
 										uni.showToast({
 											title: this.$t('google.txt18',["已提交确认"]),
 											duration: 1000

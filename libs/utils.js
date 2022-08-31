@@ -27,6 +27,23 @@ export function toPage(url) {
 }
 
 /**
+ * @description 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+ * @author lecoler
+ * @date 2022/8/31
+ * @param url:String 需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数
+ * @param index:Number 需要跳转的 tabBar 页面的index （0资产 1市场 2发现 3电报 4我的）
+ */
+export function toTabBar(url,index){
+    if(isTx()){
+        android.refresh(index)
+    }else {
+        uni.switchTab({
+            url: url
+        })
+    }
+}
+
+/**
  * @description 保存数据至本地
  * @author lecoler
  * @date 2022/8/30

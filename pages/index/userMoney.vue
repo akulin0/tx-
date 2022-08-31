@@ -51,6 +51,7 @@
 		request,
 		navigateTo
 	} from "@/m-subpack/base";
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -217,10 +218,9 @@
 				}
 			},
 			goBack(){
-				uni.switchTab({
-				    url: '/pages/index/index'
-				});
-			}
+
+        toTabBar('/pages/index/index',0)
+      }
 
 		}
 	}
