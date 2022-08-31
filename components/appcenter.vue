@@ -40,14 +40,14 @@ export default {
               url: '/pages/appCenter/myAssets',
               num: '95'
             },
-			{
-			  id: 'logo',
-			  icon: '/static/appCenter/ic-exchangeRate.png',
-			  name: '汇率换算',
-			  path: '',
-			  url: '/pages/appCenter/converter',
-			  num: '80'
-			},
+            {
+              id: 'logo',
+              icon: '/static/appCenter/ic-exchangeRate.png',
+              name: '汇率换算',
+              path: '',
+              url: '/pages/appCenter/converter',
+              num: '80'
+            },
             {
               id: '',
               icon: '/static/appCenter/ic-phone.png',

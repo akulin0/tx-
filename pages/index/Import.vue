@@ -89,5 +89,10 @@
 			font-weight: 500;
 			color: #999999;
 		}
+    .flex-j-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 	}
 </style>
