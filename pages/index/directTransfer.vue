@@ -131,7 +131,8 @@
     }
 
 		async onShow() {
-			this.title = this.$t('home.txt80', ['直接转账']);
+
+      this.title = this.$t('home.txt80', ['直接转账']);
 			this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
 			this.btnTitle = this.$t('home.txt56', ['确认']);
 			this.placeholder1 = this.$t('home.txt84', ['请输入数量']);
@@ -157,6 +158,7 @@
 
 
 			await this.init();
+			this.currentWallet = uni.getStorageSync('currentWallet')
 			if (!this.symbol) {
 
 				this.symbol = this.coinLists[0].symbol;
