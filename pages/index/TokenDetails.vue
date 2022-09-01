@@ -138,7 +138,7 @@
 			this.list = [1];
 			this.navTitle = this.$t('home.txt114',['Token详情']);
 			await this.init();
-			this.walletInfo = uni.getStorageSync('currentWallet');
+			this.walletInfo = JSON.parse(uni.getStorageSync('currentWallet'));
 			this.getList();
 			// this.infoList = [];
 			// let infoList = [];

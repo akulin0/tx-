@@ -225,19 +225,19 @@
 		},
 		onShow() {
 			this.data.address = uni.getStorageSync('receiveWallet').address || ""
-			// this.currentWallet = uni.getStorageSync('currentWallet')
+			// this.currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
 		},
 		onLoad() {
 
 
 
-			console.log('钱包信息aaaaa',uni.getStorageSync('currentWallet').id);
-			this.data.wallet_id = uni.getStorageSync('currentWallet').id
+			console.log('钱包信息aaaaa',JSON.parse(uni.getStorageSync('currentWallet')).id);
+			this.data.wallet_id = JSON.parse(uni.getStorageSync('currentWallet')).id
 
 
 			this.getData()
 			//钱包类型  category:1、比特币；2、以太坊；3、波场；4、Telegram X
-			// let  category = uni.getStorageSync('currentWallet').category || ""
+			// let  category = JSON.parse(uni.getStorageSync('currentWallet')).category || ""
 			// switch (category) {
 			// 	case 1:
 			// 		this.category = 'BTC'
@@ -315,7 +315,7 @@
 	
 			
 				this.lists = []
-				this.currentWallet = uni.getStorageSync('currentWallet')
+				this.currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
 				console.log('钱包信息', this.currentWallet);
 				let {
 					data,
@@ -351,7 +351,7 @@
 
 				//this.lists2 = this.lists
 				this.getRate(this.selectData.wallet_category)
-				this.getMoney(this.selectData.id, uni.getStorageSync('currentWallet').id || "")
+				this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id || "")
 				uni.hideLoading()
 				// console.log("兑换币列表: ",this.selectData);
 				// this.coinInfo1=this.selectData
@@ -406,7 +406,7 @@
 				}
 				// }
 				console.log('xuanze', this.selectData.id);
-				this.getMoney(this.selectData.id, uni.getStorageSync('currentWallet').id || "")
+				this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id || "")
 				this.category = this.selectDatas.wallet_category
 				// console.log('uuuuuuuuuu',this.category);
 				if (this.selectData.wallet_category) this.getRate(this.selectData.wallet_category)
@@ -431,7 +431,7 @@
 			},
 			async getMsgList() {
 				let params = {
-					wallet_id: uni.getStorageSync('currentWallet').id || "",
+					wallet_id: JSON.parse(uni.getStorageSync('currentWallet')).id || "",
 					pageNumber: 1,
 					pageSize: 10
 				}
@@ -486,7 +486,7 @@
 				}
 			},
 			changeWallet(item) {
-				// let currentWallet = uni.getStorageSync('currentWallet')
+				// let currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
 				this.data.address =item.address || ""
 				// this.getData()
 				// this.getMoney(this.selectData.id, currentWallet.id)
@@ -595,7 +595,7 @@
 						this.data.password = "";
 						this.exchangeFee.actual_amount = "";
 						this.getMsgList();
-						this.getMoney(this.selectData.id, uni.getStorageSync('currentWallet').id)
+						this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id)
 					}
 					this.$refs.button.hideLoading()
 					this.show = false

@@ -215,7 +215,7 @@
 
 		onShow() {
 
-			this.walletInfo = uni.getStorageSync('currentWallet') || {};
+			this.walletInfo = JSON.parse(uni.getStorageSync('currentWallet')) || {};
 			if (!isLogin()) {
 				this.isLogin = false;
 				this.getHotDAPP(); //热门推荐

@@ -280,7 +280,7 @@
 					title: '加载中...'
 				});
 				this.redPkgId = item.body.body.redpackId
-				if (!uni.getStorageSync('currentWallet')) {
+				if (!JSON.parse(uni.getStorageSync('currentWallet'))) {
 					uni.showToast({
 						icon: 'none',
 						title: '请先绑定钱包'
@@ -290,7 +290,7 @@
 				}
 				const {
 					address
-				} = uni.getStorageSync('currentWallet')
+				} = JSON.parse(uni.getStorageSync('currentWallet'))
 				chatHttp({
 					url: '/v1/redpacket/accept',
 					method: 'post',

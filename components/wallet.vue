@@ -182,7 +182,7 @@ export default class Wellet extends Vue {
     this.currentText = this.$t('home.txt26', ['Telegram X']);
     this.showpassType = this.$t('home.txt113', ['弱']);
     this.btnText = this.$t('home.txt22', ['创建钱包']);
-    this.getwalletList(uni.getStorageSync('currentWallet').category);
+    this.getwalletList(JSON.parse(uni.getStorageSync('currentWallet')).category);
     this.getList();
   }
 
@@ -352,7 +352,7 @@ export default class Wellet extends Vue {
 
     this.walletList = data.map((item) => {
       item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
-      item.selected = item.id === uni.getStorageSync('currentWallet').id
+      item.selected = item.id === JSON.parse(uni.getStorageSync('currentWallet')).id
       return item;
 
     });
