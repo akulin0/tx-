@@ -14,7 +14,7 @@
       </view>
       <view
         class="item"
-        @click="goTo('nickname')"
+        @click="goTo('base/pages/setting/nickname')"
         v-if="config.indexOf('nc') >= 0"
       >
         <view class="title">昵称</view>
@@ -32,7 +32,7 @@
       </view>
       <view
         class="item"
-        @click="goTo('bindMobile')"
+        @click="goTo('base/pages/setting/bindMobile')"
         v-if="config.indexOf('sjh') >= 0"
       >
         <view class="title">手机号</view>
@@ -41,7 +41,7 @@
       </view>
       <view
         class="item"
-        @click="!userInfo.idCard ? goTo('realAuth') : null"
+        @click="!userInfo.idCard ? goTo('base/pages/setting/realAuth') : null"
         v-if="config.indexOf('smrz') >= 0"
       >
         <view class="title">实名认证</view>
@@ -57,7 +57,7 @@
       <!-- #ifdef APP-PLUS || H5-->
       <view
         class="item"
-        @click="userInfo.alipayUserId ? null : goTo('Alipay')"
+        @click="userInfo.alipayUserId ? null : goTo('base/pages/setting/Alipay')"
         v-if="config.indexOf('bdzfb') >= 0"
       >
         <view class="title">绑定支付宝</view>
@@ -88,7 +88,7 @@
 
       <view
         class="item"
-        @click="goTo('recommended')"
+        @click="goTo('base/pages/setting/recommended')"
         v-if="
           config.indexOf('wdtjr') >= 0 &&
           (userInfo.parentId == null || userInfo.parentId == '')
