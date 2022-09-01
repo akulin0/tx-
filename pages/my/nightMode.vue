@@ -11,8 +11,9 @@
 			<view class="text-bottom">
         文字柔和，色彩更适应夜晚，避免刺眼
 			</view>
+      <button class="night-btn" type="default" @click="nightOpen()">{{ btn === false ? '开启' : '关闭' }}</button>
 		</view>
-		<button class="night-btn" type="default" @click="nightOpen()">{{ btn === false ? '开启' : '关闭' }}</button>
+
 	</view>
 </template>
 
@@ -53,9 +54,8 @@ export default{
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 30%;
-      justify-content: space-evenly;
-      margin-top: 40%;
+      height: 80%;
+      justify-content: center;
       & .night-logo{
         width: 126rpx;
         height: 126rpx;
@@ -68,21 +68,24 @@ export default{
         display: flex;
         flex-direction: row;
         align-items: flex-end;
+        margin-top: 60rpx;
       }
       & .text-bottom{
         font-size:28rpx;
         color: #FFFFFF;
         letter-spacing: 4rpx;
+        margin-top: 20rpx;
+      }
+      & .night-btn{
+        width: 383rpx;
+        height: 101rpx;
+        background: #FFFFFF;
+        border-radius: 30rpx;
+        line-height: 101rpx;
+        margin-top: 60%;
       }
     }
-    & .night-btn{
-      width: 383rpx;
-      height: 101rpx;
-      background: #FFFFFF;
-      border-radius: 30rpx;
-      line-height: 101rpx;
-      margin-top: 70%;
-    }
+
 
 	}
 </style>
