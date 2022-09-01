@@ -132,7 +132,7 @@ export default {
   components: {},
   onLoad(opt) {
     console.log(opt);
-    this.walletName = opt.name;
+    this.walletName = opt.name || uni.getStorageSync('currentWallet').name;
     this.chainName = opt.chainName || uni.getStorageSync('currentWallet').category_name;
     this.walletInfo.address = opt.address ||  uni.getStorageSync('currentWallet').address;
     this.category = opt.category;

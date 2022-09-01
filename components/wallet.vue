@@ -418,6 +418,7 @@ export default class Wellet extends Vue {
 
   selectMoney(item) {
     this.$emit('changeWallet', item);
+    item['category_name'] = this.currentText
     uni.setStorageSync('currentWallet', item);
     this.$forceUpdate();
     this.close();

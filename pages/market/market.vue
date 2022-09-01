@@ -409,6 +409,7 @@
 				// uni.navigateTo({
 				// 	url: "/pages/market/exchangeDetail?item=" + encodeURIComponent(JSON.stringify(item))
 				// })
+
         toPage("/pages/market/exchangeDetail?item=" + encodeURIComponent(JSON.stringify(item)))
 
 			}
