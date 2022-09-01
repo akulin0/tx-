@@ -63,13 +63,13 @@
 				console.log(this.siteList)
 			},
 			toAddSite() {
-        this.toPage('addSite')
+        this.toPage(' base/pages/address/addSite')
 				// uni.navigateTo({
 				// 	url: 'addSite'
 				// });
 			},
 			edit(item) {
-        this.toPage('addSite?id='+item.id)
+        this.toPage('base/pages/address/addSite?id='+item.id)
 				// uni.navigateTo({
 				// 	url: 'addSite?id='+item.id
 				// });
