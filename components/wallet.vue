@@ -281,7 +281,7 @@ export default class Wellet extends Vue {
           address: wallet.address,
           chainName: this.currentText,
           'alert': this.data.demo,
-          'category': this.category,
+          'category': this.currentCategory,
           'name': this.data.name,
           // "password": this.data.pass,
           // "rpassword":this.data.repass,
