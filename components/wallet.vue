@@ -109,7 +109,7 @@
       </view>
       <view class="otherMoney" v-if="!showOther && !addcreate">
         <view class="commonfont" v-if="!isClassify" style="font-size: 30rpx;border-bottom: 1rpx solid #E6E6E6;"
-              @click="addcreate = true">{{
+              @click="getSubmit('/pages/index/addcreate?type=1')">{{
             $t('home.txt22', ['创建钱包'])
           }}
         </view>
@@ -252,7 +252,11 @@ export default class Wellet extends Vue {
         break;
     }
   }
+  getSubmit(url){
 
+    this.toPage(url)
+    this.close()
+  }
   //创建钱包
   async getsubmit() {
 
@@ -391,9 +395,9 @@ export default class Wellet extends Vue {
   close() {
 
     this.show = false;
-    this.$nextTick(() => {
-      uni.showTabBar();
-    });
+    // this.$nextTick(() => {
+    //   uni.showTabBar();
+    // });
 
   }
 

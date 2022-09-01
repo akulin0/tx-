@@ -290,6 +290,9 @@
     totalMoney = 0
 		coinLists = [];
 		onShow() {
+      if (this.isTx()) {
+        uni.hideTabBar();
+      }
 		  this.walletInfo = uni.getStorageSync("currentWallet")
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
