@@ -38,7 +38,7 @@
     components: {Image},
     data() {
 			return {
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn") === "true",
 				list: [{
 						img: '/static/my/icon1.png',
 						title: this.$t('ibinz.msg2',["管理钱包"]),
@@ -62,11 +62,11 @@
 						title: this.$t('ibinz.msg5',["关于我们"]),
 						url: '/pages/my/agreementList'
 					},
-					{
-						img: '/static/my/moon2.png',
-						title: this.$t('ibinz.msga',["暗夜模式"]),
-						url: '/pages/my/nightMode'
-					}
+					// {
+					// 	img: '/static/my/moon2.png',
+					// 	title: this.$t('ibinz.msga',["暗夜模式"]),
+					// 	url: '/pages/my/nightMode'
+					// }
 				],
 				isCopy: false,
 				show: false,

@@ -89,7 +89,7 @@
 	export default {
 		data() {
 			return {
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn")=== "true",
 				topNavCur: 0, // 顶部tab-默认Defi
 				topNavList: [{
 						name: "DeFi",

@@ -270,7 +270,7 @@
 	export default class Idnex extends Vue {
     data(){
       return{
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn") === "true",
         img:require('../../static/index/search.png'),
         img1:require('../../static/index/night/find-n.png'),
       }
@@ -609,20 +609,20 @@
 	}
 
 	.index {
-		width:100%;
+		width:auto;
     height: 94vh;
 		display: flex;
     flex-direction: column;
     align-items: center;
 	}
   .index-night{
-    width:100%;
+    width:auto;
     height: 94vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("/static/my/bj.png");
-    background-size: 100% 100%;
+    //background-image: url("/static/my/bj.png");
+    //background-size: 100% 100%;
   }
   .index-content{
     width: 100%;

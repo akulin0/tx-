@@ -53,7 +53,7 @@
 				list: [],
 				title: this.$t('ibinz.msg3', ["地址薄"]),
 				type: '',
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn") === "true",
 				imgList: ['/static/biticon/bit.png',  '/static/biticon/ethereum.png',
 					'/static/biticon/tron.png','/static/biticon/dolami.png'
 				],	
