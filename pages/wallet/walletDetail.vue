@@ -134,7 +134,7 @@ export default {
     console.log(opt);
     this.walletName = opt.name;
     this.chainName = opt.chainName || uni.getStorageSync('currentWallet').category_name;
-    this.walletInfo.address = opt.address;
+    this.walletInfo.address = opt.address ||  uni.getStorageSync('currentWallet').address;
     this.category = opt.category;
 
     this.keyContent = '';

@@ -229,7 +229,7 @@ export async function createWalletByKeystore(keystore, password) {
  * @param mnemonic:String 助记词
  * @return Promise
  */
-export async function createWalletByMnemonic(mnemonic) {
+export async function createWalletByMnemonic(mnemonic,password) {
     try {
         const wallet = ethers.Wallet.fromMnemonic(mnemonic);
         const privateKey = wallet.privateKey;
@@ -257,7 +257,7 @@ export async function createWalletByMnemonic(mnemonic) {
  * @param privateKey:String 私钥
  * @return Promise
  */
-export async function createWalletByPrivateKey(privateKey) {
+export async function createWalletByPrivateKey(privateKey,password) {
     try {
         const wallet = new ethers.Wallet(privateKey);
         const mnemonic = wallet.mnemonic;

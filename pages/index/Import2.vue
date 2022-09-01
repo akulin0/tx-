@@ -197,7 +197,7 @@
 					// 	}
 					// })
 
-          const wallet = await createWalletByMnemonic(this.content)
+          const wallet = await createWalletByMnemonic(this.content,this.password)
 
           let {
             data,
@@ -207,7 +207,7 @@
             method: 'post',
             data: {
               address: wallet.address,
-              'alert': this.data.demo,
+              'alert': this.alert,
               'category': this.category,
               'name': this.name,
               'type': 1

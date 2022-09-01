@@ -1,6 +1,6 @@
 <template>
 	<view :class="[btn === false?'index':'index-night']">
-		<view class="index-content" v-if="walletInfo && token">
+		<view class="index-content" v-if="walletInfo">
 			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
@@ -9,7 +9,7 @@
 					</span>
 				</view>
 				<view class="flexs headerimg">
-					<image :src="[btn === false?require('../../static/index/money.png'):require('../../static/index/night/qb-n.png')]" @click="goTo('addcreate?type=1')" mode=""></image>
+					<image :src="[btn === false?require('../../static/index/money.png'):require('../../static/index/night/qb-n.png')]" @click="goTo('/pages/index/addcreate?type=1')" mode=""></image>
 					<!-- <image src="/static/index/sao.png" @click="scan()" mode=""></image> -->
 				</view>
 			</view>
@@ -137,7 +137,7 @@
 		</view>
 		<view v-else>
 
-			<image src="/static/index/noWallet.png" style="width: 750rpx;height: 740rpx;margin-left: -30rpx;" mode="">
+			<image src="/static/index/noWallet.png" style="width: 750rpx;height: 750rpx;margin-left: 0rpx;" mode="">
 			</image>
 			<view class="noWallet">
 				<view class="noWallettitle">{{ $t("home.txt10", ["数字资产钱包"])}}</view>
@@ -292,7 +292,7 @@
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
 			this.isTimestamp = uni.getStorageSync("isTimestamp");
-			if (uni.getStorageSync("isHot") == 1) {
+			if (uni.getStorageSync("currentWallet").id) {
 				this.getCoinAllList();
 			}
 			this.init();
@@ -330,7 +330,8 @@
 		//所有钱包地址
 		async getCoinAllList() {
 			let coinList = {};
-			let _coinList = coinList[this.walletInfo.id] || [];
+      // console.log(this.walletInfo,'-0---------------');
+      let _coinList = coinList[this.walletInfo.id] || [];
 			if (_coinList.length == 0) {
 
 				let {
@@ -639,10 +640,10 @@
 
 	.noWallet {
 		width: 750rpx;
-		height: 630rpx;
+		//height: 630rpx;
 		background: #FFFFFF;
 		border-radius: 20rpx;
-		margin-left: -30rpx;
+		//margin-left: -30rpx;
 		margin-top: -56rpx;
 		position: absolute;
 

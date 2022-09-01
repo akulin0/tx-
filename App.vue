@@ -118,6 +118,7 @@ export default {
 uni-app,body{
   overflow-x: hidden;
   width: 100vw;
+  min-height: 100vh;
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
