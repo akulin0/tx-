@@ -120,7 +120,7 @@ export default {
           })
         } else if(url == 'directTransfer') {
           uni.navigateTo({
-            url: `directTransfer`
+            url: `/pages/index/directTransfer`
           })
         }
         else  {
