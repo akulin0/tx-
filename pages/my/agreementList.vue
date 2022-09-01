@@ -1,5 +1,7 @@
 <template>
 	<view :class="[btn === false?'agreementList page':'agreementList-night page']">
+    <u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" title="关于我们" :title-bold="true"
+              style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
 		<!-- logo -->
 		<view class="logo">
 			<image :src="Logo" mode=""></image>

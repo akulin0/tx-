@@ -1,6 +1,9 @@
 <!-- 我的页面 -->
 <template>
 	<base-layout>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <u-navbar  :is-back="false" title="" :title-width="227" class="zhiti":title-bold="true">
+    </u-navbar>
 			<view :class="[btn === false ? 'big-box':'big-box-night']">
 				<view v-for="(item,index) in list"  class="flex-j-a list-box" @click="toPage(item.url)">
 					<view class="align">
@@ -92,12 +95,12 @@
 				index: 2,
 				text: this.$t("finds", ["发现"]),
 			})
+			// uni.setTabBarItem({
+			// 	index: 3,
+			// 	text: this.$t("messages", ["消息"]),
+			// })
 			uni.setTabBarItem({
 				index: 3,
-				text: this.$t("messages", ["消息"]),
-			})
-			uni.setTabBarItem({
-				index: 4,
 				text: this.$t("my", ["我的"]),
 			})
 		},
@@ -341,11 +344,11 @@
 		top: 2rpx;
 	}
 
-	.more {
-		right: 15rpx;
-		position: fixed;
-
-	}
+	//.more {
+	//	right: 15rpx;
+	//	position: fixed;
+  //
+	//}
 
 	.site {
 		position: relative;
@@ -384,7 +387,7 @@
   .advert {
     width: 690rpx;
     height: 387rpx;
-    margin-top: 300rpx;
+    //margin-top: 300rpx;
   }
 
   .big-box-night {
@@ -394,5 +397,33 @@
     align-items: center;
     background-image: url("/static/my/bj.png");
     background-size: 100% 100%;
+  }
+
+  /* body 在横屏底下和竖屏底下一定要做好定位，不然*/
+  /* 竖屏底下的查询 */
+  @media screen and (orientation: portrait) {
+    body {
+      /* 防止页面被刘海遮住 */
+      padding-top: constant(safe-area-inset-top);
+      //以防万一写一个你本身适配其他手机的
+      padding-top:0px;
+    }
+  }
+  /* 横屏底下的查询 */
+  @media screen and (orientation: landscape) {
+    body {
+      /* IOS 11支持*/
+      padding-right: constant(safe-area-inset-right);
+      padding-left: constant(safe-area-inset-left);
+      padding-bottom: constant(safe-area-inset-bottom);//为底下圆弧的高度 34px
+      /*IOS 11.2版本版本支持*/
+      padding-right: env(safe-area-inset-right);
+      padding-left: env(safe-area-inset-left);
+      padding-bottom: env(safe-area-inset-bottom);
+      //以防万一写一个你本身适配其他手机的
+      padding-right:0px;
+      padding-left:0px;
+      padding-bottom:0px;
+    }
   }
 </style>

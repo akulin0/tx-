@@ -1,5 +1,7 @@
 <template>
 	<view class="nightMode page">
+    <u-navbar  v-if="!isTx()"  :is-back="true" title="" :title-width="227" class="zhiti":title-bold="true">
+    </u-navbar>
 		<view class="night-text">
       <img class="night-logo" src="/static/my/dark.png" alt="moon">
 			<view class="text-top">

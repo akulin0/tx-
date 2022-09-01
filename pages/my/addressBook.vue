@@ -1,9 +1,10 @@
 <!-- 地址本 -->
 <template>
 	<base-layout>
-
-		<!-- <base-Item :init="true"  :size="size" @getData="getList" class="goodslists">
-			<view slot="content" slot-scope="{ data }"> -->
+		<u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
+			 :custom-back="goBack"></u-navbar>
+		<!-- <base-Item :init="true"  :size="size" @getData="getList" class="goodslists"> -->
+			<!-- <view slot="content" slot-scope="{ data }"> -->
 		<view :class="[btn === false?'content':'content-night']">
 			<view class="none-box flex-center-column" v-if="list.length==0">
 				<image src="/static/my/none.png" mode="" class="img"></image>

@@ -315,12 +315,12 @@
 				index: 2,
 				text: this.$t("finds", ["发现"]),
 			})
+			// uni.setTabBarItem({
+			// 	index: 3,
+			// 	text: this.$t("messages", ["消息"]),
+			// })
 			uni.setTabBarItem({
 				index: 3,
-				text: this.$t("messages", ["消息"]),
-			})
-			uni.setTabBarItem({
-				index: 4,
 				text: this.$t("my", ["我的"]),
 			})
 
@@ -1243,4 +1243,9 @@
 		align-items: center;
 		justify-content: space-between;
 	}
+
+  .uni-tabbar.uni-tabbar-bottom .uni-tabbar {
+    position: fixed !important;
+    bottom: 0 !important;
+  }
 </style>

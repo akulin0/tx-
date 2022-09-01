@@ -42,7 +42,7 @@
 			
 				<!-- 底部是否偏移TabBar的高度(默认仅在H5端的tab页生效) -->
 				<!-- #ifdef H5 -->
-				<view v-if="bottombar && windowBottom>0" class="mescroll-bottombar" :style="{height: windowBottom+'px'}"></view>
+				<!-- <view v-if="bottombar && windowBottom>0" class="mescroll-bottombar" :style="{height: windowBottom+'px'}"></view> -->
 				<!-- #endif -->
 				
 				<!-- 适配iPhoneX -->
