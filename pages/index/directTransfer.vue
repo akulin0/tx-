@@ -267,7 +267,6 @@ export default class Idnex extends Vue {
       		coin_id: this.coin_id,
       		target_address: this.data.address,
       		wallet_id: this.currentWallet.id,
-      		password: this.pass,
       		//转账手续费 1、慢 2、标准 3、快
       		transaction_fee_type: current,
       		gas_price: gasPrice

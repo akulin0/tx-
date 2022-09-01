@@ -35,6 +35,7 @@
 	} from "@/m-subpack/base";
 	import Helper from "@/function.js"
   import {toTabBar} from '../../../libs/utils';
+  import {getWalletPwd} from "../../../libs/wallet";
 	export default {
 		data() {
 			return {
@@ -47,12 +48,14 @@
 				pass: '',
 				safetyList: uni.getStorageSync("safetyList"),
 				loginInfo: uni.getStorageSync("loginInfo"),
-				option: uni.getStorageSync("option")
+				option: uni.getStorageSync("option"),
+        password: getWalletPwd(),
 			}
 		},
 		onLoad() {
-			
-		},
+      console.log(this.password);
+
+    },
 		methods: {
 			getPaste(){
 				clipboard.getText();
@@ -70,9 +73,15 @@
 				// }
 				//判断存储接口存在情况
 				if(this.option){
-					if(this.option.data.hasOwnProperty("password")){
-						this.option.data.password = this.pass;	
-					}
+          if(this.pass !== await getWalletPwd(uni.getStorageSync('currentWallet').category_name,uni.getStorageSync('currentWallet').address)){
+            uni.showToast({
+              icon: 'none',
+              title: '密码错误',
+            })
+          }
+					// if(this.option.data.hasOwnProperty("password")){
+					// 	this.option.data.password = this.pass;
+					// }
 					try {
 						const {
 							data
