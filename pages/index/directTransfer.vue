@@ -118,6 +118,7 @@
 		feeInfo = {};
 		unit = "";
 		unit1 = "";
+    currentWallet = uni.getStorageSync('currentWallet');
 
 
 		onLoad(opt: any) {
@@ -125,7 +126,9 @@
 			this.symbol = opt.symbol;
 			this.coin_id = opt.coin_id;
 			this.balance = opt.balance;
-		}
+			this.currentWallet = uni.getStorageSync('currentWallet')
+      console.log(this.currentWallet,'+++++++++++++++++');
+    }
 
 		async onShow() {
 			this.title = this.$t('home.txt80', ['直接转账']);
@@ -160,8 +163,8 @@
 				this.coin_id = this.coinLists[0].coin_id;
 				this.balance = this.coinLists[0].balance;
 			}
-
-			switch (this.currentWallet.category) {
+      console.log(this.currentWallet,'----------');
+      switch (this.currentWallet.category) {
 				case 1:
 					this.unit = 'sat/b'
 					this.unit1 = 'byte'
