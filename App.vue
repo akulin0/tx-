@@ -104,7 +104,7 @@ export default {
     },
     // 隐藏tabbar
     hideTabBar(){
-      if (navigator.userAgent.includes('TelegramXAPP')) {
+      if (this.isTx()) {
         uni.hideTabBar();
       }
     }
@@ -115,6 +115,15 @@ export default {
 </script>
 
 <style lang="scss">
+uni-app,body{
+  overflow-x: hidden;
+  width: 100vw;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
 uni-modal .uni-modal__bd {
   white-space: pre-wrap;
   text-align: left;

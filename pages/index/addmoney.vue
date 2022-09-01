@@ -222,7 +222,7 @@ export default {
             category_name: this.name,
             category: this.category,
             name: this.data.name,
-            id: data.id
+            id: data.id,
           };
 
           uni.setStorageSync('currentWallet', currentWallet);

@@ -20,7 +20,7 @@
 					<image :src="btn === false?require('../../static/index/totalbg.png'):require('../../static/index/night/card-n.png')" class="bgiimg" mode=""></image>
 					<image src="/static/index/diamond.png"  class="diamond"></image>
 					
-					<view class="totalp" @click="goTo(`/pages/wallet/walletDetail?id=${currentWallet.id}`)">
+					<view class="totalp" @click="goTo(`/pages/wallet/walletDetail?id=${walletInfo.id}`)">
 						<view class="totalh flexs">
 							<view class="flexs " style="align-items: center;">
 								<view style="margin-right: 20rpx;font-size: 28rpx;font-weight: lighter;" class="assets">

@@ -25,6 +25,11 @@ import i18n from '@/lang/index'
 App.mpType = 'app'
 
 Vue.mixin({
+    mounted() {
+        if(isTx()){
+            uni.hideTabBar();
+        }
+    },
     methods:{
         // 跳转页面
         toPage,

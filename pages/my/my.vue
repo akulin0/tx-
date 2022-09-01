@@ -2,9 +2,9 @@
 <template>
 	<base-layout>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <u-navbar  :is-back="false" title="" :title-width="227" class="zhiti":title-bold="true">
-    </u-navbar>
-			<view :class="[btn === false ? 'big-box':'big-box-night']">
+<!--    <u-navbar  :is-back="false" title="" :title-width="227" class="zhiti":title-bold="true">-->
+<!--    </u-navbar>-->
+			<view class="myPage" :class="[btn === false ? 'big-box':'big-box-night']">
 				<view v-for="(item,index) in list"  class="flex-j-a list-box" @click="toPage(item.url)">
 					<view class="align">
 						<image :src="item.img" mode="" style="width: 40rpx;height: 40rpx;margin-right: 32rpx;" class="list-picture"></image>
@@ -151,6 +151,9 @@
 </script>
 
 <style lang="scss" scoped>
+.myPage{
+  padding-top: 98rpx;
+}
 	.content {
 		padding: 0 30rpx;
 		color: #333;
