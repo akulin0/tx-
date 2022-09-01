@@ -201,6 +201,9 @@ export default {
           });
           // this.$refs.button.hideLoading();
         } else {
+          uni.showLoading({
+            title: ' '
+          })
           // 创建
           const wallet = await createWallet(this.data.pass);
           let {
@@ -233,6 +236,8 @@ export default {
 
 
           clearWallet();
+          uni.hideLoading()
+
           uni.showToast({
             title: this.$t('ibinz.msg36', ['操作成功']),
             duration: 1000,
