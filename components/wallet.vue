@@ -417,7 +417,7 @@ export default class Wellet extends Vue {
     // console.log("changeMoney", process.env.NODE_ENV);
 
     this.show = true;
-    uni.hideTabBar();
+    // uni.hideTabBar();
   }
 
   selectMoney(item) {
