@@ -66,6 +66,7 @@ import {createWallet, saveWallet} from '../../libs/wallet';
 
 import Md5 from '@/components/md5.js';
 import {clearWallet} from '@/decorator/wallet';
+import {toTabBar} from '../../libs/utils';
 
 var tip = null;
 export default {
@@ -229,9 +230,7 @@ export default {
 
           setTimeout(() => {
             this.$refs.button.hideLoading();
-            uni.switchTab({
-              url: '/pages/index/index'
-            });
+            toTabBar('/pages/index/index',0)
             // this.toPage(`/pages/my/wallet?chainName=${this.name}`);
           }, 2000);
 

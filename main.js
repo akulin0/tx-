@@ -8,7 +8,7 @@ import App from './App'
 // // 应用基础组件
 // import base from "subpack:base";
 
-import {toPage,isTx} from './libs/utils';
+import {toPage, isTx, toTabBar} from './libs/utils';
 
 import "./style/nightMode.scss";
 
@@ -29,7 +29,9 @@ Vue.mixin({
         // 跳转页面
         toPage,
         // 判断是否tx app 打开
-        isTx
+        isTx,
+        // 跳转到 tabBar 页面
+        toTabBar,
     }
 
 })

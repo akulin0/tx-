@@ -57,6 +57,7 @@
 import { Logo } from "@/config";
 import { md5, request, sleep } from "@/m-subpack/base";
 import { Login } from "@/m-common/common";
+import {toTabBar} from '../../../libs/utils';
 export default {
   data() {
     const _this = this;
@@ -175,9 +176,11 @@ export default {
           icon: "none",
         });
         uni.$emit("__login", "");
-        uni.switchTab({
-          url: "/pages/index/index",
-        });
+        // uni.switchTab({
+        //   url: "/pages/index/index",
+        // });
+        toTabBar('/pages/index/index',0)
+
       } catch (error) {
         console.error(error);
       }

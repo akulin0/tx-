@@ -34,6 +34,7 @@
 		request
 	} from "@/m-subpack/base";
 	import {clearWallet} from "@/decorator/wallet"
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -182,10 +183,10 @@
 				if (errorMessage == 'success') {
 					if (type == 1) {
 						uni.removeStorageSync('mnemonicsType')
-						uni.switchTab({
-							url: 'index'
-						})
-					} else if (type == 2) {
+
+            toTabBar('/pages/index/index',0)
+
+          } else if (type == 2) {
 						uni.navigateTo({
 							url: "/pages/wallet/walletDetail"
 						})
@@ -194,10 +195,12 @@
 						uni.setStorageSync("auid", data.id)
 						uni.setStorageSync("password", data.password);
 						
-						uni.switchTab({
-							url: '/pages/index/index'
-						})
-						// uni.navigateTo({
+						// uni.switchTab({
+						// 	url: '/pages/index/index'
+						// })
+            toTabBar('/pages/index/index',0)
+
+            // uni.navigateTo({
 						// 	url: '/pages/login/setPass'
 						// })
 					}

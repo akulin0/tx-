@@ -66,6 +66,7 @@
 	
 	import {clearWallet} from "@/decorator/wallet"
   import {createWalletByPrivateKey, saveWallet} from '../../libs/wallet';
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -230,10 +231,9 @@
 					})
 					clearWallet();
 					setTimeout(() => {
-						uni.switchTab({
-							url: '/pages/index/index'
-						});
-					}, 1000);
+            toTabBar('/pages/index/index',0)
+
+          }, 1000);
 				} catch (e) {
 					this.$refs.button.hideLoading()
 					uni.showToast({

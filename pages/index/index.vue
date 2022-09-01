@@ -1,6 +1,6 @@
 <template>
 	<view :class="[btn === false?'index':'index-night']">
-		<view v-if="walletInfo && token">
+		<view class="index-content" v-if="walletInfo && token">
 			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
@@ -14,10 +14,10 @@
 				</view>
 			</view>
 
-			<view style="height: 344rpx;padding: 30rpx 0 ;">
+			<view class="card-content">
 				<view class="totalbox columns">
 					
-					<image src="/static/index/totalbg.png" class="bgiimg" mode=""></image>
+					<image :src="btn === false?require('../../static/index/totalbg.png'):require('../../static/index/night/card-n.png')" class="bgiimg" mode=""></image>
 					<image src="/static/index/diamond.png"  class="diamond"></image>
 					
 					<view class="totalp" @click="goTo(`/pages/wallet/walletDetail?id=${currentWallet.id}`)">
@@ -32,11 +32,11 @@
 									<image class="look" src="/static/index/nolook.png" v-else
 										@click.stop="showMoney=true" alt="">
 							</view>
-							<view class="moneydetail flexs">
+							<view :class="[btn===false?'moneydetail flexs':'moneydetail-night flexs']">
 								<!-- <span
 									:style="{fontSize:$i18n.locale == 'en-US'?'22rpx':''}">{{$t("home.txt3", ["钱包详情"]) }}</span> -->
 								<image style="margin-left: 8rpx;margin-top: 6rpx;" class="righta"
-									src="/static/index/right3.png" alt="">
+                       :src="btn === false?require('../../static/index/right3.png'):require('../../static/index/night/xq-n.png')" alt="">
 									<view class="details">
 										详情
 									</view>
@@ -66,7 +66,7 @@
 							</view>
 							<view class="line"></view>
 							<view class="rows take-in" @click.stop="goTo('getMoney')">
-								<image src="/static/index/shoukuan1.png" alt="" class="inc">
+								<image :src="btn === false?require('../../static/index/shoukuan1.png'):require('../../static/index/night/sk-n.png')" alt="" class="inc">
 									<span style="margin-left: 12rpx;" class="text-loction">{{
 								  $t("home.txt6", ["收款"])
 								}}</span>
@@ -83,11 +83,11 @@
 					</view>
 				</view>
 			</view>
-			<view class="search flexs">
+			<view class="search flexs" style="padding: 0 32rpx">
 				<view class="flexs " style="align-items: center;">
 					<!-- <view class="line2"></view> -->
 					<view class="vertical"></view>
-					<view style="font-weight: bold;">
+					<view :class="[btn === false?'vertical-text':'vertical-text-night']" >
 						{{walletInfo.category_name}}{{$t("home.txt8", ["资产"])}}
 					</view>
 					<!-- <u-icon @click="refreshWalletkBalance()" name="reload" style="margin-left: 10rpx;" size="30"> -->
@@ -102,17 +102,17 @@
 							height="64"></u-search>
 					</view> -->
 					<view class="addbit">
-						<image src="../../static/index/search.png"
+						<image :src="btn === false?img:img1"
 							style="width: 65rpx;height: 65rpx;margin-right: 15rpx; top: 4rpx;"@click="goTo('/pages/index/hotToken')"></image>
-						<image src="/static/index/add.png" style="width: 65rpx;height: 65rpx; top: 4rpx;" mode=""
+						<image  :src="btn === false?require('../../static/index/add.png'):require('../../static/index/night/add-n.png')" style="width: 65rpx;height: 65rpx; top: 4rpx;" mode=""
 							@click="goTo('/pages/index/hotToken')"></image>
 					</view>
 				</view>
 			</view>
 			<view class="showlist" style="overflow-y: scroll;">
-				<view class="goods columns">
+				<view class="goods columns" style="padding: 0 32rpx;">
 					<!-- {{coinLists}} -->
-					<view class="goods-items flexs" v-for="(item,index) in coinLists" :key="index"
+					<view :class="[btn === false?'goods-items flexs':'goods-items-night flexs']" v-for="(item,index) in coinLists" :key="index"
 						@click="goTo(`/pages/index/TokenDetails?info=${JSON.stringify(item)}`)">
 						<view class="log flexs">
 							<image class="logo" :src="item.icon" mode=""></image>
@@ -271,7 +271,8 @@
     data(){
       return{
         btn: localStorage.getItem("btn") !== "false",
-        img1:require('../../static/index/31right.png'),
+        img:require('../../static/index/search.png'),
+        img1:require('../../static/index/night/find-n.png'),
       }
     };
 		token = '';
@@ -623,6 +624,18 @@
     background-image: url("/static/my/bj.png");
     background-size: 100% 100%;
   }
+  .index-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card-content{
+    margin-top: 40rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center
+  }
 
 	.noWallet {
 		width: 750rpx;
@@ -840,6 +853,63 @@
 				margin-left: 38rpx;
 			}
 		}
+    .goods-items-night {
+      width: 690rpx;
+      height: 100rpx;
+      color: #FFFFFF;
+      // box-shadow: 0px 1px 16rpx 0px rgba(36, 56, 211, 0.12);
+      // border-radius: 20rpx;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #EFEFEF;
+      display: flex;
+      flex-wrap: nowrap;
+      align-content: center;
+
+      .logr {
+        align-items: center;
+
+        .logr-t {
+          font-size: 34rpx;
+          // font-weight: bold;
+          color: #FFFFFF;
+          // position: relative;
+          // transform: translate(60rpx, -27rpx);
+          display: flex;
+          align-items: center;
+        }
+
+        .logr-s {
+          font-size: 24rpx;
+          font-weight: 500;
+          color: #FFFFFF;
+        }
+      }
+
+      .log {
+        align-items: center;
+        // padding-left: 30rpx;
+        font-size: 28rpx;
+        font-weight: bold;
+        color: #FFFFFF;
+        position: relative;
+        display: flex;
+        align-content: center;
+      }
+
+      .logo {
+        width: 70rpx;
+        height: 70rpx;
+        margin-right: 16rpx;
+      }
+
+      .rightD {
+        width: 40rpx;
+        height: 40rpx;
+        margin-right: 30rpx;
+        margin-left: 38rpx;
+      }
+    }
 	}
 
 	.search {
@@ -871,16 +941,16 @@
 	}
 
 	.totalbox {
-
-		margin-left: -20rpx;
-		width: 728rpx;
-		height: 346rpx;
+		width: 710rpx;
+		height: 326rpx;
 		color: #FFFFFF;
 		position: relative;
 
 		.bgiimg {
-			width: 728rpx;
-			height: 346rpx;
+			width: 710rpx;
+			height: 326rpx;
+      border: #FFFFFF solid 1px;
+      border-radius: 30rpx;
 			position: absolute;
 			// top: -40rpx;
 		}
@@ -927,6 +997,11 @@
 				color: #2DA5E1;
 				align-self: flex-start;
 			}
+      .moneydetail-night {
+        font-size: 30rpx;
+        color: #FFFFFF;
+        align-self: flex-start;
+      }
 		}
 
 
@@ -1073,6 +1148,7 @@
 		font-size: 36rpx;
 		justify-content: space-between;
 		font-weight: 500rpx;
+
 		.btns {
 
 
@@ -1182,6 +1258,14 @@
 		border-radius: 8rpx;
 		left: 32rpx;
 	}
+  .vertical-text{
+    font-weight: bold;
+    color: black;
+  }
+  .vertical-text-night {
+    font-weight: bold;
+    color: #FFFFFF;
+  }
 	
 	.header-img {
 		position: relative;

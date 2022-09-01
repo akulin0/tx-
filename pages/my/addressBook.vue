@@ -44,6 +44,7 @@
 		request,
 		navigateBack,
 	} from "@/m-subpack/base";
+  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -140,10 +141,10 @@
 				// 	url: '/pages/my/addressEdit?id=' + 1 + '&type=0'
 				// })
 				if(this.type !=1){
-					uni.switchTab({
-						url: '/pages/my/my'
-					});
-				}else{
+
+          toTabBar('/pages/my/my',4)
+
+        }else{
 					uni.navigateBack({
 						delta:1
 					})

@@ -1,7 +1,7 @@
 <!-- 我的页面 -->
 <template>
 	<base-layout>
-		<view>
+		<view :class="[btn === false?'box':'box-night']">
 <!--			<u-navbar :is-back="true" :title="title" :title-width="227" class="zhiti":title-bold="true">-->
 <!--			</u-navbar>-->
 			<view style="margin-top: 70rpx;">
@@ -16,7 +16,6 @@
 					</view> -->
 				</view>
 			</view>
-
 		</view>
 	</base-layout>
 </template>
@@ -30,7 +29,8 @@
 			return {
 				//category 1、比特币；2、以太坊；3、波场；4、Telegram X
 				list: [],
-				type: 0
+				type: 0,
+        btn: localStorage.getItem("btn") !== "false",
 			}
 		},
 		onLoad(o) {
@@ -78,6 +78,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .box{
+
+  }
+  .box-night{
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
+    height: 100vh;
+  }
+
 	.flexs {
 		display: flex;
 		flex-direction: row;
