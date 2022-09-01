@@ -637,7 +637,7 @@
     justify-content: center;
   }
   .card-content{
-    margin-top: 40rpx;
+    //margin-top: 40rpx;
     width: 100%;
     display: flex;
     justify-content: center
@@ -1278,10 +1278,10 @@
 		transform: translate(20rpx, 10rpx) !important;
 	}
 	
-	.headpiece {
-		position: relative;
-		transform: translate(-2rpx, 30rpx) !important;
-	}
+	//.headpiece {
+	//	position: relative;
+	//	transform: translate(-2rpx, 30rpx) !important;
+	//}
 	
 	.diamond {
 		width: 81rpx;

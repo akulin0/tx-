@@ -166,10 +166,11 @@ export default class Idnex extends Vue {
     // 	});
     console.log(this.currentText);
     const data = await getWalletList(this.currentText);
-
+    console.log(data,'------------');
     let walletList = data.map((item) => {
+      console.log(item,item.id == uni.getStorageSync('currentWallet').id,'---------------');
       item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
-
+      item.is_select = item.id == uni.getStorageSync('currentWallet').id
       return item;
 
     });

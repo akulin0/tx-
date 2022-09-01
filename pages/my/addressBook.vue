@@ -66,7 +66,9 @@
 
 		},
 		onLoad(option) {
-			if(option.info) this.info =  JSON.parse(option.info)  || {}
+      console.log(option,'----------');
+
+      if(option.info) this.info =  JSON.parse(option.info)  || {}
 			
 			if (option.type) {
 				this.type = option.type
