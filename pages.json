@@ -1074,12 +1074,12 @@
 				"selectedIconPath": "static/tabBar/finds_.png",
 				"text": "发现"
 			},
-//			{
-//				"pagePath": "pages/message/message",
-//				"iconPath": "static/tabBar/messages.png",
-//				"selectedIconPath": "static/tabBar/messages_.png",
-//				"text": "电报"
-//			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabBar/messages.png",
+				"selectedIconPath": "static/tabBar/messages_.png",
+				"text": "电报"
+			},
 			{
 				"pagePath": "pages/my/my",
 				"iconPath": "static/tabBar/mys.png",

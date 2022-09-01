@@ -1,41 +1,41 @@
 <!-- 公告 -->
 <template>
 	<base-layout>
+          <view style="display: flex;align-items: center;justify-content: center;width: 100vw;height: 100vh;">敬请期待</view>
+<!--			<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"></u-navbar>-->
+<!--			<view class="content">-->
+<!--				&lt;!&ndash; <base-Item :init="true" :size="10" @getData="getList" class="goodslists"> &ndash;&gt;-->
+<!--				&lt;!&ndash; <view slot="content" slot-scope="{ data }"> &ndash;&gt;-->
+<!--				&lt;!&ndash; <view class="goods-box"> &ndash;&gt;-->
+<!--				<view class="goods flex-j-a" v-for="(item, index) in list">-->
+<!--					<image :src="item.img" mode="" style="width: 84rpx;height: 84rpx;border-radius: 50%;" class="icon-imag"-->
+<!--						v-if="item.img"></image>-->
+<!--					<image src="/static/my/xiaoxi.png" mode=""-->
+<!--						style="width: 84rpx;height: 84rpx;min-width: 84rpx;min-height: 84rpx;" v-else></image>-->
+<!--					<view class="goods-box">-->
+<!--						<view class="flex-j-a">-->
+<!--							<view class="font-t font-w font-title">{{item.title}}</view>-->
+<!--							<view class="font-s time">{{item.update_date}}</view>-->
+<!--						</view>-->
+<!--						<view class="line"></view>-->
+<!--						<view class="line-Detail" @click="toDetail(item.id)">-->
+<!--							查看详情-->
+<!--							<image src="../../static/my/right.png" class="site"></image>-->
+<!--						</view>-->
+<!--						-->
+<!--						<rich-text :nodes="item.content" class="font-m color-main content1"></rich-text>-->
+<!--						&lt;!&ndash; <view class="font-m color-main content1">{{item.content}}</view> &ndash;&gt;-->
+<!--							&lt;!&ndash; <view class="dian"></view> &ndash;&gt;-->
+<!--						-->
+<!--					</view>-->
 
-			<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"></u-navbar>
-			<view class="content">
-				<!-- <base-Item :init="true" :size="10" @getData="getList" class="goodslists"> -->
-				<!-- <view slot="content" slot-scope="{ data }"> -->
-				<!-- <view class="goods-box"> -->
-				<view class="goods flex-j-a" v-for="(item, index) in list">
-					<image :src="item.img" mode="" style="width: 84rpx;height: 84rpx;border-radius: 50%;" class="icon-imag"
-						v-if="item.img"></image>
-					<image src="/static/my/xiaoxi.png" mode=""
-						style="width: 84rpx;height: 84rpx;min-width: 84rpx;min-height: 84rpx;" v-else></image>
-					<view class="goods-box">
-						<view class="flex-j-a">
-							<view class="font-t font-w font-title">{{item.title}}</view>
-							<view class="font-s time">{{item.update_date}}</view>
-						</view>
-						<view class="line"></view>
-						<view class="line-Detail" @click="toDetail(item.id)">
-							查看详情
-							<image src="../../static/my/right.png" class="site"></image>
-						</view>
-						
-						<rich-text :nodes="item.content" class="font-m color-main content1"></rich-text>
-						<!-- <view class="font-m color-main content1">{{item.content}}</view> -->
-							<!-- <view class="dian"></view> -->
-						
-					</view>
-
-				</view>
-				
-				<!-- </view> -->
-				<!-- </view>
-				</base-Item> -->
-			</view>
-			<base-noData v-if="list.length == 0"/>
+<!--				</view>-->
+<!--				-->
+<!--				&lt;!&ndash; </view> &ndash;&gt;-->
+<!--				&lt;!&ndash; </view>-->
+<!--				</base-Item> &ndash;&gt;-->
+<!--			</view>-->
+<!--			<base-noData v-if="list.length == 0"/>-->
 
 	</base-layout>
 </template>
