@@ -37,7 +37,7 @@
 				</view>
 			</view>
 			<view style="width: 100%;height: 20rpx;background-color: #F5F5F5;"></view>
-			<view class="mystyle" v-if="currentWallet.category!=3">
+			<view class="mystyle" v-show="currentWallet.category!=3">
 				<view class="commonfont">
 					{{$t('home.txt87',['矿工费'])}}
 				</view>
@@ -51,7 +51,7 @@
 						</view>
 						<view class="demofontsub" :style="current==index?'color:#2DA5E1':''">
 							≈{{item.s}}{{$t('home.txt88',['分钟'])}}</view>
-						<image src="/static/index/select.png" v-if="current==index" class="select" mode=""></image>
+						<image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>
 					</view>
 
 				</view>
@@ -128,6 +128,7 @@
 			this.balance = opt.balance;
 			this.currentWallet = uni.getStorageSync('currentWallet')
       console.log(this.currentWallet,'+++++++++++++++++');
+      console.log(this.data.address,'+++++++++++++++++');
     }
 
 		async onShow() {
@@ -159,13 +160,14 @@
 
 			await this.init();
 			this.currentWallet = uni.getStorageSync('currentWallet')
-			if (!this.symbol) {
 
+			if (!this.symbol) {
 				this.symbol = this.coinLists[0].symbol;
 				this.coin_id = this.coinLists[0].coin_id;
 				this.balance = this.coinLists[0].balance;
 			}
-      console.log(this.currentWallet,'----------');
+      console.log('1111111111111111111')
+      console.log(this.currentWallet.category,'----------');
       switch (this.currentWallet.category) {
 				case 1:
 					this.unit = 'sat/b'
@@ -180,9 +182,10 @@
 					this.unit1 = '未知'
 					break;
 				default:
+          this.unit = '未知'
+          this.unit1 = '未知'
 					break;
 			}
-
 			if (!this.gasPrice && this.currentWallet.category != 3) this.getFee(this.coin_id)
 		}
 
