@@ -276,3 +276,4 @@ export async function createWalletByPrivateKey(privateKey, password) {
         console.log('-------Error-------', e);
     }
 }
+

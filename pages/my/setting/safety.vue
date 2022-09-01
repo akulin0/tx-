@@ -59,7 +59,7 @@
 			},
 
 			async save() {
-				// var re = /^[0-9]{6}$/;
+        // var re = /^[0-9]{6}$/;
 				// if(!re.test(this.code)){
 				// 	uni.showToast({
 				// 		title: this.$t('google.txt10'),
