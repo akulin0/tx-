@@ -29,7 +29,7 @@ export default{
 	// console.log('kaishi',this.btn)
   // },
   mounted() {
-    this.btn = localStorage.getItem("btn") !== "false";
+    this.btn = localStorage.getItem("btn") === "true";
   },
   methods: {
     nightOpen(){

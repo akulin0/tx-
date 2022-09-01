@@ -97,7 +97,7 @@
 				chatAppKey,
 				phone: '400-0000-000',
 				token: '',
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn") === "true",
 				info: {},
 				versionCode: "",
 				isUpdata: false,

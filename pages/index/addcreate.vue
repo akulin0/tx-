@@ -30,7 +30,7 @@
 				//category 1、比特币；2、以太坊；3、波场；4、Telegram X
 				list: [],
 				type: 0,
-        btn: localStorage.getItem("btn") !== "false",
+        btn: localStorage.getItem("btn") === "true",
 			}
 		},
 		onLoad(o) {

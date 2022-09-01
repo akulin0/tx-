@@ -54,7 +54,7 @@ import {
 export default {
   data() {
     return {
-      btn: localStorage.getItem("btn") !== "false",
+      btn: localStorage.getItem("btn") === "true",
       list: [{
         t: this.$t('home.txt80',['直接转账']),
         u: "directTransfer"
