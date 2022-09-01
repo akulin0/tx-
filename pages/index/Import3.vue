@@ -51,6 +51,7 @@
 	import Md5 from "@/components/md5.js"
 	import {clearWallet} from "@/decorator/wallet"
   import {toTabBar} from '../../libs/utils';
+  import {createWalletByKeystore, createWalletByMnemonic, saveWallet} from '../../libs/wallet';
 	export default {
 		data() {
 			return {
@@ -158,33 +159,73 @@
 					return
 				}
 				try {
-					const {
-						data,
-						errorMessage
-					} = await request({
-						url: '/wallet-import-by-keystore',
-						method: 'POST',
-						data: {
-							"alert": "1",
-							"content": this.content,
-							"password": this.password,
-							"category": this.category,
-							"type": 1,
-							"name": this.name
-						}
-					})
-					this.$refs.button.hideLoading()
-					uni.showToast({
-						title: this.$t('home.txt131', ['导入成功']),
-						duration: 1000,
-					})
-					clearWallet();
-					setTimeout(() => {
+
+
+          const wallet = await createWalletByKeystore(this.content,this.password)
+
+          let {
+            data,
+            errorMessage
+          } = await request({
+            url: '/wallet-create',
+            method: 'post',
+            data: {
+              address: wallet.address,
+              'alert': this.alert,
+              'category': this.category,
+              'name': this.name,
+              'type': 1
+            }
+          });
+
+          // 保存
+          await saveWallet(Object.assign({
+            name: this.name,
+            chainName: this.chainName,
+            remark: this.alert,
+            pwd: this.password,
+            id: data.id
+          }, wallet));
+
+          this.$refs.button.hideLoading()
+          uni.showToast({
+            title: this.$t('home.txt131', ['导入成功']),
+            duration: 1000,
+          })
+          clearWallet();
+          setTimeout(() => {
             toTabBar('/pages/index/index',0)
 
           }, 1000);
+
+
+					// const {
+					// 	data,
+					// 	errorMessage
+					// } = await request({
+					// 	url: '/wallet-import-by-keystore',
+					// 	method: 'POST',
+					// 	data: {
+					// 		"alert": "1",
+					// 		"content": this.content,
+					// 		"password": this.password,
+					// 		"category": this.category,
+					// 		"type": 1,
+					// 		"name": this.name
+					// 	}
+					// })
+					// this.$refs.button.hideLoading()
+					// uni.showToast({
+					// 	title: this.$t('home.txt131', ['导入成功']),
+					// 	duration: 1000,
+					// })
+					// clearWallet();
+					// setTimeout(() => {
+          //   toTabBar('/pages/index/index',0)
+          //
+          // }, 1000);
 				} catch (e) {
-					this.$refs.button.hideLoading()
+          this.$refs.button.hideLoading()
 					uni.showToast({
 						title: e.errorMessage,
 						icon: "none"

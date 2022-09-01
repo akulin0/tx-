@@ -198,7 +198,7 @@
 					// })
 
 
-          const wallet = await createWalletByPrivateKey(this.content)
+          const wallet = await createWalletByPrivateKey(this.content,this.password)
 
           let {
             data,
@@ -208,7 +208,7 @@
             method: 'post',
             data: {
               address: wallet.address,
-              'alert': this.data.demo,
+              'alert': this.alert,
               'category': this.category,
               'name': this.name,
               'type': 1
@@ -235,7 +235,8 @@
 
           }, 1000);
 				} catch (e) {
-					this.$refs.button.hideLoading()
+          console.log(e);
+          this.$refs.button.hideLoading()
 					uni.showToast({
 						title: e.errorMessage,
 						icon: "none"
