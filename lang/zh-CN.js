@@ -8,7 +8,7 @@ const lang = {
 	index: "资产",
 	markets: "市场",
 	finds: '发现',
-	messages: '消息',
+	messages: '电报',
 	my: "我的",
 	domiswap: {
 		txt1: "兑换",

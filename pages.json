@@ -1075,7 +1075,7 @@
 				"text": "发现"
 			},
 			{
-				"pagePath": "pages/message/message",
+				"pagePath": "pages/telegraph/telegraph",
 				"iconPath": "static/tabBar/messages.png",
 				"selectedIconPath": "static/tabBar/messages_.png",
 				"text": "电报"
