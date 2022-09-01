@@ -201,7 +201,8 @@
 	import {
 		chatHttp,
 	} from "@/m-common/m-chat/index.js";
-	
+	import {getCurrentWallet} from '../../libs/wallet'
+
 	export default {
 		data() {
 			return {
@@ -280,7 +281,7 @@
 					title: '加载中...'
 				});
 				this.redPkgId = item.body.body.redpackId
-				if (!JSON.parse(uni.getStorageSync('currentWallet'))) {
+				if (!getCurrentWallet()) {
 					uni.showToast({
 						icon: 'none',
 						title: '请先绑定钱包'
@@ -290,7 +291,7 @@
 				}
 				const {
 					address
-				} = JSON.parse(uni.getStorageSync('currentWallet'))
+				} = getCurrentWallet()
 				chatHttp({
 					url: '/v1/redpacket/accept',
 					method: 'post',

@@ -165,6 +165,7 @@
 	} from "@/m-subpack/base";
 	import wallet from "@/components/wallet2.vue"
 	import noData from "@/m-common/common/components/noData.vue"
+  import {getCurrentWallet} from '../../libs/wallet';
 	export default {
 		data() {
 			return {
@@ -231,8 +232,7 @@
 
 
 
-			console.log('钱包信息aaaaa',JSON.parse(uni.getStorageSync('currentWallet')).id);
-			this.data.wallet_id = JSON.parse(uni.getStorageSync('currentWallet')).id
+			this.data.wallet_id = getCurrentWallet().id
 
 
 			this.getData()
@@ -315,7 +315,7 @@
 	
 			
 				this.lists = []
-				this.currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
+				this.currentWallet = getCurrentWallet()
 				console.log('钱包信息', this.currentWallet);
 				let {
 					data,
@@ -351,7 +351,7 @@
 
 				//this.lists2 = this.lists
 				this.getRate(this.selectData.wallet_category)
-				this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id || "")
+				this.getMoney(this.selectData.id, getCurrentWallet().id || "")
 				uni.hideLoading()
 				// console.log("兑换币列表: ",this.selectData);
 				// this.coinInfo1=this.selectData
@@ -406,7 +406,7 @@
 				}
 				// }
 				console.log('xuanze', this.selectData.id);
-				this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id || "")
+				this.getMoney(this.selectData.id, getCurrentWallet().id || "")
 				this.category = this.selectDatas.wallet_category
 				// console.log('uuuuuuuuuu',this.category);
 				if (this.selectData.wallet_category) this.getRate(this.selectData.wallet_category)
@@ -431,7 +431,7 @@
 			},
 			async getMsgList() {
 				let params = {
-					wallet_id: JSON.parse(uni.getStorageSync('currentWallet')).id || "",
+					wallet_id: getCurrentWallet().id || "",
 					pageNumber: 1,
 					pageSize: 10
 				}
@@ -595,7 +595,7 @@
 						this.data.password = "";
 						this.exchangeFee.actual_amount = "";
 						this.getMsgList();
-						this.getMoney(this.selectData.id, JSON.parse(uni.getStorageSync('currentWallet')).id)
+						this.getMoney(this.selectData.id, getCurrentWallet().id)
 					}
 					this.$refs.button.hideLoading()
 					this.show = false

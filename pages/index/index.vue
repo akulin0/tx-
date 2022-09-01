@@ -1,6 +1,6 @@
 <template>
 	<view :class="[btn === false?'index':'index-night']">
-		<view class="index-content" v-if="walletInfo" :style="{'margin-top': isTx() ? '0':'60rpx'}">
+		<view class="index-content" v-if="walletInfo.id" :style="{'margin-top': isTx() ? '0':'60rpx'}">
 			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
@@ -259,6 +259,7 @@
 	} from "@/config";
 
 	import wallet from "@/components/wallet.vue"
+  import {getCurrentWallet, getWalletList} from '@/libs/wallet';
 	let downloadTask: any = {}
 
 	@Component({
@@ -284,7 +285,7 @@
 		isTimestamp = null;
 		password = uni.getStorageSync('password'); //获取是否有原密码
 		updateInfo = {}; //具体更新的内容
-		walletInfo = JSON.parse(uni.getStorageSync("currentWallet"));
+		walletInfo = getCurrentWallet();
 		IsReadyUpdate = true;
 		updateProgress = 0;
     totalMoney = 0
@@ -293,11 +294,18 @@
       if (this.isTx()) {
         uni.hideTabBar();
       }
-		  this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
+
+      this.walletInfo = getCurrentWallet()
+
+      if(!this.walletInfo){
+        this.checkLogin()
+      }
+      console.log(this.walletInfo,'------------');
+
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
 			this.isTimestamp = uni.getStorageSync("isTimestamp");
-      if (JSON.parse(uni.getStorageSync("currentWallet")).id) {
+      if (getCurrentWallet().id) {
 				this.getCoinAllList();
 			}
 			this.init();
@@ -332,12 +340,23 @@
 
 
 		}
+
+		// 检测是否登录过
+		async checkLogin(){
+		  const list = await getWalletList('BSC')
+      console.log(list[0],'=============');
+      if(list.length){
+       this.walletInfo = list[0]
+      }
+    }
+
 		//所有钱包地址
 		async getCoinAllList() {
 			let coinList = {};
       // console.log(this.walletInfo,'-0---------------');
       let _coinList = coinList[this.walletInfo.id] || [];
 			if (_coinList.length == 0) {
+        console.log(this.walletInfo);
         console.log(this.walletInfo.id,'-0------------------');
         let {
 					data,

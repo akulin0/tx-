@@ -81,7 +81,7 @@
 <script src="your-path/dist/web3.min.js"></script>
 <script src="your-path/dist/eth-wallet-js.js"></script>
 <script>
-import {getWalletList} from '../../libs/wallet';
+import {getCurrentWallet, getWalletList} from '../../libs/wallet';
 
 var ethers = require('ethers');
 
@@ -126,7 +126,7 @@ export default class Idnex extends Vue {
     this.title = this.$t('ibinz.msg2', ['管理钱包']);
     await this.getList();
     await this.init();
-    await this.getwalletList(uni.getStorageSync('currentWallet').name);
+    await this.getwalletList(getCurrentWallet().name);
     this.currentCategory = this.currentWallet.category;
 
     this.currentText = this.currentWallet.category_name;
@@ -168,9 +168,8 @@ export default class Idnex extends Vue {
     const data = await getWalletList(this.currentText);
     console.log(data,'------------');
     let walletList = data.map((item) => {
-      console.log(item,item.id == uni.getStorageSync('currentWallet').id,'---------------');
       item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
-      item.is_select = item.id == uni.getStorageSync('currentWallet').id
+      item.is_select = item.id == getCurrentWallet().id
       return item;
 
     });

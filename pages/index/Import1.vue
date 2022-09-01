@@ -232,7 +232,7 @@
             id: data.id,
           };
 
-          uni.setStorageSync('currentWallet', currentWallet);
+          // uni.setStorageSync('currentWallet', currentWallet);
           saveCurrentWallet(currentWallet)
 
 					this.$refs.button.hideLoading()

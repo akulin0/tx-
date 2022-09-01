@@ -86,7 +86,14 @@
 import uQRCode from '@/m-subpack/base/libs/uqrcode.js';
 import {request} from '@/m-subpack/base';
 import {clearWallet} from '@/decorator/wallet';
-import {editWallet, getWalletInfo, getWalletKeystore, getWalletMnemonic, getWalletPrivateKey} from '../../libs/wallet';
+import {
+  editWallet,
+  getCurrentWallet,
+  getWalletInfo,
+  getWalletKeystore,
+  getWalletMnemonic,
+  getWalletPrivateKey
+} from '../../libs/wallet';
 import {toPage} from '../../libs/utils';
 
 export default {
@@ -132,9 +139,9 @@ export default {
   components: {},
   onLoad(opt) {
     console.log(opt);
-    this.walletName = opt.name || uni.getStorageSync('currentWallet').name;
-    this.chainName = opt.chainName || uni.getStorageSync('currentWallet').category_name;
-    this.walletInfo.address = opt.address ||  uni.getStorageSync('currentWallet').address;
+    this.walletName = opt.name || getCurrentWallet().name;
+    this.chainName = opt.chainName || getCurrentWallet().category_name;
+    this.walletInfo.address = opt.address ||  getCurrentWallet().address;
     this.category = opt.category;
 
     this.keyContent = '';

@@ -100,7 +100,7 @@ import {
   navigateTo
 } from '@/m-subpack/base';
 
-import {getWalletPrivateKey, getWalletPwd} from '@/libs/wallet';
+import {getCurrentWallet, getWalletPrivateKey, getWalletPwd} from '@/libs/wallet';
 
 @Component({})
 @Assets()
@@ -135,9 +135,7 @@ export default class Idnex extends Vue {
     this.symbol = opt.symbol;
     this.coin_id = opt.coin_id;
     this.balance = opt.balance;
-    this.currentWallet = {...uni.getStorageSync('currentWallet')};
-    console.log(uni.getStorageSync('currentWallet'), '+++++++++++++++++');
-    console.log(this.currentWallet.category, '+++++++++++++++++');
+    this.currentWallet = {...getCurrentWallet()};
   }
 
   async onShow() {
@@ -167,7 +165,7 @@ export default class Idnex extends Vue {
 
 
     // await this.init();
-    this.currentWallet = uni.getStorageSync('currentWallet');
+    this.currentWallet = getCurrentWallet();
 
     if (!this.symbol) {
       this.symbol = this.coinLists[0].symbol;
@@ -249,7 +247,7 @@ export default class Idnex extends Vue {
   }
 
   async dialogInputConfirm(val) {
-    const {address, category_name} = JSON.parse(uni.getStorageSync('currentWallet'));
+    const {address, category_name} = getCurrentWallet();
     if (val !== await getWalletPwd(category_name, address)) {
       return uni.showToast({
         title: '密码错误',
@@ -293,7 +291,7 @@ export default class Idnex extends Vue {
       //   });
       // }
       this.$refs.inputDialog.open();
-      const {address, category_name,id,category} = JSON.parse(uni.getStorageSync('currentWallet'));
+      const {address, category_name,id,category} = getCurrentWallet();
 
       const {
         data

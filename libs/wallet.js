@@ -1,5 +1,5 @@
 import {ethers} from 'ethers';
-import {saveConfig, getConfig} from './utils';
+import {saveConfig, getConfig, isTx} from './utils';
 
 /**
  * @description 一键生成钱包
@@ -275,12 +275,11 @@ export async function createWalletByPrivateKey(privateKey, password) {
     }
 }
 
-export function saveCurrentWallet(wallet){
-    saveConfig('currentWallet',wallet)
+export function saveCurrentWallet(wallet) {
+    saveConfig('currentWallet', wallet);
 }
 
 
-export function delWallet(chainName, address) {
-
-
+export function getCurrentWallet() {
+    return getConfig('currentWallet') || {};
 }

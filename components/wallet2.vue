@@ -181,7 +181,7 @@
 					// this.selectIndex=1
 					// uni.setStorageSync('currentWallet', this.bitlist[1])
 
-					uni.setStorageSync('currentWallet', this.bitlist[0])
+					// uni.setStorageSync('currentWallet', this.bitlist[0])
           saveCurrentWallet(this.bitlist[0])
 				}
 				// console.log("钱包列表", this.nodelist);
@@ -214,7 +214,7 @@
 					uni.setStorageSync('receiveWallet', item)
 				} else {
 					console.log("currentWallet");
-					uni.setStorageSync('currentWallet', item)
+					// uni.setStorageSync('currentWallet', item)
           saveCurrentWallet(item)
 				}
 

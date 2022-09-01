@@ -107,6 +107,7 @@
 	// import CryptoJS from "crypto-js";
 	import openPage from '@/js/flutter/openPage.js';
   import {isTx, toPage} from '../../libs/utils';
+  import {getCurrentWallet} from '../../libs/wallet';
 
 	export default {
 		data() {
@@ -215,7 +216,7 @@
 
 		onShow() {
 
-			this.walletInfo = JSON.parse(uni.getStorageSync('currentWallet')) || {};
+			this.walletInfo = getCurrentWallet() || {};
 			if (!isLogin()) {
 				this.isLogin = false;
 				this.getHotDAPP(); //热门推荐

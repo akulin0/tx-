@@ -87,6 +87,7 @@
 		Component,
 		Vue
 	} from "vue-property-decorator";
+  import {getCurrentWallet} from '@/libs/wallet';
 	@Component({
 		filters: {
 			setAddress(val) {
@@ -138,7 +139,7 @@
 			this.list = [1];
 			this.navTitle = this.$t('home.txt114',['Token详情']);
 			await this.init();
-			this.walletInfo = JSON.parse(uni.getStorageSync('currentWallet'));
+			this.walletInfo = getCurrentWallet();
 			this.getList();
 			// this.infoList = [];
 			// let infoList = [];

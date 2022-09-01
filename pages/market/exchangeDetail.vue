@@ -263,6 +263,7 @@ import uCharts from '../../components/u-charts/u-charts.js';
 import dayjs from 'dayjs';
 
 import openPage from '@/js/flutter/openPage.js';
+import {getCurrentWallet} from '../../libs/wallet';
 
 export default {
 	data() {
@@ -488,7 +489,7 @@ export default {
 			});
 		},
 		async getWalletPrivateKey() {
-			const wallet = uni.getStorageSync('currentWallet');
+			const wallet = getCurrentWallet();
 			console.log(this.info, 'aaaaaaa');
 			let eth = {};
 			try {

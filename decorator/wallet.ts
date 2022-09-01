@@ -1,6 +1,7 @@
 import {
 	request
 } from "@/m-subpack/base";
+import {getCurrentWallet} from '@/libs/wallet';
 
 //钱包装饰器
 let coinList = {};
@@ -18,9 +19,8 @@ export const Assets = () => {
 	
 	//获取当前的选择的钱包的代币
 	target.prototype.getCoinList = async function(){
-		const currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
+		const currentWallet = getCurrentWallet()
 		let _coinList = coinList[currentWallet.id] || [];
-		console.log(currentWallet.id,'-----------------',uni.getStorageSync('currentWallet'));
 
 		let {
 				data,

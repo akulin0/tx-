@@ -36,6 +36,7 @@ import {
   infoRequest
 } from '@/m-subpack/base';
 import Image from '../../m-common/common/components/image';
+import {getCurrentWallet} from '../../libs/wallet';
 
 export default {
   components: {Image},
@@ -147,7 +148,7 @@ export default {
     },
     skip() {
       if (this.isTx()) {
-        if (!JSON.parse(uni.getStorageSync('currentWallet')).address) {
+        if (!getCurrentWallet().address) {
           return uni.showToast({
             title: '请先添加钱包',
             icon: 'none'
@@ -157,7 +158,7 @@ export default {
           url: 'https://telegramx.cc/#/',
           rpcUrl: 'https://bsc-dataseed1.binance.org/',
           chainId: 56,
-          ...JSON.parse(uni.getStorageSync('currentWallet')),
+          ...getCurrentWallet(),
           title: 'TelegramX节点招募令'
         }));
       } else {

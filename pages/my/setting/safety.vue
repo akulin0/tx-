@@ -35,7 +35,7 @@
 	} from "@/m-subpack/base";
 	import Helper from "@/function.js"
   import {toTabBar} from '../../../libs/utils';
-  import {getWalletPwd} from "../../../libs/wallet";
+  import {getCurrentWallet, getWalletPwd} from '../../../libs/wallet';
 	export default {
 		data() {
 			return {
@@ -73,7 +73,7 @@
 				// }
 				//判断存储接口存在情况
 				if(this.option){
-          if(this.pass !== await getWalletPwd(uni.getStorageSync('currentWallet').category_name,uni.getStorageSync('currentWallet').address)){
+          if(this.pass !== await getWalletPwd(getCurrentWallet().category_name,getCurrentWallet().address)){
             uni.showToast({
               icon: 'none',
               title: '密码错误',

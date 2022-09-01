@@ -253,7 +253,7 @@ export default {
             id: data.id,
           };
 
-          uni.setStorageSync('currentWallet', currentWallet);
+          // uni.setStorageSync('currentWallet', currentWallet);
           saveCurrentWallet(currentWallet)
           setTimeout(() => {
             // this.$refs.button.hideLoading();
