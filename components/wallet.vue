@@ -352,7 +352,7 @@ export default class Wellet extends Vue {
 
     this.walletList = data.map((item) => {
       item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
-
+      item.is_select = item.id === uni.getStorageSync('currentWallet').id
       return item;
 
     });
