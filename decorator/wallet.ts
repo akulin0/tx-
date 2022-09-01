@@ -1,7 +1,7 @@
 import {
 	request
 } from "@/m-subpack/base";
-import {getCurrentWallet} from '@/libs/wallet';
+import {getCurrentWallet} from '../libs/wallet.js';
 
 //钱包装饰器
 let coinList = {};

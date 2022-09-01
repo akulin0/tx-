@@ -1,5 +1,5 @@
 import {ethers} from 'ethers';
-import {saveConfig, getConfig, isTx} from './utils';
+import {saveConfig, getConfig, delConfig} from './utils';
 
 /**
  * @description 一键生成钱包
@@ -279,7 +279,33 @@ export function saveCurrentWallet(wallet) {
     saveConfig('currentWallet', wallet);
 }
 
-
 export function getCurrentWallet() {
     return getConfig('currentWallet') || {};
+}
+
+
+export async function delWallet(chainName, address) {
+    try {
+        const list = getWalletList(chainName);
+        let index = -1;
+        list.forEach((i, k) => {
+            if (i.address === address) {
+                index = k;
+            }
+        });
+
+        if (index > 0) {
+            list.splice(index, 1);
+        }
+
+        saveConfig(chainName, list);
+        delConfig(`${chainName}-${address}-privateKey`);
+        delConfig(`${chainName}-${address}-publicKey`);
+        delConfig(`${chainName}-${address}-mnemonic`);
+        delConfig(`${chainName}-${address}-keystore`);
+        delConfig(`${chainName}-${address}-pwd`);
+
+    } catch (e) {
+
+    }
 }
