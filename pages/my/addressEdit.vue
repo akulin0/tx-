@@ -1,8 +1,8 @@
 <!-- 地址本编辑、添加 -->
 <template>
 	<base-layout>
-<!--		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"-->
-<!--			 :custom-back="goBack"></u-navbar>-->
+		<u-navbar v-if= !isTx() :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
+			 :custom-back="goBack"></u-navbar>
 		<view class="content">
 			<!-- <picker @change="bindPickerChange" :value="index" :range="array" :range-key="'title'">
 				<view class="flex-j-a pick">
@@ -16,22 +16,23 @@
 				</view>
 			</picker> -->
 			<view class="moneybag">钱包体系</view>
-			<view @click="toPage('/pages/index/addcreate?type=4')" class="flex-j-a pick">
+			<view @click="toPage('/pages/index/addcreate?type=4')" class="flex-j-a  flex pick">
 				<view class="flex-align">
 					<image :src="info.img" mode="" class="pick-img" v-if="info.img"></image>
 					<view class="uni-input moneybag" v-if="info.title">{{info.title}}</view>
-					<view v-else style="color: #b3b3b3; background-color: #F4F4F4;" class="system"><view class="tex">{{$t('ibinz.msg53',["请选择钱包体系"])}}</view></view>
+					<view v-else style="color: #b3b3b3; background-color: #F4F4F4;" class="system">
+            <view class="tex">{{$t('ibinz.msg53',["请选择钱包体系"])}}</view>
+            <image src="/static/my/more.png" mode="" style="width: 14rpx;height: 24rpx;" class="location-more"></image>
+          </view>
 				</view>
-
 			</view>
-			<image src="/static/my/more.png" mode="" style="width: 14rpx;height: 24rpx;" class="location-more"></image>
 			
-			<view class="font-title">{{$t('ibinz.msg54',["地址信息"])}}</view>
+			<view class="font-title locatio">{{$t('ibinz.msg54',["地址信息"])}}</view>
 			<view class="font-body">
 				<view class="flex-j-a input-box">
 					<view class="flex-align" style="flex: 1;">
 						<!-- <view :class="[$i18n.locale == 'en-US'?'titles1':'title1']">{{$t('ibinz.msg54',["地址"])}}</view> -->
-						<input class="uni-input" focus :placeholder="placeholder" v-model="address" />
+						<input class="uni-input " focus :placeholder="placeholder" v-model="address" />
 					</view>
 					<!-- <image src="/static/my/saoyisao.png" mode="" style="width: 38rpx;height: 38rpx;" @click="code()">
 					</image> -->
@@ -39,7 +40,7 @@
 				<view class="input-name-head input-box">
 					<view class="flex-align" style="flex: 1;">
 						<!-- <view class="title1">{{$t('ibinz.msg57',["名称"])}}</view> -->
-						<input class="input-neme" :placeholder="placeholderQ" v-model="name" />
+						<input class="input-neme uni-input" :placeholder="placeholderQ" v-model="name" />
 					</view>
 				</view>
 				<view class="flex-j-a input-box ">
@@ -284,6 +285,8 @@
 <style lang="scss" scoped>
 	.content {
 		padding: 30rpx;
+    display: flex;
+    flex-direction: column;
 	}
 
 	.pick {
@@ -301,30 +304,31 @@
 	}
 
 	.input-box {
-		padding: 37rpx 0;
+		margin-top: 101rpx 0;
 		border-bottom: 1px solid #E6E6E6;
 
 		.title1 {
 			width: 30%;
-
+      margin-top: 69rpx;
+      font-size: 30rpx;
 		}
 		
 		.titles1{
 			width: 46%;
-			font-size: 26rpx;
+			font-size: 30rpx;
 		}
 		.titles2{
 			width: 40%;
-			font-size: 26rpx;
+			font-size: 30rpx;
 		}
 
-		input,
 		textarea {
 			font-size: 28rpx;
 			// flex: 1;
-			position: relative;
-			left: -40rpx;
-			top: 40rpx
+			//position: relative;
+			//left: -40rpx;
+			//top: 40rpx
+
 		}
 		textarea {
 			height: 100rpx;
@@ -334,6 +338,7 @@
 	.text-box {
 		display: flex;
 		align-items: flex-start;
+    flex-direction: column;
 	}
 
 	.btn {
@@ -367,56 +372,85 @@
 	.uni-input {
 		width: 690rpx;
 		height: 103rpx;
+    //margin-left: 20rpx;
+
 	}
-	
+
 	.moneybag {
-		position: relative;
 		font-size: 30rpx;
 		color: #333333;
-		left: 20rpx;
+    margin-top: 20rpx;
 	}
 	
 	.system {
 		width: 690rpx;
 		height: 103rpx;
 		border-radius: 20rpx;
-		position: relative;
-		transform: translate(-70rpx, 10rpx);
-		margin: 10rpx
+		//position: relative;
+		//transform: translate(-70rpx, 10rpx);
+		//margin: 10rpx
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 	}
 	
 	.tex {
-		position: relative;
-		top: 30rpx;
-		right: -20rpx;
+	  margin-left: 20rpx;
 	}
 	
 	.font-title {
-		font-size: 30rpx;
-		position: relative;
-		top: 80rpx;
-		left: 20rpx;
+		//font-size: 30rpx;
+		//position: relative;
+		//top: 80rpx;
+		//left: 20rpx;
 	}
 	
-	.input-neme {
-		position: relative ;
-		top: 8rpx !important;
-	}
+	//.input-neme {
+	//	position: relative ;
+	//	top: 8rpx !important;
+	//}
 	
 	.input-name-head {
-		position: relative ;
-		transform: translateY(-20rpx) ;
+		//position: relative ;
+		//transform: translateY(-20rpx) ;
 	}
 	
-	.remarks-content {
-		top: 80rpx !important;
-		left: -170rpx !important;
-	}
+	//.remarks-content {
+	//	top: 80rpx !important;
+	//	left: -170rpx !important;
+	//}
 	
 	.location-more {
-		position: relative;
-		transform: translate(650rpx, -40rpx);
+		//position: relative;
+		//transform: translate(650rpx, -40rpx);
 		width: 17rpx;
 		height: 30rpx;
+    margin-right: 20rpx;
 	}
+
+  .flex {
+    margin-top: 41rpx;
+  }
+
+  .locatio {
+    margin-top: 58rpx;
+  }
+
+  .uni-input-placeholder {
+    font-size: 26rpx;
+    margin-top: 53rpx;
+  }
+
+  .uni-textarea-placeholder {
+    margin-top: 53rpx;
+  }
+
+  /deep/.uni-textarea-textarea {
+    margin-top: 53rpx;
+  }
+
+  /deep/.uni-input-input {
+    margin-top: 53rpx;
+  }
 </style>
