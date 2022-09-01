@@ -266,7 +266,7 @@ function validMoney(money) {
 function CheckData(res) {
 	if (res.statusCode != 200) {
 		if (res.statusCode == 401) {
-			uni.clearStorageSync('token');
+			// uni.clearStorageSync('token');
 			
 			uni.navigateTo({
 				

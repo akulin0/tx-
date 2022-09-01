@@ -254,7 +254,7 @@ export default {
           };
 
           uni.setStorageSync('currentWallet', currentWallet);
-
+          saveCurrentWallet(currentWallet)
           setTimeout(() => {
             // this.$refs.button.hideLoading();
             toTabBar('/pages/index/index',0)

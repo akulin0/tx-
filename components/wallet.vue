@@ -53,7 +53,7 @@
         <view class="listBox">
           <template v-if="walletList.length">
             <view class="item" v-for="(item,index) in walletList" :key="index"
-                  @click="selectMoney(item,index)" :class="{'active':item.is_select==true}">
+                  @click="selectMoney(item,index)" :class="{'active':item.selected==true}">
               <view class="content">
                 <view class="title">
                   <view>
@@ -136,7 +136,7 @@
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import {request} from '@/m-subpack/base';
 import {Assets} from '@/decorator/wallet';
-import {createWallet, getWalletList, saveWallet} from '../libs/wallet.js';
+import {createWallet, getWalletList, saveWallet,saveCurrentWallet} from '../libs/wallet.js';
 
 @Component()
 @Assets()
@@ -352,7 +352,7 @@ export default class Wellet extends Vue {
 
     this.walletList = data.map((item) => {
       item.addressx = item.address.substring(0, 6) + '***' + item.address.substring(30);
-      item.is_select = item.id === uni.getStorageSync('currentWallet').id
+      item.selected = item.id === uni.getStorageSync('currentWallet').id
       return item;
 
     });
@@ -425,6 +425,7 @@ export default class Wellet extends Vue {
     item['category_name'] = this.currentText
     item['category'] = this.currentCategory
     uni.setStorageSync('currentWallet', item);
+    saveCurrentWallet(item)
     this.$forceUpdate();
     this.close();
 

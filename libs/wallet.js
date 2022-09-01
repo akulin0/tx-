@@ -182,7 +182,7 @@ export function getWalletKeystore(chainName, address) {
  * @date 2022/8/31
  * @return Promise
  */
-export function getWalletPwd(chainName,address) {
+export function getWalletPwd(chainName, address) {
     return new Promise((resolve, reject) => {
         try {
             resolve(getConfig(`${chainName}-${address}-pwd`));
@@ -275,3 +275,12 @@ export async function createWalletByPrivateKey(privateKey, password) {
     }
 }
 
+export function saveCurrentWallet(wallet){
+    saveConfig('currentWallet',wallet)
+}
+
+
+export function delWallet(chainName, address) {
+
+
+}
