@@ -21,7 +21,6 @@
 							{{symbol}}
 							<u-icon name="arrow-right" size="28"></u-icon>
 						</view>
-
 					</view>
 					<view class="moenyval">
 						<input type="number"  @keyup="inputChangeMoney(data.money)" :placeholder="placeholder1" placeholder-style="color:#B3B3B3;font-size:28rpx"
@@ -118,7 +117,7 @@
 		feeInfo = {};
 		unit = "";
 		unit1 = "";
-    currentWallet = uni.getStorageSync('currentWallet');
+    currentWallet = {};
 
 
 		onLoad(opt: any) {
@@ -126,13 +125,12 @@
 			this.symbol = opt.symbol;
 			this.coin_id = opt.coin_id;
 			this.balance = opt.balance;
-			this.currentWallet = uni.getStorageSync('currentWallet')
-      console.log(this.currentWallet,'+++++++++++++++++');
-      console.log(this.data.address,'+++++++++++++++++');
+			this.currentWallet = {...uni.getStorageSync('currentWallet')}
+      console.log(uni.getStorageSync('currentWallet'),'+++++++++++++++++');
+      console.log(this.currentWallet.category,'+++++++++++++++++');
     }
 
 		async onShow() {
-
       this.title = this.$t('home.txt80', ['直接转账']);
 			this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
 			this.btnTitle = this.$t('home.txt56', ['确认']);
@@ -158,7 +156,7 @@
 			];
 
 
-			await this.init();
+			// await this.init();
 			this.currentWallet = uni.getStorageSync('currentWallet')
 
 			if (!this.symbol) {
@@ -182,12 +180,12 @@
 					this.unit1 = '未知'
 					break;
 				default:
-          this.unit = '未知'
-          this.unit1 = '未知'
 					break;
 			}
 			if (!this.gasPrice && this.currentWallet.category != 3) this.getFee(this.coin_id)
+      console.log(this.getFee,'-------');
 		}
+
 
 
 
