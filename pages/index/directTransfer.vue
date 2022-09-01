@@ -118,6 +118,7 @@
 		feeInfo = {};
 		unit = "";
 		unit1 = "";
+    currentWallet = uni.getStorageSync('currentWallet');
 
 
 		onLoad(opt: any) {
@@ -125,10 +126,13 @@
 			this.symbol = opt.symbol;
 			this.coin_id = opt.coin_id;
 			this.balance = opt.balance;
-		}
+			this.currentWallet = uni.getStorageSync('currentWallet')
+      console.log(this.currentWallet,'+++++++++++++++++');
+    }
 
 		async onShow() {
-			this.title = this.$t('home.txt80', ['直接转账']);
+
+      this.title = this.$t('home.txt80', ['直接转账']);
 			this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
 			this.btnTitle = this.$t('home.txt56', ['确认']);
 			this.placeholder1 = this.$t('home.txt84', ['请输入数量']);
@@ -154,14 +158,15 @@
 
 
 			await this.init();
+			this.currentWallet = uni.getStorageSync('currentWallet')
 			if (!this.symbol) {
 
 				this.symbol = this.coinLists[0].symbol;
 				this.coin_id = this.coinLists[0].coin_id;
 				this.balance = this.coinLists[0].balance;
 			}
-
-			switch (this.currentWallet.category) {
+      console.log(this.currentWallet,'----------');
+      switch (this.currentWallet.category) {
 				case 1:
 					this.unit = 'sat/b'
 					this.unit1 = 'byte'
