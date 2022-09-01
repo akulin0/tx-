@@ -78,8 +78,11 @@
                 </view>
               </view>
             </u-popup> -->
+      <uni-popup ref="inputDialog" type="dialog">
+        <uni-popup-dialog ref="inputClose" v-model="pass"   mode="input" title="请输入密码" value="请输入密码"
+                          placeholder="请输入密码" @confirm="dialogInputConfirm"></uni-popup-dialog>
+      </uni-popup>
     </view>
-    <uni-popup ref="popup" type="center" background-color="#fff">底部弹出 Popup</uni-popup>
   </base-layout>
 </template>
 
@@ -123,9 +126,11 @@ export default class Idnex extends Vue {
   unit = '';
   unit1 = '';
   currentWallet = {};
+  flag = false
 
 
   onLoad(opt: any) {
+    this.flag = false
     this.data.address = opt.address;
     this.symbol = opt.symbol;
     this.coin_id = opt.coin_id;
@@ -238,9 +243,37 @@ export default class Idnex extends Vue {
   inputChangeMoney(v) {
     v = v.replace(/[^\d]/g, '');
   }
+  inputDialogToggle() {
+    this.$refs.inputDialog.open()
+  }
+
+ async dialogInputConfirm(val) {
+    console.log(this.pass,'========')
+    const {address,category_name} = uni.getStorageSync('currentWallet')
+    if(val !== await getWalletPwd(category_name,address)){
+      return uni.showToast({
+        title: '密码错误',
+        icon: 'none',
+      })
+    }
+    this.flag = true
+    this.confim()
+    // setTimeout(() => {
+      // uni.hideLoading()
+      // console.log(val)
+      // this.value = val
+      // 关闭窗口后，恢复默认内容
+   this.$refs.inputDialog.close()
+    // }, 3000)
+  }
 
   //转账验证
   async confim() {
+    if(!this.flag){
+      return this.$refs.inputDialog.open()
+    }
+
+
     // debugger
     this.show = false;
     let current = '';
@@ -259,7 +292,7 @@ export default class Idnex extends Vue {
       //     icon: 'none'
       //   });
       // }
-      this.$refs.popup.open('top');
+      this.$refs.inputDialog.open();
 
       const {
       	data
