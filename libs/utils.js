@@ -21,8 +21,7 @@ export function toPage(url) {
         android.startNewActivity(true, `${window.location.host}/#${url}`);
     } else if(url.startsWith('http')){
         window.location.href = url
-    }
-    else {
+    } else {
         uni.navigateTo({
             url: url
         });
