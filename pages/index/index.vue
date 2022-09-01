@@ -609,14 +609,14 @@
 	}
 
 	.index {
-		width:100%;
+		width:auto;
     height: 94vh;
 		display: flex;
     flex-direction: column;
     align-items: center;
 	}
   .index-night{
-    width:100%;
+    width:auto;
     height: 94vh;
     display: flex;
     flex-direction: column;
