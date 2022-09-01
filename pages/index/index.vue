@@ -287,6 +287,7 @@
 		walletInfo = uni.getStorageSync("currentWallet");
 		IsReadyUpdate = true;
 		updateProgress = 0;
+    totalMoney = 0
 		coinLists = [];
 		onShow() {
       this.token = uni.getStorageSync("token");
@@ -346,7 +347,7 @@
 				})
 				_coinList = data.list;
 				this.coinLists = _coinList;
-				this.totalMoney = data.sum_value;
+        this.totalMoney = data.sum_value;
 
 			}
 
