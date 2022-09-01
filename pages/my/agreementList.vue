@@ -8,7 +8,7 @@
 		</view>
 		<view style="margin: 0 30rpx">
 			<u-cell-group>
-				<u-cell-item style="border-bottom: 1px solid #e6e6e6" @click="clickbtn(1)" paddings="26rpx 0" :title="titleList1" :value="'v'+versionCode"
+				<u-cell-item style="border-bottom: 1px solid #e6e6e6" @click="clickbtn(1)" paddings="26rpx 0" :title="titleList1" value="v2.0.0"
 				 :arrow="true" arrow-direction="right"></u-cell-item>
 				<u-cell-item style="border-bottom: 1px solid #e6e6e6" @click="clickbtn('/pages/agreement?type=1')" paddings="26rpx 0"
 				 :title="titleList2" :arrow="true" arrow-direction="right" :border-bottom="true">
