@@ -143,7 +143,7 @@
 				});
 			},
 			skip () {
-        this.toPage('http://www.telegramx.cc')
+				this.toPage('http://www.telegramx.cc')
 			}
 		}
 	}

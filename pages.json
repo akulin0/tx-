@@ -13,6 +13,18 @@
 			}
 		},
 		{
+			"path": "pages/telegraph/telegraph", //电报
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"navigationBarTextStyle": "black"
+				}
+			}
+		},
+		{
 			"path": "pages/index/network-list", //网络管理
 			"style": {
 				"enablePullDownRefresh": false,
