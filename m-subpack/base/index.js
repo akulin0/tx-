@@ -145,7 +145,7 @@ export const infoRequest = async (option) => {
 		//加入header
 		option.header = {
 			...option.header,
-			Authorization: token,
+			// Authorization: token,
 			lang: lang
 		};
 	}
@@ -250,7 +250,7 @@ export const request = async (option) => {
 		//加入header
 		option.header = {
 			...option.header,
-			Authorization: token,
+			// Authorization: token,
 		};
 	}
 	option.header.lang = lang;

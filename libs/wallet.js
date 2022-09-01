@@ -180,11 +180,9 @@ export function getWalletKeystore(chainName, address) {
  * @description 获取本地钱包 密码
  * @author lecoler
  * @date 2022/8/31
- * @param chainName:String 链名称
- * @param address:String 钱包地址
  * @return Promise
  */
-export function getWalletPwd(chainName, address) {
+export function getWalletPwd(chainName,address) {
     return new Promise((resolve, reject) => {
         try {
             resolve(getConfig(`${chainName}-${address}-pwd`));

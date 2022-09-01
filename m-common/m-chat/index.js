@@ -160,7 +160,7 @@ export const uploadFile = async (option)=>{
 	let token = uni.getStorageSync("token");
 	uni.uploadFile({
 		header:{
-			authorization:token,
+			// authorization:token,
 			appKey:chatConfig.appKey
 		},
 		filePath: option.file,
@@ -188,7 +188,7 @@ export const chatHttp = async (option) => {
 	option.dataType = "json";
 	option.header = option.header || {};
 	if (token) {
-		option.header.authorization = token;
+		// option.header.authorization = token;
 	}
 	option.header.appKey = chatConfig.appKey;
 	const [error, {
