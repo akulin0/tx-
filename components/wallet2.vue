@@ -77,6 +77,7 @@
 	import {
 		request
 	} from "@/m-subpack/base";
+  import {saveCurrentWallet} from '../libs/wallet';
 	export default {
 		data() {
 			return {
@@ -181,6 +182,7 @@
 					// uni.setStorageSync('currentWallet', this.bitlist[1])
 
 					uni.setStorageSync('currentWallet', this.bitlist[0])
+          saveCurrentWallet(this.bitlist[0])
 				}
 				// console.log("钱包列表", this.nodelist);
 			},
@@ -213,6 +215,7 @@
 				} else {
 					console.log("currentWallet");
 					uni.setStorageSync('currentWallet', item)
+          saveCurrentWallet(item)
 				}
 
 				this.$emit("changeWallet",item);

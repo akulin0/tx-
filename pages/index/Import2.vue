@@ -62,7 +62,7 @@
 		request
 	} from "@/m-subpack/base";
 	import Md5 from "@/components/md5.js"
-  import {createWalletByMnemonic, createWalletByPrivateKey, saveWallet} from '../../libs/wallet';
+  import {createWalletByMnemonic, createWalletByPrivateKey, saveCurrentWallet, saveWallet} from '../../libs/wallet';
 
 	
 	import {clearWallet} from "@/decorator/wallet"
@@ -223,6 +223,16 @@
             id: data.id
           }, wallet));
 
+          const currentWallet = {
+            address: wallet.address,
+            category_name: this.chainName,
+            category: this.category,
+            name: this.name,
+            id: data.id,
+          };
+
+          uni.setStorageSync('currentWallet', currentWallet);
+          saveCurrentWallet(currentWallet)
 					this.$refs.button.hideLoading()
 					uni.showToast({
 						title: this.$t('home.txt131', ['导入成功']),

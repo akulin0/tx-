@@ -78,7 +78,7 @@ export const LoginOut = (link) => {
 	// });
 	uni.removeStorageSync("token");
 	clearWallet();
-	uni.clearStorage();
+	// uni.clearStorage();
 	if (link) {
 		if (isMustLogin) {
 			LoginView();
@@ -161,17 +161,17 @@ export const infoRequest = async (option) => {
 	}
 	if (data.errorCode === 401) {
 		// #ifndef  MP-WEIXIN
-		uni.showToast({
-			title: "登录已失效",
-			icon: "none",
-		});
-		LoginOut(true);
+		// uni.showToast({
+		// 	title: "登录已失效",
+		// 	icon: "none",
+		// });
+		// LoginOut(true);
 		// #endif
 		// #ifdef  MP-WEIXIN
-		if (isLogin()) {
-			await wxToken();
-			return await request(option);
-		}
+		// if (isLogin()) {
+		// 	await wxToken();
+		// 	return await request(option);
+		// }
 		// #endif
 		// return data;
 		throw data;

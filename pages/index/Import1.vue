@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title-width="500" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;"
+			<u-navbar v-if="!isTx()" :is-back="true" :title-width="500" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;"
 				:title-bold="true">
 				<!-- <view class="navbar-right" slot="right">
 					<view style="margin-right: 30rpx;" @click="scan()">
@@ -223,6 +223,17 @@
             pwd: this.password,
             id: data.id
           }, wallet));
+
+          const currentWallet = {
+            address: wallet.address,
+            category_name: this.chainName,
+            category: this.category,
+            name: this.name,
+            id: data.id,
+          };
+
+          uni.setStorageSync('currentWallet', currentWallet);
+          saveCurrentWallet(currentWallet)
 
 					this.$refs.button.hideLoading()
 					uni.showToast({

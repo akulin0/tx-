@@ -147,15 +147,21 @@ export default {
     },
     skip() {
       if (this.isTx()) {
+        if (!uni.getStorageSync('currentWallet').address) {
+          return uni.showToast({
+            title: '请先添加钱包',
+            icon: 'none'
+          });
+        }
         android.openDApp(JSON.stringify({
-          url: 'https://www.telegramx.cc/#/',
+          url: 'https://telegramx.cc/#/',
           rpcUrl: 'https://bsc-dataseed1.binance.org/',
           chainId: 56,
           ...uni.getStorageSync('currentWallet'),
           title: 'TelegramX节点招募令'
         }));
       } else {
-        this.toPage('https://www.telegramx.cc/#/');
+        this.toPage('https://telegramx.cc/#/');
       }
     }
   }

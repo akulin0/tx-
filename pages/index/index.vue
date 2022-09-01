@@ -1,6 +1,6 @@
 <template>
 	<view :class="[btn === false?'index':'index-night']">
-		<view class="index-content" v-if="walletInfo">
+		<view class="index-content" v-if="walletInfo" :style="{'margin-top': isTx() ? '0':'60rpx'}">
 			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
