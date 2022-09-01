@@ -574,8 +574,7 @@
 						...this.walletInfo,
 						private_key: data.private_key_original
 					};
-				
-				}
+        }
 			} catch (e) {
 				// console.log(1111111111, e);
 				//TODO handle the exception
@@ -600,7 +599,7 @@
 			// openPage(this.methodChannelData);
 			
 			console.log("this.methodChannelData", this.methodChannelData)
-			window.android.openDApp(JSON.stringify(this.methodChannelData));
+			android.openDApp(JSON.stringify(this.methodChannelData));
 			// if (this.methodChannelData.url) {
 			// 	// debugger
 			// 	window.location.href = this.methodChannelData.url

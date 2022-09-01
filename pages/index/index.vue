@@ -290,6 +290,7 @@
     totalMoney = 0
 		coinLists = [];
 		onShow() {
+		  this.walletInfo = uni.getStorageSync("currentWallet")
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
 			this.isTimestamp = uni.getStorageSync("isTimestamp");

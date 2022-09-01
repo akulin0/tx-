@@ -423,9 +423,15 @@ export default class Wellet extends Vue {
     uni.setStorageSync('currentWallet', item);
     this.$forceUpdate();
     this.close();
-    uni.reLaunch({
-      url:'/pages/index/index'
-    })
+
+    if(this.isTx()){
+      android.refresh(false,0)
+    }else {
+      uni.reLaunch({
+        url:'/pages/index/index'
+      })
+    }
+
   }
 
   goTo(url) {
