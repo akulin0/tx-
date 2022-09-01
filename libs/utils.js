@@ -56,9 +56,9 @@ export function toTabBar(url,index){
 export function saveConfig(key, value) {
     const val = JSON.stringify(value)
     if (isTx()) {
-        android.saveData(base64(key), base64(val));
+        android.saveData(key, val);
     } else {
-        uni.setStorageSync(base64(key), base64(val));
+        uni.setStorageSync(key, val);
     }
 }
 
@@ -72,12 +72,12 @@ export function saveConfig(key, value) {
 export function getConfig(key) {
     let data;
     if (isTx()) {
-        data = android.getData(base64(key));
+        data = android.getData(key);
     } else {
-        data = uni.getStorageSync(base64(key));
+        data = uni.getStorageSync(key);
     }
     if (data) {
-        return JSON.parse(unit8ArrayToString(utils.base64.decode(data)));
+        return JSON.parse(data);
     }
     return null;
 }

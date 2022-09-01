@@ -162,7 +162,8 @@
 				this.category = item.wallet_category
 				if (item.wallet_category == this.walletInfo.category || item.wallet_category == 0) {
 					if (item.state == 2) {
-            this.toPage('/pages/webView?url=' + item.url)
+            // this.toPage('/pages/webView?url=' + item.url)
+            this.toPage( item.url)
 					} else {
 						this.content =
 							`提示：您所访问的页面将进入第三方DApp《${item.title}》,您在第三方Dapp上的使用行为将适用该第三方DApp的《隐私政策》和《用户协议》，由《${item.title}》直接并单独向您承担责任。`
@@ -179,7 +180,7 @@
 			//type:1 跳转第三方app  2管理钱包
 			goPage(type) {
 				if (type == 1) {
-          this.toPage('/pages/webView?url=' + this.item.url)
+          this.toPage(this.item.url)
 				} else {
 					// 不支持当前钱包 -选择钱包弹框
 					this.$refs.wallet.changeMoney()
@@ -190,7 +191,7 @@
 			changeWallet() {
 				this.walletInfo = uni.getStorageSync("currentWallet")
 				if (this.item.state == 2) {
-          this.toPage('/pages/webView?url=' + this.item.url)
+          this.toPage(this.item.url)
 				} else {
 					this.content =
 						`提示：您所访问的页面将进入第三方DApp《${this.item.title}》,您在第三方Dapp上的使用行为将适用该第三方DApp的《隐私政策》和《用户协议》，由《${item.title}》直接并单独向您承担责任。`
