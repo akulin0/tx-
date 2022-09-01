@@ -150,7 +150,7 @@
 			// 钱包列表  category:1、比特币；2、以太坊；3、波场；4、Telegram X
 			async getMoeny(category) {
 				console.log(category, 'category');
-				var wallet = uni.getStorageSync("currentWallet")
+				var wallet = JSON.parse(uni.getStorageSync("currentWallet"))
 				if (!wallet) {
 					console.log('没有选中钱包');
 					category = 4

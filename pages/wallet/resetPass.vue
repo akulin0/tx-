@@ -42,7 +42,7 @@
 		},
 		onLoad() {
 			// 钱包种类-category:1、比特币；2、以太坊；3、波场；4、Telegram X
-			this.walletInfo = uni.getStorageSync("currentWallet")
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 			if (this.walletInfo.category == 1) {
 
 				this.placeholder = this.$t('ibinz.msg42', ["请输入助记词，用空格分隔"])

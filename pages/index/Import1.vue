@@ -65,7 +65,7 @@
 	var tip = null;
 	
 	import {clearWallet} from "@/decorator/wallet"
-  import {createWalletByPrivateKey, saveWallet} from '../../libs/wallet';
+  import {createWalletByPrivateKey, saveWallet,saveCurrentWallet} from '../../libs/wallet';
   import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {

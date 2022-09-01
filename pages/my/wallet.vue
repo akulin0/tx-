@@ -279,7 +279,7 @@ export default class Idnex extends Vue {
 // },
 // // 当前钱包种类的钱包列表
 // async getMoeny(category) {
-// 	var wallet = uni.getStorageSync("currentWallet")
+// 	var wallet = JSON.parse(uni.getStorageSync("currentWallet"))
 // 	let {
 // 		data,
 // 		errorMessage

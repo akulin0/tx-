@@ -362,7 +362,7 @@ export default class Idnex extends Vue {
 // 	},
 // 	onLoad(opt) {
 // 		//1、比特币；2、以太坊；3、波场；4、Telegram X
-// 		this.walletInfo = uni.getStorageSync("currentWallet")
+// 		this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 // 		if (uni.getStorageSync("address")) {
 // 			this.data.address = uni.getStorageSync("address")
 // 		}

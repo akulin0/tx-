@@ -80,7 +80,7 @@
 			}
 		},
 		onLoad() {
-			this.walletInfo = uni.getStorageSync("currentWallet")
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 		},
 		onShow() {
 			this.list = []
@@ -189,7 +189,7 @@
 			},
 			// 选择钱包
 			changeWallet() {
-				this.walletInfo = uni.getStorageSync("currentWallet")
+				this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 				if (this.item.state == 2) {
           this.toPage(this.item.url)
 				} else {

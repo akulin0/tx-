@@ -117,7 +117,7 @@
 		},
 		onLoad() {
 			this.keyword = ""
-			this.walletInfo = uni.getStorageSync("currentWallet")
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 			this.historyList = uni.getStorageSync('historyList') || [];
 			 this.$nextTick(()=>{
 				this.$refs.slide.assignment(this.historyList)
@@ -186,7 +186,7 @@
 			},
 			async getWalletPrivateKey(url){
 				console.log(1111,url);
-				const wallet = uni.getStorageSync("currentWallet");
+				const wallet = JSON.parse(uni.getStorageSync("currentWallet"));
 				// console.log("wallet",wallet)
 				let eth = {};
 				try {

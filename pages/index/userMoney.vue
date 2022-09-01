@@ -80,7 +80,7 @@ export default {
   onLoad(opt) {
     if(opt.info) this.info =  JSON.parse(opt.info) || {otherType:''}
     else this.info ={}
-    this.walletInfo = uni.getStorageSync("currentWallet")
+    this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
     this.getRecord()
     console.log("walletInfo: ",this.walletInfo);
   },

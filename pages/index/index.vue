@@ -284,7 +284,7 @@
 		isTimestamp = null;
 		password = uni.getStorageSync('password'); //获取是否有原密码
 		updateInfo = {}; //具体更新的内容
-		walletInfo = uni.getStorageSync("currentWallet");
+		walletInfo = JSON.parse(uni.getStorageSync("currentWallet"));
 		IsReadyUpdate = true;
 		updateProgress = 0;
     totalMoney = 0
@@ -293,11 +293,11 @@
       if (this.isTx()) {
         uni.hideTabBar();
       }
-		  this.walletInfo = uni.getStorageSync("currentWallet")
+		  this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
 			this.isTimestamp = uni.getStorageSync("isTimestamp");
-			if (uni.getStorageSync("currentWallet").id) {
+      if (JSON.parse(uni.getStorageSync("currentWallet")).id) {
 				this.getCoinAllList();
 			}
 			this.init();
@@ -338,8 +338,8 @@
       // console.log(this.walletInfo,'-0---------------');
       let _coinList = coinList[this.walletInfo.id] || [];
 			if (_coinList.length == 0) {
-
-				let {
+        console.log(this.walletInfo.id,'-0------------------');
+        let {
 					data,
 					errorMessage
 				} = await request({

@@ -280,7 +280,7 @@
 // 		},
 // 		onLoad(opt) {
 // 			this.info = JSON.parse(opt.info)
-// 			this.walletInfo = uni.getStorageSync("currentWallet")
+// 			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 			
 // 			console.log("token详情", this.info);
 // 		},

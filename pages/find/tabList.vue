@@ -64,7 +64,7 @@
 			this.info = JSON.parse(opt.info)
 			this.title = this.info.name
 			this.id = this.info.id
-			this.walletInfo = uni.getStorageSync("currentWallet")
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 		},
 		onShow() {
 			this.pageIndex = 1;
@@ -178,7 +178,7 @@
 			},
 			// 选择钱包
 			changeWallet() {
-				this.walletInfo = uni.getStorageSync("currentWallet")
+				this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 				if (this.item.state == 2) {
           this.toPage('/pages/webView?url=' + this.item.url)
 					// uni.navigateTo({

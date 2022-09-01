@@ -80,7 +80,7 @@
 				}
 			},
 			onLoad() {
-				this.walletInfo = uni.getStorageSync("currentWallet")
+				this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 			},
 			onShow() {
 				this.list = []

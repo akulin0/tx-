@@ -74,7 +74,7 @@
 				this.type = option.type
 				// this.coin_id = option.coin_id
 				if(this.type == 1){
-					const currentWallet = uni.getStorageSync("currentWallet")
+					const currentWallet = JSON.parse(uni.getStorageSync("currentWallet"))
 					
 					this.category =currentWallet.category;
 				}

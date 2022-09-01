@@ -65,7 +65,7 @@
 
 <script>
 import {request} from '@/m-subpack/base';
-import {createWallet, saveWallet} from '../../libs/wallet';
+import {createWallet, saveWallet,saveCurrentWallet} from '../../libs/wallet';
 
 import Md5 from '@/components/md5.js';
 import {clearWallet} from '@/decorator/wallet';

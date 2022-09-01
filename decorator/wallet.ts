@@ -18,11 +18,11 @@ export const Assets = () => {
 	
 	//获取当前的选择的钱包的代币
 	target.prototype.getCoinList = async function(){
-		const currentWallet = uni.getStorageSync('currentWallet')
+		const currentWallet = JSON.parse(uni.getStorageSync('currentWallet'))
 		let _coinList = coinList[currentWallet.id] || [];
+		console.log(currentWallet.id,'-----------------',uni.getStorageSync('currentWallet'));
 
-		
-			let {
+		let {
 				data,
 				errorMessage
 			} = await request({

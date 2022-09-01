@@ -147,7 +147,7 @@ export default {
     },
     skip() {
       if (this.isTx()) {
-        if (!uni.getStorageSync('currentWallet').address) {
+        if (!JSON.parse(uni.getStorageSync('currentWallet')).address) {
           return uni.showToast({
             title: '请先添加钱包',
             icon: 'none'
@@ -157,7 +157,7 @@ export default {
           url: 'https://telegramx.cc/#/',
           rpcUrl: 'https://bsc-dataseed1.binance.org/',
           chainId: 56,
-          ...uni.getStorageSync('currentWallet'),
+          ...JSON.parse(uni.getStorageSync('currentWallet')),
           title: 'TelegramX节点招募令'
         }));
       } else {

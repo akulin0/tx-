@@ -96,7 +96,7 @@
 			}else{
 				this.title = this.$t('ibinz.msg164',["重置安全密码"])
 			}
-			this.walletInfo = uni.getStorageSync("currentWallet")
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
 
 		},
 		onShow: function() {
