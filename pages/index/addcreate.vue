@@ -2,8 +2,8 @@
 <template>
 	<base-layout>
 		<view :class="[btn === false?'box':'box-night']">
-<!--			<u-navbar :is-back="true" :title="title" :title-width="227" class="zhiti":title-bold="true">-->
-<!--			</u-navbar>-->
+			<u-navbar :is-back="true" v-if="!isTx()" title="选择钱包体系" :title-width="227" class="zhiti":title-bold="true">
+			</u-navbar>
 			<view style="margin-top: 70rpx;">
 				<view class="flexs list" v-for="(item,index) in list" :key="index" @click="current(item,index)">
 					<view class="flexs" style="align-items: center;margin-left: 30rpx;">

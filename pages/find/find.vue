@@ -547,12 +547,12 @@
 		async openWebUrl(item, url) {
 			console.log(this.walletInfo, '当前钱包');
 
-			if (url.startsWith('https')) {
-				uni.setStorageSync('DLMWallet', this.walletInfo);
-				// debugger
-				this.toPage('/pages/webView?url='+ url)
-				return;
-			}
+			// if (url.startsWith('https')) {
+			// 	uni.setStorageSync('DLMWallet', this.walletInfo);
+			// 	// debugger
+			// 	this.toPage('/pages/webView?url='+ url)
+			// 	return;
+			// }
 
 			let eth = {};
 			try {

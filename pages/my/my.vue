@@ -143,8 +143,7 @@
 				});
 			},
 			skip () {
-				console.log("点击")
-				window.location.href = '/www.telegramx.cc'
+        this.toPage('http://www.telegramx.cc')
 			}
 		}
 	}
