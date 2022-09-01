@@ -8,3 +8,6 @@ module.exports = {
         },
     },
 };
+module.exports = {
+    transpileDependencies: ['@dcloudio/uni-ui']
+};

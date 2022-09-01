@@ -79,6 +79,7 @@
               </view>
             </u-popup> -->
     </view>
+    <uni-popup ref="popup" type="center" background-color="#fff">底部弹出 Popup</uni-popup>
   </base-layout>
 </template>
 
@@ -96,11 +97,12 @@ import {
   navigateTo
 } from '@/m-subpack/base';
 
-import {getWalletPwd} from '@/libs/wallet';
+import {getWalletPrivateKey, getWalletPwd} from '@/libs/wallet';
 
 @Component({})
 @Assets()
 export default class Idnex extends Vue {
+
   show = false;
   pass = '';
   title = '';
@@ -222,6 +224,7 @@ export default class Idnex extends Vue {
     this.data.gas = data.gasLimit;
     this.gasPrice = data.proposeGasPrice;
     this.gasPriceDollar = data.proposeGasPriceDollar;
+
     uni.hideLoading();
     console.log('data: ', data);
   }
@@ -256,6 +259,7 @@ export default class Idnex extends Vue {
       //     icon: 'none'
       //   });
       // }
+      this.$refs.popup.open('top');
 
       const {
       	data
@@ -267,7 +271,10 @@ export default class Idnex extends Vue {
       		coin_id: this.coin_id,
       		target_address: this.data.address,
       		wallet_id: this.currentWallet.id,
-      		//转账手续费 1、慢 2、标准 3、快
+          address:uni.getStorageSync('currentWallet').address,
+          category: this.currentWallet.category,
+          private_key:await getWalletPrivateKey(uni.getStorageSync('currentWallet').category_name,uni.getStorageSync('currentWallet').address),
+          //转账手续费 1、慢 2、标准 3、快
       		transaction_fee_type: current,
       		gas_price: gasPrice
       	}
