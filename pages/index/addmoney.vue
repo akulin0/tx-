@@ -35,15 +35,18 @@
                  class="i-items" v-model="data.demo"/>
         </view>
         <!-- <base-button v-if="select" ref="button" class="nosubmit" @submit="submit()" :title="btnText" /> -->
-        <base-button v-if="select" ref="button" class="nosubmit" @submit="submit()" :title="btnText"/>
-        <button v-else class="nosubmit">
+<!--        <base-button v-if="select" ref="button" class="nosubmit" @submit="submit()" :title="btnText"/>-->
+        <view style="width: 100%; text-align: center;display: flex;align-items: center;">
+          <button  class="nosubmit" @click="submit()">
           <view class="tex">{{ $t('home.txt22', ['创建钱包']) }}</view>
         </button>
+        </view>
 
-        <view class="flex-r lef" style="height: 80rpx;margin: 100rpx 0;font-size: 26rpx;">
-          <image v-if="select" @click="select=false" style="width: 36rpx;height: 36rpx;min-width: 36rpx;"
+
+        <view class="flex-r lef" style="height: 80rpx;margin: 50rpx 0;font-size: 26rpx;">
+          <image v-show="select===false" @click="select1()" style="width: 36rpx;height: 36rpx;min-width: 36rpx;"
                  src="/static/biticon/select.png" mode=""></image>
-          <image v-else @click="select=true" src="/static/biticon/noselect.png"
+          <image v-show="select===true" @click="select1()" src="/static/biticon/noselect.png"
                  style="width: 36rpx;height: 36rpx;min-width: 36rpx;" mode=""></image>
           <view style="margin-left: 10rpx;">
             <span>{{ $t('home.txt37', ['我已仔细阅读并同意']) }}</span>
@@ -72,7 +75,7 @@ var tip = null;
 export default {
   data() {
     return {
-      select: false,
+      select: true,
       // searchText: this.$t('home.txt31', ['请输入钱包名称']),
       searchText2: this.$t('home.txt33', ['请再次输入密码']),
       // searchText3: this.$t('ibinz.msg32', ['请输入密码，至少8位']),
@@ -104,7 +107,11 @@ export default {
     this.getWalletList();
 
   },
+
   methods: {
+    select1(){
+      this.select = !this.select;
+    },
     //钱包列表
     async getWalletList() {
       let {
@@ -161,22 +168,38 @@ export default {
     },
     //创建钱包
     async submit() {
+      console.log('1')
+
       try {
-        if (this.data.pass != this.data.repass) {
+        console.log(this.select)
+        console.log('2',this.data.name,)
+        if (this.data.name === ''){
+          uni.showToast({
+            title: '请输入钱包名称',
+            duration: 1000,
+            icon: 'none'
+          })
+        }else if (this.data.pass != this.data.repass) {
           uni.showToast({
             title: this.$t('home.txt125', ['密码不一致']),
             duration: 1000,
             icon: 'none'
           });
-          this.$refs.button.hideLoading();
-
+          // this.$refs.button.hideLoading();
         } else if (this.data.pass.length < 8 || this.data.repass.length < 8) {
           uni.showToast({
             title: this.$t('ibinz.msg32', ['请输入密码，至少8位']),
             duration: 1000,
             icon: 'none'
           });
-          this.$refs.button.hideLoading();
+          // this.$refs.button.hideLoading();
+        }  else if (this.select ===true) {
+          uni.showToast({
+            title: '请先同意服务协议和隐私条款',
+            duration: 1000,
+            icon: 'none'
+          });
+          // this.$refs.button.hideLoading();
         } else {
           // 创建
           const wallet = await createWallet(this.data.pass);
@@ -227,9 +250,8 @@ export default {
 
           uni.setStorageSync('currentWallet', currentWallet);
 
-
           setTimeout(() => {
-            this.$refs.button.hideLoading();
+            // this.$refs.button.hideLoading();
             toTabBar('/pages/index/index',0)
             // this.toPage(`/pages/my/wallet?chainName=${this.name}`);
           }, 2000);
@@ -237,7 +259,7 @@ export default {
         }
 
       } catch (e) {
-        this.$refs.button.hideLoading();
+        // this.$refs.button.hideLoading();
       }
 
     },
@@ -268,7 +290,6 @@ export default {
 .nosubmit {
   width: 599.1rpx;
   height: 110rpx !important;
-
   background: #3A83F7 !important;
   // box-shadow: 0px 2px 10px 0px rgba(23, 119, 226, 0.4);
   // opacity: 0.5;
@@ -276,8 +297,8 @@ export default {
   font-size: 30rpx !important;
   line-height: 96rpx !important;
   color: #fff;
-  position: relative;
-  transform: translate(-20px, 30px);
+  margin-top: 40rpx;
+
 }
 
 .passType {
