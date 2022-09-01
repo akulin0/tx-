@@ -19,7 +19,10 @@ export function isTx() {
 export function toPage(url) {
     if (isTx()) {
         android.startNewActivity(true, `${window.location.host}/#${url}`);
-    } else {
+    } else if(url.startsWith('http')){
+        window.location.href = url
+    }
+    else {
         uni.navigateTo({
             url: url
         });

@@ -85,6 +85,7 @@
 	import MarketList from "@/components/marketList.vue"
 	import DeFiList from "@/components/DeFiList.vue"
 	import DeFiListSkeleton from "@/components/DeFiListSkeleton.vue"
+  import {toPage} from '../../libs/utils';
 
 	export default {
 		data() {
@@ -377,17 +378,18 @@
 
 			// 编辑
 			toEdit() {
-				if (!isLogin()) {
-					uni.reLaunch({
-						url: "/pages/login/login"
-					})
-					return
-				}
+				// if (!isLogin()) {
+				// 	uni.reLaunch({
+				// 		url: "/pages/login/login"
+				// 	})
+				// 	return
+				// }
 				if (this.topNavCur == 0) {
 					if (this.tabCur == 0) {
-						uni.navigateTo({
-							url: "/pages/market/editMarket?type=0"
-						})
+						// uni.navigateTo({
+						// 	url: "/pages/market/editMarket?type=0"
+						// })
+            toPage( "/pages/market/editMarket?type=0")
 					} else {
 						uni.showToast({
 							title: this.$t('market.msg36', ['仅DeFi自选数据可更改']),
@@ -395,17 +397,19 @@
 						})
 					}
 				} else {
-					uni.navigateTo({
-						url: "/pages/market/editMarket?type=1"
-					})
+					// uni.navigateTo({
+					// 	url: "/pages/market/editMarket?type=1"
+					// })
+          toPage("/pages/market/editMarket?type=1")
 				}
 			},
 			// DeFi-列表详情
 			toDetail(item) {
 				// console.log("列表详情", this.obj.name)
-				uni.navigateTo({
-					url: "/pages/market/exchangeDetail?item=" + encodeURIComponent(JSON.stringify(item))
-				})
+				// uni.navigateTo({
+				// 	url: "/pages/market/exchangeDetail?item=" + encodeURIComponent(JSON.stringify(item))
+				// })
+        toPage("/pages/market/exchangeDetail?item=" + encodeURIComponent(JSON.stringify(item)))
 
 			}
 		}
