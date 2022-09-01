@@ -106,7 +106,7 @@
 	import DApps from '@/components/DApps.vue';
 	// import CryptoJS from "crypto-js";
 	import openPage from '@/js/flutter/openPage.js';
-  import {toPage} from '../../libs/utils';
+  import {isTx, toPage} from '../../libs/utils';
 
 	export default {
 		data() {
@@ -522,7 +522,8 @@
 		},
 		// 选择钱包
 		changeWallet(item) {
-			uni.showTabBar();
+		  if(!isTx())
+			  uni.showTabBar();
 			// debugger
 			// uni.setStorageSync('currentWallet', item);
 			this.walletInfo = item;
@@ -546,8 +547,9 @@
 		//浏览器钱包接口 type 2 ETH 3 波场 4 哆来咪
 		async openWebUrl(item, url) {
 			console.log(this.walletInfo, '当前钱包');
+      console.log(item,'item');
 
-			// if (url.startsWith('https')) {
+      // if (url.startsWith('https')) {
 			// 	uni.setStorageSync('DLMWallet', this.walletInfo);
 			// 	// debugger
 			// 	this.toPage('/pages/webView?url='+ url)
