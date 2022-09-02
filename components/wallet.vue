@@ -413,7 +413,7 @@ export default class Wellet extends Vue {
       this.currentCategory = this.category || this.currentWallet.category;
       this.currentText = this.currentCategoryText[this.currentCategory] || this.currentWallet.category_name;
 
-
+      await this.getwalletList()
     // console.log("changeMoney", process.env.NODE_ENV);
 
     this.show = true;
