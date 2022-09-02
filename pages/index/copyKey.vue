@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view class="main">
-			<u-navbar :is-back="true" :title="title" :title-bold="true"></u-navbar>
+			<u-navbar v-if="!isTx()"  :is-back="true" :title="title" :title-bold="true"></u-navbar>
 			<view class="title">{{$t('home.txt63',['立即备份你的私钥'])}}</view>
 			<view class="box">{{privateKey}}</view>
 			<base-button ref="button" :title="title1" style="width: 690rpx;margin-top: 500rpx;" @submit="next()">

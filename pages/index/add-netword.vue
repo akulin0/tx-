@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title="titles" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
+			<u-navbar v-if="!isTx()"  :is-back="true" :title="titles" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
 			</u-navbar>
 			<view style="padding: 0 30rpx;">
 				<view class="hint-box">

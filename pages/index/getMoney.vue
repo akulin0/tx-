@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view class="get">
-			<u-navbar :is-back="true" :title="title" title-color="#ffffff" back-icon-color="#ffffff" :background="{background:'#67a3f8'}"></u-navbar>
+			<u-navbar v-if="!isTx()"  :is-back="true" :title="title" title-color="#ffffff" back-icon-color="#ffffff" :background="{background:'#67a3f8'}"></u-navbar>
 			<view class="getbox " style="margin-top: 20rpx;">
 				<view class="getheader">
 					<!-- <view class="title">{{$t('home.txt93',['扫一扫，向我支付'])}}</view> -->

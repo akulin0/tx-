@@ -1,6 +1,6 @@
 <template>
 	<view class="login page">
-		<u-navbar is-fixed backgroundColor="#fff" :title="navText" title-width="500"/>
+		<u-navbar v-if="!isTx()"  is-fixed backgroundColor="#fff" :title="navText" title-width="500"/>
 
 		<!-- 表单提交 -->
 		<view class="content">

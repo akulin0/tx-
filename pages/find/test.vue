@@ -1,6 +1,6 @@
 <template>
 	<base-layout>
-		<u-navbar :is-back="false" :is-fixed="true" :border-bottom="true" title="测试"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="false" :is-fixed="true" :border-bottom="true" title="测试"></u-navbar>
 		<view class="box" v-for="(item,index) in time">
 			<view class="title font-m color-s list-title" :class="{'daytofixed':num==index}">{{item.date}}</view>
 			<view class="content">

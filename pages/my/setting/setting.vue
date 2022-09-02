@@ -1,7 +1,7 @@
 <!-- 设置 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="false" :is-fixed="true" :title="title" :title-bold="true">
+		<u-navbar v-if="!isTx()"  :is-back="false" :is-fixed="true" :title="title" :title-bold="true">
 			<view class="slot-wrap" @click="back">
 				<image src="../../../static/message/retrun.png.png" class="mlr30" style="width: 17rpx;height: 30rpx;"></image>
 			</view>

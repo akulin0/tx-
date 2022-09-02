@@ -1,7 +1,7 @@
 <!-- 修改登录密码 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
 			style="border-bottom: 1px solid #E6E6E6;" title-width="500">
 			<!-- <view slot="right" class="slot-right font-body" v-if="type==1" @click="toPage()">
 				忘记交易密码

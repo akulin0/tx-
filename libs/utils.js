@@ -23,13 +23,13 @@ export function toPage(url) {
         '/pages/my/addressBook',
         '/pages/my/customer',
         '/pages/my/invite',
-        '/pages/agreementList',
         '/pages/index/addcreate',
         '/pages/index/userMoney',
         '/pages/index/getMoney',
         '/pages/index/hotToken',
         '/pages/index/TokenDetails',
         '/pages/wallet/walletDetail',
+        '/pages/my/agreementList'
     ];
 
     if (isTx() && whiteList.some(i=>url.startsWith(i))) {

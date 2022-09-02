@@ -2,7 +2,7 @@
 <template>
   <base-layout>
     <view :class="[btn === false?'box':'box-night']">
-      <u-navbar :is-back="true" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;"
+      <u-navbar v-if="!isTx()"  :is-back="true" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;"
                 :title-bold="true" :custom-back="goBack"></u-navbar>
       <view class="usermoney">
         <view class="flex-j-a">

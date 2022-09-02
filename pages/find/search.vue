@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="false" :is-fixed="true" title="">
+		<u-navbar v-if="!isTx()" :is-back="false" :is-fixed="true" title="">
 			<view class="slot-wrap">
 				<u-search :placeholder="placeholder" v-model="keyword" :action-text="navText" @custom="cancle"
 					@search="search" @change="change" height="64" @clear="clear"></u-search>

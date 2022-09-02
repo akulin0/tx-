@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true" :border-bottom="true">
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="title" :title-bold="true" :border-bottom="true">
 			<view slot="right" style="color: #F1474F;margin-right: 30rpx;" @click="del">
 				删除
 			</view>

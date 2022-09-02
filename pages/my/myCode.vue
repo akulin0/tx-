@@ -1,7 +1,7 @@
 <!-- 我的二维码 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navText" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
+		<u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" :title="navText" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
 		<view class="box">
 			<image :src="info.head_portrait" mode="" class="img" v-if="info.head_portrait"></image>
 			<image src="/static/my/header.png" mode="" class="img" v-else></image>

@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true"></u-navbar>
+		<u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true"></u-navbar>
 		<!-- 列表 -->
 		<view class="bottom-content">
 			<u-swipe-action :show="item.show" :index="index" v-for="(item, index) in list" :key="item.id" @click="click" @open="open"

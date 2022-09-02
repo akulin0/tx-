@@ -1,7 +1,7 @@
 <!-- Token详情 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
 			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
 		<view class="content">
 			<view class="head-box">

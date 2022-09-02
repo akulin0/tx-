@@ -1,7 +1,7 @@
 <!-- 忘记交易密码 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navText" :title-bold="true"  style="border-bottom: 1px solid #E6E6E6;" title-width="500"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navText" :title-bold="true"  style="border-bottom: 1px solid #E6E6E6;" title-width="500"></u-navbar>
 		<view class="content">
 			<view v-for="(item,index) in list" class="list flex-j-a font-body" @click="toPage(item.url)">
 				<view>{{item.title}}</view>

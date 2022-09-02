@@ -1,6 +1,6 @@
 <template>
 	<view class="login page">
-		<u-navbar is-fixed backgroundColor="#fff" :title="navTitle" title-width="500"/>
+		<u-navbar v-if="!isTx()"  is-fixed backgroundColor="#fff" :title="navTitle" title-width="500"/>
 		<view class="warp">
 			<image src="/static/my/image.png" />
 			<view class="base">{{$t('ibinz.msg94',['当前绑定手机'])}}：{{account | setAccount}}</view>

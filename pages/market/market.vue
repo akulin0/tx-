@@ -1,7 +1,7 @@
 <template>
 	<base-layout :class="[btn===false?'content-main':'content-main-night']">
 		<view class="sticky">
-			<u-navbar class="nav-top" :is-back="false" :is-fixed="true">
+			<u-navbar v-if="!isTx()"  class="nav-top" :is-back="false" :is-fixed="true">
 				<view class="topNavbar">
 					<view class="navbar">
 						<view class="item color-main font-l" :class="{active:index==topNavCur}"

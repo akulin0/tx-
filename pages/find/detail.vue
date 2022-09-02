@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true">
+		<u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true">
 		</u-navbar>
 		<view v-if="$i18n.locale == 'en-US'">
 			<view class="pic" style="background-image: url(/static/find/bg-banner-r-z.png);" v-if="type==0"></view>

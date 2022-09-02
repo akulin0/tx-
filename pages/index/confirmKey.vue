@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view class="main">
-			<u-navbar :is-back="true" :title="title" :title-width="500" :title-bold="true"></u-navbar>
+			<u-navbar v-if="!isTx()"  :is-back="true" :title="title" :title-width="500" :title-bold="true"></u-navbar>
 			<view class="title">{{$t('home.txt59',['确认你的钱包私钥'])}}</view>
 			<textarea class="box" maxlength="-1" v-model="privateKey" :placeholder="title1"></textarea>
 			<base-button ref="button" :title="title2" style="width: 690rpx;margin-top: 500rpx;" @submit="ok()">

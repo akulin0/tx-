@@ -67,7 +67,7 @@
 				</view>
 			</view>
 			<view class="list-box font-body" v-if="chatAppKey=='DUOLAIMI'">
-				<view class="url-list flex-j-a" @click="toPage(item.url)" v-for="(item,index) in list">
+				<view class="url-list flex-j-a" @click="toPage('/pages/my/setting/server?url='+item.url)" v-for="(item,index) in list">
 					<view>
 						{{item.title}}
 					</view>
@@ -273,11 +273,11 @@
 
 				})
 			},
-			toPage(url){
-				uni.navigateTo({
-					url:'/pages/my/setting/server?url='+url
-				})
-			}
+			// toPage(url){
+			// 	uni.navigateTo({
+			// 		url:'/pages/my/setting/server?url='+url
+			// 	})
+			// }
 		},
 	};
 </script>

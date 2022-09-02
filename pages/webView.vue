@@ -1,7 +1,7 @@
 <template>
 	<base-layout>
 		<view>
-			<!-- <u-navbar :is-back="true" :is-fixed="true" title="我的客服" ></u-navbar> -->
+			 <u-navbar  v-if="!isTx()"  :is-back="true" :is-fixed="true" title="我的客服" ></u-navbar>
 			<!-- #ifdef MP-WEIXIN -->
 			<web-view :webview-styles="webviewStyles" :src="url" title=""></web-view>
 			<!-- #endif -->
