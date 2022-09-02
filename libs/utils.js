@@ -37,7 +37,7 @@ export function toPage(url) {
  */
 export function toTabBar(url,index){
     if(isTx()){
-        android.refresh(index)
+        android.refresh(index) //
     }else {
         uni.switchTab({
             url: url

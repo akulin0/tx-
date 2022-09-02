@@ -1,6 +1,6 @@
 <template>
   <view>
-    		<u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
+    <u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
     			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
     <view class="moneyList">
       <view class="m-nav flexs">
