@@ -58,14 +58,14 @@
 						
 						<view class="dotted-line"></view>
 						<view class="totalfooter flexs tex-ion" :style="{fontSize:$i18n.locale == 'en-US'?'22rpx':'26rpx'}">
-							<view class="rows" @click.stop="goTo('userMoney')" style="margin-right: 20rpx;">
+							<view class="rows" @click.stop="goTo('/pages/index/userMoney')" style="margin-right: 20rpx;">
 								<image src="/static/index/total31.png" alt="" class="inc">
 									<span style="margin-left: 12rpx;" class="text-loction"> {{
 								  $t("home.txt5", ["转账"])
 								}}</span>
 							</view>
 							<view class="line"></view>
-							<view class="rows take-in" @click.stop="goTo('getMoney')">
+							<view class="rows take-in" @click.stop="goTo('/pages/index/getMoney')">
 								<image :src="btn === false?require('../../static/index/shoukuan1.png'):require('../../static/index/night/sk-n.png')" alt="" class="inc">
 									<span style="margin-left: 12rpx;" class="text-loction">{{
 								  $t("home.txt6", ["收款"])

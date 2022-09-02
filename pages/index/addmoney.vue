@@ -2,7 +2,7 @@
 <template>
   <base-layout>
     <view>
-      <u-navbar :is-back="true" :title="titles" :title-bold="true">
+      <u-navbar v-if="!isTx()" :is-back="true" :title="titles" :title-bold="true">
       </u-navbar>
       <view style="padding: 0 30rpx;">
         <view class="input-item">

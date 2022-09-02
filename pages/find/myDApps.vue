@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="true" :is-fixed="true" title="myDApps" title-color="#333333" :title-bold="true"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" title="myDApps" title-color="#333333" :title-bold="true"></u-navbar>
 		<!-- 占位 -->
 		<view style="height: 20rpx;background-color: #f5f5f5;"></view>
 		<!-- <base-noData v-if="list.length==0" /> -->

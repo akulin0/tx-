@@ -1,6 +1,6 @@
 <template>
 	<view class="converter">
-		<u-navbar :is-back="true" :is-fixed="true" title="汇率换算"></u-navbar>
+		<u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" title="汇率换算"></u-navbar>
 		<view class="box">
 		  <view class="item">
 		    <view class="title">

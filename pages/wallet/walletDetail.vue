@@ -1,7 +1,7 @@
 <!-- 钱包详情 -->
 <template>
   <base-layout>
-    <u-navbar :is-back="true" :title-width="500" :is-fixed="true" :title="title" :title-bold="true"
+    <u-navbar v-if="!isTx()" :is-back="true" :title-width="500" :is-fixed="true" :title="title" :title-bold="true"
               style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
     <view class="content">
       <view class="box flex-align">

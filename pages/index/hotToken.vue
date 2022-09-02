@@ -2,9 +2,9 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="false" title="">
+			<u-navbar v-if="!isTx()"  :is-back="false" title="">
 				<view class="slot-wrap head-box">
-					<u-navbar :is-back="true" :title-bold="true" style="top: 20rpx;">
+					<u-navbar v-if="!isTx()"  :is-back="true" :title-bold="true" style="top: 20rpx;">
 						<!-- <image src="../../static/message/retrun.png.png" class="left_"></image> -->
 						<u-search :placeholder="placeholder" v-model="keyword" :action-text="title" :clearabled="true"
 							:action-style="actionSty" @custom="cancle" @change="search" class="hunt-for" :show-action="false"></u-search>

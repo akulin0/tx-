@@ -1,7 +1,7 @@
 <!-- 个人资料 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navText" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;" title-width="380"></u-navbar>
+		<u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" :title="navText" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;" title-width="380"></u-navbar>
 		<view class="font-body content">
 			<view class="flex-j-a head-box" @click="headCut()">
 				<view>{{$t('ibinz.msg124',['头像'])}}</view>

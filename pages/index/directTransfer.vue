@@ -2,7 +2,7 @@
 <template>
   <base-layout>
     <view>
-      <u-navbar :is-back="true" :is-fixed="true" :title="title" style="border-bottom: 1px solid #E6E6E6;"
+      <u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="title" style="border-bottom: 1px solid #E6E6E6;"
                 :title-bold="true"></u-navbar>
       <view class="importbox">
         <view class="input-item">

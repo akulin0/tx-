@@ -17,7 +17,22 @@ export function isTx() {
  * @param url:String 跳转路径
  */
 export function toPage(url) {
-    if (isTx()) {
+    // 白名单
+    const whiteList = [
+        '/pages/my/wallet',
+        '/pages/my/addressBook',
+        '/pages/my/customer',
+        '/pages/my/invite',
+        '/pages/index/addcreate',
+        '/pages/index/userMoney',
+        '/pages/index/getMoney',
+        '/pages/index/hotToken',
+        '/pages/index/TokenDetails',
+        '/pages/wallet/walletDetail',
+        '/pages/my/agreementList'
+    ];
+
+    if (isTx() && whiteList.some(i=>url.startsWith(i))) {
         android.startNewActivity(true, `${window.location.host}/#${url}`);
     } else if (url.startsWith('http')) {
         window.location.href = url;

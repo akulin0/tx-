@@ -1,6 +1,6 @@
 <template>
   <view class="myAssets">
-    <u-navbar :is-back="true" :is-fixed="true" title="我的资产"></u-navbar>
+    <u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" title="我的资产"></u-navbar>
     <view class="box">
       <view class="item">
         <view class="title">

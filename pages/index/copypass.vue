@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title="title" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
+			<u-navbar v-if="!isTx()"  :is-back="true" :title="title" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
 			</u-navbar>
 			<view class="copypass">
 				<image src="/static/index/copymoney.png" style="width: 200rpx;height: 200rpx;margin: 190rpx 0 100rpx 0;"

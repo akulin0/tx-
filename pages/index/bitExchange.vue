@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title-width="500" :title="title" title-color="#ffffff" back-icon-color="#ffffff"
+			<u-navbar v-if="!isTx()"  :is-back="true" :title-width="500" :title="title" title-color="#ffffff" back-icon-color="#ffffff"
 				:background="{background:'#2DA5E1'} "></u-navbar>
 			<view class="bgcolor">
 

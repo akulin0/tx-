@@ -29,6 +29,11 @@ Vue.mixin({
         if(isTx()){
             uni.hideTabBar();
         }
+        if(this.navText || this.title){
+            uni.setNavigationBarTitle({
+                title: this.navText || this.title
+            });
+        }
     },
     methods:{
         // 跳转页面

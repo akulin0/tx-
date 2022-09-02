@@ -1,7 +1,7 @@
 <!-- 多语言 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
 			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
 		<view class="content">
 			<view v-for="(item,index) in list" class="list flex-j-a font-body" @click="check(item.lang)">

@@ -1,7 +1,7 @@
 <!-- 我的代币列表 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" title="">
+		<u-navbar v-if="!isTx()"  :is-back="true" title="">
 			<view class="slot-wrap head-box">
 				<u-search :placeholder="placeholder" v-model="keyword" :action-text="seaText" :clearabled="true"
 					:action-style="actionSty" @custom="cancle" @search="getGroupList()"></u-search>

@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="true" :is-fixed="true" :title="title" title-color="#333333" :title-bold="true">
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="title" title-color="#333333" :title-bold="true">
 		</u-navbar>
 		<view v-if="list.length>0">
 			<AppList :list="list" @go="goApp"></AppList>

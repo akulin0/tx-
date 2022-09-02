@@ -1,6 +1,6 @@
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true"></u-navbar>
 		<view class="msg font-s" v-if="showMsg">
 			<view>{{ $t('market.msg2', ['任何人都可以在去中心化交易所里上架代币，包括同名的代币以及无法卖出等各种功能的代币。请一定做好研究并核对好合约地址。']) }}</view>
 			<view class="btn" @click="close">{{ $t('market.msg3', ['关闭']) }}</view>
@@ -348,13 +348,26 @@ export default {
 		}
 	},
 	onLoad(opt) {
-		let item = JSON.parse(decodeURIComponent(opt.item));
-		item.totalLiquidity = item.total_liquidity.substring(0, item.total_liquidity.indexOf('.') + 3); //流动资金池
-		item.currentPrice = item.market_exchange_list[0].price.substring(0, item.market_exchange_list[0].price.indexOf('.') + 3); //当前价格
-		item.percentPrice = item.market_exchange_list[0].percent_change_24h.substring(0, item.market_exchange_list[0].percent_change_24h.indexOf('.') + 3); //当前价格百分比
-		item.newVolume = item.volume.substring(0, item.volume.indexOf('.') + 3); //24小时交易量
-		this.name = item.market_exchange_list[0].ex_name;
-		this.info = item;
+	  try {
+      let item = JSON.parse(decodeURIComponent(opt.item));
+      item.totalLiquidity = item.total_liquidity.substring(0, item.total_liquidity.indexOf('.') + 3); //流动资金池
+      item.currentPrice = item.market_exchange_list[0].price.substring(0, item.market_exchange_list[0].price.indexOf('.') + 3); //当前价格
+      item.percentPrice = item.market_exchange_list[0].percent_change_24h.substring(0, item.market_exchange_list[0].percent_change_24h.indexOf('.') + 3); //当前价格百分比
+      item.newVolume = item.volume.substring(0, item.volume.indexOf('.') + 3); //24小时交易量
+      this.name = item.market_exchange_list[0].ex_name;
+      this.info = item;
+    }catch (e) {
+      uni.showToast({
+        title: '未知错误',
+        icon: 'none',
+        duration: 2000,
+        mask: true
+      })
+	    setTimeout(()=>{
+        uni.navigateBack()
+      },2000)
+    }
+
 	},
 	onShow(){
 		this.getDeFidetails();

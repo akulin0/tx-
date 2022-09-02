@@ -1,7 +1,7 @@
 <!-- 群聊 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"></u-navbar>
 		
 		<base-noData v-if="list.length == 0" />
 		<view  v-else v-for="(item,index) in list" class="list" >

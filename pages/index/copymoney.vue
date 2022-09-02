@@ -2,7 +2,7 @@
 <template>
 	<base-layout>
 		<view>
-			<u-navbar :is-back="true" :title="title" :title-width="500" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
+			<u-navbar  v-if="!isTx()" :is-back="true" :title="title" :title-width="500" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
 			</u-navbar>
 			<view class="copymoney">
 				<view style="font-size: 30rpx;color: #333;margin: 38rpx 0;">{{$t('home.txt67',['助记词用于恢复钱包及重置钱包密码，请准确无误抄写助记词，并存放在安全的地方。'])}}

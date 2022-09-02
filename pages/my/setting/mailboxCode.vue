@@ -1,7 +1,7 @@
 <!-- 邮箱验证码 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;" title-width="500"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true" style="border-bottom: 1px solid #E6E6E6;" title-width="500"></u-navbar>
 		<view class="font-body content">
 			<view class="font-w">{{$t('ibinz.msg106',['邮箱验证码'])}}</view>
 			<view class="color-a title">{{$t('ibinz.msg109',['若未收到邮件，请检查邮箱垃圾箱'])}}</view>

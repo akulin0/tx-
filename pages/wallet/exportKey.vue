@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar :is-back="true" :title-width="500" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true">
+		<u-navbar v-if="!isTx()" :is-back="true" :title-width="500" :is-fixed="true" :title="navTitle" title-color="#333333" :title-bold="true">
 		</u-navbar>
 		<u-tabs :list="tabList" :is-scroll="false" :current="tabCur" :font-size="32" @change="change"
 			active-color="#2979ff" inactive-color="#333333"></u-tabs>

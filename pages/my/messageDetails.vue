@@ -1,7 +1,7 @@
 <!-- 公告详情 -->
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :is-fixed="true" :title="navText" :title-bold="true"  style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
+		<u-navbar  v-if="!isTx()" :is-back="true" :is-fixed="true" :title="navText" :title-bold="true"  style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
 		<view class="content">
 			<view class="font-max font-w title">{{info.title}}</view>
 			<view class="time font-s">{{info.create_time}}</view>

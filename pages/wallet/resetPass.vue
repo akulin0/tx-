@@ -1,6 +1,6 @@
 <template>
 	<base-layout>
-		<u-navbar :is-back="true" :title-width="500" :is-fixed="true" :title="title" title-color="#333333" :title-bold="true"></u-navbar>
+		<u-navbar  v-if="!isTx()" :is-back="true" :title-width="500" :is-fixed="true" :title="title" title-color="#333333" :title-bold="true"></u-navbar>
 		<view class="main">
 			<view class="textarea-view">
 				<textarea value="" :placeholder="placeholder" v-model="private" />
