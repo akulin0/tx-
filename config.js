@@ -1,8 +1,10 @@
 
 
 //本地
-// const host = "www.telegramx.space";
-const host = "192.168.2.233:8091";
+// const host = "/api";
+const host = "www.telegramx.space"
+// const host = "app.telegramx.space"
+// const host = "192.168.2.233:8091";
 // const host = "59.111.59.121:8091"
 // const host = "192.168.1.11:8091";
 

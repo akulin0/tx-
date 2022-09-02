@@ -139,7 +139,7 @@
             "proxy" : {
                 // 代理配置
                 "/api" : {
-                    "target" : "https://www.telegramx.space", // 目标接口域名
+                    "target" : "http://www.telegramx.space", // 目标接口域名
                     "changeOrigin" : true, // 是否跨域
                     "secure" : true, // 是否支持https协议的代理
                     "pathRewrite" : {
