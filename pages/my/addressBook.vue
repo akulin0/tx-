@@ -1,11 +1,11 @@
 <!-- 地址本 -->
 <template>
 	<base-layout>
-		<u-navbar v-if="!isTx()" :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
+		<u-navbar :is-back="true" :is-fixed="true" :title="title" :title-bold="true"
 			 :custom-back="goBack"></u-navbar>
-		<!-- <base-Item :init="true"  :size="size" @getData="getList" class="goodslists"> -->
-			<!-- <view slot="content" slot-scope="{ data }"> -->
-		<view :class="[btn === false?'content':'content-night']">
+		<!-- <base-Item :init="true"  :size="size" @getData="getList" class="goodslists">
+			<view slot="content" slot-scope="{ data }"> -->
+		<view class="content">
 			<view class="none-box flex-center-column" v-if="list.length==0">
 				<image src="/static/my/none.png" mode="" class="img"></image>
 				<view class="color-main font-body">{{$t('ibinz.msg44',["暂无数据"])}}</view>
@@ -44,7 +44,6 @@
 		request,
 		navigateBack,
 	} from "@/m-subpack/base";
-  import {toTabBar} from '../../libs/utils';
 	export default {
 		data() {
 			return {
@@ -53,7 +52,6 @@
 				list: [],
 				title: this.$t('ibinz.msg3', ["地址薄"]),
 				type: '',
-        btn: localStorage.getItem("btn") === "true",
 				imgList: ['/static/biticon/bit.png',  '/static/biticon/ethereum.png',
 					'/static/biticon/tron.png','/static/biticon/dolami.png'
 				],	
@@ -66,15 +64,13 @@
 
 		},
 		onLoad(option) {
-      console.log(option,'----------');
-
-      if(option.info) this.info =  JSON.parse(option.info)  || {}
+			if(option.info) this.info =  JSON.parse(option.info)  || {}
 			
 			if (option.type) {
 				this.type = option.type
 				// this.coin_id = option.coin_id
 				if(this.type == 1){
-					const currentWallet = uni.getStorageSync("currentWallet")
+					const currentWallet = JSON.parse(uni.getStorageSync("currentWallet"))
 					
 					this.category =currentWallet.category;
 				}
@@ -143,10 +139,10 @@
 				// 	url: '/pages/my/addressEdit?id=' + 1 + '&type=0'
 				// })
 				if(this.type !=1){
-
-          toTabBar('/pages/my/my',4)
-
-        }else{
+					uni.switchTab({
+						url: '/pages/my/my'
+					});
+				}else{
 					uni.navigateBack({
 						delta:1
 					})
@@ -159,101 +155,8 @@
 </script>
 
 <style lang="scss" scoped>
-  .content-night{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("/static/my/bj.png");
-    background-size: 100% 100%;
-    .box {
-      height: 278rpx;
-      width: 100%;
-      position: relative;
-
-      image {
-        height: 278rpx;
-        width: 100%;
-      }
-
-      .box-view {
-        height: 278rpx;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 37rpx 39rpx 51rpx;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-sizing: border-box;
-
-        .box-title {
-          // border: 1px solid red;
-          flex: 1;
-          width: 57%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 1; //设置显示几行
-          -webkit-box-orient: vertical;
-          word-wrap: break-word
-        }
-
-        .btns {
-          justify-content: flex-end;
-
-          view {
-            width: 150rpx;
-            height: 60rpx;
-            border-radius: 30rpx;
-          }
-
-          .btn-box {
-            width: 175rpx;
-          }
-
-          .btn1 {
-            background-color: #FFFFFF;
-            color: #2DA5E1;
-            margin-right: 20rpx;
-          }
-
-          .btn2 {
-            border: 1px solid #FFFFFF;
-            box-sizing: border-box;
-          }
-        }
-      }
-    }
-
-    .add-btn {
-      height: 110rpx;
-      background: #3A83F7;
-      // box-shadow: 0px 1px 5px 0px rgba(23, 119, 226, 0.4);
-      border-radius: 30rpx;
-      width: 599rpx;
-      margin-top: 210rpx;
-    }
-
-    .none-box {
-      margin-top: 159rpx;
-      align-items: center;
-
-      .img {
-        width: 535rpx;
-        height: 376rpx;
-        margin-bottom: 12rpx;
-      }
-    }
-  }
 	.content {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    //background-image: url("/static/my/bj.png");
-    //background-size: 100% 100%;
+		padding: 24rpx 21rpx;
 
 		.box {
 			height: 278rpx;
@@ -321,8 +224,10 @@
 			background: #3A83F7;
 			// box-shadow: 0px 1px 5px 0px rgba(23, 119, 226, 0.4);
 			border-radius: 30rpx;
-			width: 599rpx;
+			width: 599.1rpx;
 			margin-top: 210rpx;
+			position: relative;
+			transform: translate(60rpx, 100rpx);
 		}
 
 		.none-box {
