@@ -408,11 +408,11 @@ export default class Wellet extends Vue {
   }
 
   async changeMoney() {
-    if (process.env.NODE_ENV !== 'development') {
       await this.init();
+      this.currentWallet = getCurrentWallet()
       this.currentCategory = this.category || this.currentWallet.category;
-      this.currentText = this.currentCategoryText[this.currentCategory];
-    }
+      this.currentText = this.currentCategoryText[this.currentCategory] || this.currentWallet.category_name;
+
 
     // console.log("changeMoney", process.env.NODE_ENV);
 
