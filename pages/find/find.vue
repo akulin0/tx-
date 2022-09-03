@@ -1,6 +1,6 @@
 <template>
 	<base-layout class="main">
-		<u-navbar  :is-back="false" :is-fixed="true" :border-bottom="true">
+		<u-navbar :is-back="false" :is-fixed="true" :border-bottom="true">
 			<view class="navbar">
 				<view class="flex1">
 				<!-- 	<view class="item" v-for="(item, index) in topNav" :key="index"

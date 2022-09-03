@@ -104,7 +104,7 @@
 					<view class="addbit">
 						<image :src="btn === false?img:img1"
 							style="width: 65rpx;height: 65rpx;margin-right: 15rpx; top: 4rpx;"@click="goTo('/pages/index/hotToken')"></image>
-						<image  :src="btn === false?require('../../static/index/add.png'):require('../../static/index/night/add-n.png')" style="width: 65rpx;height: 65rpx; top: 4rpx;" mode=""
+						<image  :src="btn === false?require('../../static/index/add1.png'):require('../../static/index/night/add-n.png')" style="width: 65rpx;height: 65rpx; top: 4rpx;" mode=""
 							@click="goTo('/pages/index/hotToken')"></image>
 					</view>
 				</view>

@@ -1,78 +1,80 @@
 <template>
   <view class="wallet-content" @click="(!showOther && !addcreate) ? clickCancel() : close()">
     <u-popup v-model="show" mode="bottom" border-radius="30" :closeable="false" :mask-close-able='false'>
+      <!-- 标题栏 -->
+      <view class="subHeader">
+        <view class="title" @click="goTo('/pages/my/wallet')" style="display: flex;justify-content: center; height: 107rpx; align-items: center;">{{
+            $t('home.txt19', ['钱包列表'])
+          }}
+        </view>
       <view class="topIcon" style="text-align: center;">
-        <view class="icon"></view>
-      </view>
-      <view class="moneyList" v-if="showOther">
-        <!-- 标题栏 -->
-        <view class="subHeader">
-          <view class="title" @click="goTo('/pages/my/wallet')">{{
-              $t('home.txt18', ['管理钱包'])
-            }}
-          </view>
-          <image src="/static/wangluo.png" class="icon"></image>
+<!--        <view class="icon"></view>-->
+          <!--            <image src="/static/wangluo.png" class="icon"></image>-->
         </view>
-        <!-- <view class="m-header flexs"> -->
-        <!-- 	<view class="commonfont" @click="goTo('/pages/my/wallet')">{{
-                  $t("home.txt18", ["管理钱包"])
-                }}</view> -->
-        <!-- <view class="m-title" style="text-align: center;">{{
-                  $t("home.txt19", ["钱包列表"])
-                }}</view> -->
-        <!-- <view @click="close" style="width: 60rpx;text-align: right;">
-            <u-icon name="close" style="" size="32"></u-icon>
+        <view class="moneyList" v-if="showOther">
+          <!-- <view class="m-header flexs"> -->
+          <!-- 	<view class="commonfont" @click="goTo('/pages/my/wallet')">{{
+                    $t("home.txt18", ["管理钱包"])
+                  }}</view> -->
+          <!-- <view class="m-title" style="text-align: center;">{{
+                    $t("home.txt19", ["钱包列表"])
+                  }}</view> -->
+          <!-- <view @click="close" style="width: 60rpx;text-align: right;">
+              <u-icon name="close" style="" size="32"></u-icon>
+            </view> -->
+          <!-- </view> -->
+          <!-- 		<view class="m-nav flexs">
+            <view v-for="(item,index) in bitlist" :key="index" >
+              <image :src="`/static/biticon/category/${item.name}.png`"  v-if="currentCategory==item.category" mode=""></image>
+              <image :src="`/static/biticon/category/${item.name}_.png`"  v-else @click="changeSelect(item,index) " mode=""></image>
+            </view>
+          </view>
+          <view class="m-titles flexs">
+            <view class="titlesub">{{currentText}}</view>
+            <view class="commonfont" @click="showOther=false">{{
+                    $t("home.txt20", ["添加钱包"])
+                  }}</view>
           </view> -->
-        <!-- </view> -->
-        <!-- 		<view class="m-nav flexs">
-          <view v-for="(item,index) in bitlist" :key="index" >
-            <image :src="`/static/biticon/category/${item.name}.png`"  v-if="currentCategory==item.category" mode=""></image>
-            <image :src="`/static/biticon/category/${item.name}_.png`"  v-else @click="changeSelect(item,index) " mode=""></image>
+          <!-- 图标导航栏 -->
+          <view class="iconNav">
+            <view class="nav-item" v-for="(item,index) in bitlist" :key="index">
+              <image :src="item.icon_select" v-if="currentCategory==item.category" mode="" style="height: 60rpx; width: 60rpx;"></image>
+              <image :src="item.icon_un_select" v-else @click="changeSelect(item,index) " mode="" style="height: 60rpx; width: 60rpx;"></image>
+            </view>
           </view>
-        </view>
-        <view class="m-titles flexs">
-          <view class="titlesub">{{currentText}}</view>
-          <view class="commonfont" @click="showOther=false">{{
-                  $t("home.txt20", ["添加钱包"])
-                }}</view>
-        </view> -->
-        <!-- 图标导航栏 -->
-        <view class="iconNav">
-          <view class="nav-item" v-for="(item,index) in bitlist" :key="index">
-            <image :src="item.icon_select" v-if="currentCategory==item.category" mode=""></image>
-            <image :src="item.icon_un_select" v-else @click="changeSelect(item,index) " mode=""></image>
-          </view>
-        </view>
-        <view class="subTitle">
-          <view class="titlesub">{{ currentText }}</view>
-          <view class="commonfont text-right flex-1" @click="getClassify(false)">
-            <image src="/static/index/add.png" class="icon-add" mode=""></image>
-          </view>
-        </view>
 
-        <view class="listBox">
-          <template v-if="walletList.length">
-            <view class="item" v-for="(item,index) in walletList" :key="index"
-                  @click="selectMoney(item,index)" :class="{'active':item.selected==true}">
-              <view class="content">
-                <view class="title">
-                  <view>
-                    <text class="color-f8"
-                          v-if="currentText == 'DLMU' && index == 0">{{ $t('home.txt148', ['初始']) }}
-                    </text>
-                    {{ item.name }}
+          <view class="listBox">
+           <!-- 币安链标题 -->
+            <view class="subTitle">
+              <view class="titlesub">币安只能链</view>
+              <view class="commonfont text-right flex-1" @click="getClassify(false)">
+                <image src="/static/index/add.png" class="icon-add" mode=""></image>
+              </view>
+            </view>
+            <template v-if="walletList.length">
+              <view class="item" v-for="(item,index) in walletList" :key="index"
+                    @click="selectMoney(item,index)" :class="{'active':item.selected==true}">
+                <view class="content" ref="content">
+                  <view class="title">
+                    <view>
+                      <text class="color-f8"
+                            v-if="currentText == 'DLMU' && index == 0">{{ $t('home.txt148', ['初始']) }}
+                      </text>
+                      {{ item.name }}
+                    </view>
+<!--                    <view class="dot"></view>-->
+                    <image v-if="" src="/static/index/dot.png" class="dot"></image>
+                  </view>
+                  <view class="adr">
+                    <text>{{ item.addressx }}</text>
+                    <view class="copyBtn" @click="copy(item.address)">复制</view>
                   </view>
                 </view>
-                <view class="adr">
-                  <text>{{ item.addressx }}</text>
-                  <view class="copyBtn" @click="copy(item.address)">复制</view>
-                </view>
               </view>
-              <view class="dot"></view>
-            </view>
-          </template>
-        </view>
+            </template>
+          </view>
 
+        </view>
       </view>
       <view class="addcreate" v-if="addcreate" style="padding: 30rpx 30rpx;">
         <view class="input-item">
@@ -137,8 +139,10 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 import {request} from '@/m-subpack/base';
 import {Assets} from '@/decorator/wallet';
 import {createWallet, getWalletList, saveWallet, saveCurrentWallet, getCurrentWallet} from '../libs/wallet.js';
-
-@Component()
+import Image from "@/m-common/common/components/image.vue";
+@Component({
+  components: {Image}
+})
 @Assets()
 export default class Wellet extends Vue {
 
@@ -174,7 +178,6 @@ export default class Wellet extends Vue {
   };
   currentCategoryText = {};
 
-
   mounted() {
     this.searchText = this.$t('home.txt31', ['请输入钱包名称']);
     this.searchText2 = this.$t('home.txt33', ['请再次输入密码']);
@@ -184,6 +187,7 @@ export default class Wellet extends Vue {
     this.btnText = this.$t('home.txt22', ['创建钱包']);
     this.getwalletList(getCurrentWallet().category);
     this.getList();
+
   }
 
   clickCancel() {
@@ -457,6 +461,7 @@ export default class Wellet extends Vue {
       }
     });
   }
+
 }
 </script>
 
@@ -510,10 +515,11 @@ export default class Wellet extends Vue {
 
   width: 750rpx;
   height: 944rpx;
-  width: calc(100% - 60rpx);
-  padding: 0 30rpx;
+  //width: calc(100% - 60rpx);
+  //padding: 0 30rpx;
   background: #F5FAFD;
-
+  display: flex;
+  flex-direction: row;
   .node {
     image {
       width: 24rpx;
@@ -581,12 +587,9 @@ export default class Wellet extends Vue {
   }
 
   .icon-add {
-    width: 60rpx !important;
-    height: 60rpx !important;
-    border-radius: 50%;
-    background: #EEF6FF;
-    position: relative;
-    transform: translateX(40rpx);
+    width: 36rpx;
+    height: 36rpx;
+
   }
 
   .m-nav {
@@ -609,6 +612,7 @@ export default class Wellet extends Vue {
         height: 60rpx;
         // margin-right: 60rpx;
       }
+
 
       &.classify {
         position: fixed;
@@ -675,7 +679,6 @@ export default class Wellet extends Vue {
   font-weight: bold;
   color: #333333;
 
-  margin-right: 30rpx;
   // margin: 30rpx 0;
 }
 
@@ -741,12 +744,11 @@ export default class Wellet extends Vue {
 }
 
 .topIcon {
-  padding-top: 26rpx;
-  padding-bottom: 46rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #F5FAFD;
+  border-bottom: 1px solid #E9E9E9;
 
   .icon {
     width: 56rpx;
@@ -763,7 +765,8 @@ export default class Wellet extends Vue {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    width: 150rpx;
+    height: 35rpx;
     .title {
       font-size: 36rpx;
       color: #333333;
@@ -776,30 +779,34 @@ export default class Wellet extends Vue {
   }
 
   .iconNav {
-    width: 100%;
+    width: 166rpx;
     overflow-x: scroll;
     display: flex;
     align-items: center;
-
+    flex-direction: column;
+    background-color: #F6F6F8;
     .nav-item {
-      margin-right: 34rpx;
+      margin-bottom: 34rpx;
 
-      image {
-        width: 82rpx;
-        height: 82rpx;
-      }
+      //image {
+      //  width: 82rpx;
+      //  height: 82rpx;
+      //}
     }
   }
 
+
   .subTitle {
-    margin: 47rpx 0 33rpx;
+    //margin: 47rpx 0 33rpx;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    width: 556rpx;
+    margin: 22rpx 29rpx 26rpx 27rpx;
     .titlesub {
       font-size: 36rpx;
       color: #333333;
+      font-weight: bold;
     }
 
     .icon-add {
@@ -809,22 +816,35 @@ export default class Wellet extends Vue {
   }
 
   .listBox {
+    display: flex;
+    align-items: flex-start;
+    width: 615rpx;
+    flex-direction: column;
+    background-color: #FCFDFF;
     .item {
-      padding: 32rpx 44rpx 32rpx 27rpx;
-      margin-bottom: 31rpx;
       background: #FFFFFF;
       border-radius: 20rpx;
       color: #000000;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin: 26rpx 31rpx 19rpx 28rpx ;
+      width: 556rpx;
+      height: 146rpx;
 
       .content {
         flex: 1;
-
+        padding: 23rpx;
         .title {
           font-size: 30rpx;
           margin-bottom: 17rpx;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .dot {
+          background: #FFFFFF;
+          margin-right: 31rpx;
+          }
         }
 
         .adr {
@@ -866,12 +886,9 @@ export default class Wellet extends Vue {
             background: rgba(240, 242, 246, 0.6600);
           }
         }
-
-        .dot {
-          background: #FFFFFF;
-        }
       }
     }
   }
 }
+
 </style>
