@@ -31,9 +31,8 @@ export function toPage(url) {
         '/pages/wallet/walletDetail',
         '/pages/my/agreementList'
     ];
-
     if (isTx() && whiteList.some(i=>url.startsWith(i))) {
-        android.startNewActivity(true, `${window.location.href}${url.splice(1)}`);
+       android.startNewActivity(true, `${window.location.href}${url.slice(1,url.length)}`);
     } else if (url.startsWith('http')) {
         window.location.href = url;
     } else {
