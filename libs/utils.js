@@ -33,7 +33,7 @@ export function toPage(url) {
     ];
 
     if (isTx() && whiteList.some(i=>url.startsWith(i))) {
-        android.startNewActivity(true, `${window.location.host}/#${url}`);
+        android.startNewActivity(true, `${window.location.href}${url.splice(1)}`);
     } else if (url.startsWith('http')) {
         window.location.href = url;
     } else {
