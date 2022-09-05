@@ -409,7 +409,7 @@ export default class Wellet extends Vue {
   changeSelect(item, index) {
     let inde = uni.getStorageSync("chin")
     this.chin = inde[index]
-    console.log("index", inde)
+    // console.log("index", inde)
     this.currentCategory = item.category;
     this.currentText = this.currentCategoryText[this.currentCategory];
     this.getwalletList(item.category);
