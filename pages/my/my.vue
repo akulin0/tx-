@@ -66,11 +66,11 @@ export default {
           title: this.$t('ibinz.msg5', ['关于我们']),
           url: '/pages/my/agreementList'
         },
-        {
-        	img: '/static/my/moon2.png',
-        	title: this.$t('ibinz.msga',["暗夜模式"]),
-        	url: '/pages/my/nightMode'
-        }
+        // {
+        // 	img: '/static/my/moon2.png',
+        // 	title: this.$t('ibinz.msga',["暗夜模式"]),
+        // 	url: '/pages/my/nightMode'
+        // }
       ],
       isCopy: false,
       show: false,

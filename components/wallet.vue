@@ -39,14 +39,15 @@
           <view class="iconNav">
             <view class="nav-item" v-for="(item,index) in bitlist" :key="index">
               <image :src="item.icon_select" v-if="currentCategory==item.category" mode="" style="height: 60rpx; width: 60rpx;"></image>
-              <image :src="item.icon_un_select" v-else @click="changeSelect(item,index) " mode="" style="height: 60rpx; width: 60rpx;"></image>
+              <image :src="item.icon_un_select" v-else @click="changeSelect(item, index)" mode="" style="height: 60rpx; width: 60rpx;"></image>
+
             </view>
           </view>
 
           <view class="listBox">
            <!-- 币安链标题 -->
             <view class="subTitle">
-              <view class="titlesub">币安智能链</view>
+              <view class="titlesub">{{chin}}</view>
               <view class="commonfont text-right flex-1" @click="getClassify(false)">
                 <image src="/static/index/add.png" class="icon-add" mode=""></image>
               </view>
@@ -171,6 +172,7 @@ export default class Wellet extends Vue {
   activecolor = '';
   hintname = '';
   hintpwd = '';
+  chin = '币安智能链'
   data: Person = {
     pass: '',
     name: '',
@@ -196,6 +198,7 @@ export default class Wellet extends Vue {
   }
 
   getClassify(status) {
+    console.log("chang", bitlist)
     this.showOther = false;
     this.isClassify = status;
   }
@@ -297,7 +300,6 @@ export default class Wellet extends Vue {
         }
       });
 
-
       // 保存
       await saveWallet(Object.assign({
         name: this.data.name,
@@ -333,6 +335,7 @@ export default class Wellet extends Vue {
       this.addcreate = false;
 
       this.getwalletList(this.currentCategory);
+
     }
   }
 
@@ -392,7 +395,6 @@ export default class Wellet extends Vue {
     this.bitlist = data;
     for (var index in data) {
       this.currentCategoryText[data[index].category] = data[index].name;
-
     }
   }
 
@@ -405,7 +407,9 @@ export default class Wellet extends Vue {
 
   }
 
-  changeSelect(item) {
+  changeSelect(item, index) {
+    let inde = uni.getStorageSync("chin")
+    this.chin = inde[index]
     this.currentCategory = item.category;
     this.currentText = this.currentCategoryText[this.currentCategory];
     this.getwalletList(item.category);
