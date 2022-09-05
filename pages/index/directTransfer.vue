@@ -133,12 +133,17 @@ export default class Idnex extends Vue {
     this.flag = false;
     this.data.address = opt.address;
     this.symbol = opt.symbol;
-    this.coin_id = opt.coin_id;
     this.balance = opt.balance;
     this.currentWallet = {...getCurrentWallet()};
   }
 
   async onShow() {
+    let index = uni.getStorageSync("index");
+    this.id = uni.getStorageSync(`coin_id`);
+    this.coin_id = this.id[index]
+
+    // console.log("this.coin_id", this.coin_id)
+
     this.title = this.$t('home.txt80', ['直接转账']);
     this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
     this.btnTitle = this.$t('home.txt56', ['确认']);
@@ -230,6 +235,7 @@ export default class Idnex extends Vue {
 
     uni.hideLoading();
     console.log('data: ', data);
+
   }
 
   //转账
@@ -292,7 +298,6 @@ export default class Idnex extends Vue {
       // }
       this.$refs.inputDialog.open();
       const {address, category_name,id,category} = getCurrentWallet();
-
       const {
         data
       } = await request({
@@ -311,6 +316,7 @@ export default class Idnex extends Vue {
           gas_price: gasPrice
         }
       });
+
       this.$refs.button.hideLoading();
       uni.showToast({
         title: this.$t('home.txt128', ['转账申请已提交'])

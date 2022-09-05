@@ -113,7 +113,7 @@
 				<view class="goods columns" style="padding: 0 32rpx;">
 					<!-- {{coinLists}} -->
 					<view :class="[btn === false?'goods-items flexs':'goods-items-night flexs']" v-for="(item,index) in coinLists" :key="index"
-						@click="goTo(`/pages/index/TokenDetails?info=${JSON.stringify(item)}`)">
+						@click="goTo(`/pages/index/TokenDetails?info=${JSON.stringify(item)}`, index)">
 						<view class="log flexs">
 							<image class="logo" :src="item.icon" mode=""></image>
 							<view>{{item.symbol}}</view>
@@ -371,7 +371,10 @@
 				_coinList = data.list;
 				this.coinLists = _coinList;
         this.totalMoney = data.sum_value;
-
+        uni.setStorageSync("coin_id", data.list.map((item) => {
+          return item.coin_id
+        }));
+        //uni.setStorageSync("coin_id", coin_id);
 			}
 
 			this.coinLists = _coinList;
@@ -512,10 +515,9 @@
 			})
 		}
 
-
-
-		goTo(url) {
+		goTo(url, index) {
       this.toPage(url)
+      uni.setStorageSync("index", index)
 		}
 
 		open() {

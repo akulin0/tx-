@@ -46,15 +46,15 @@
           <view class="listBox">
            <!-- 币安链标题 -->
             <view class="subTitle">
-              <view class="titlesub">币安只能链</view>
+              <view class="titlesub">币安智能链</view>
               <view class="commonfont text-right flex-1" @click="getClassify(false)">
                 <image src="/static/index/add.png" class="icon-add" mode=""></image>
               </view>
             </view>
             <template v-if="walletList.length">
-              <view class="item" v-for="(item,index) in walletList" :key="index"
+              <view class="item" ref="class" v-for="(item,index) in walletList" :key="index"
                     @click="selectMoney(item,index)" :class="{'active':item.selected==true}">
-                <view class="content" ref="content">
+                <view class="content">
                   <view class="title">
                     <view>
                       <text class="color-f8"
@@ -63,7 +63,7 @@
                       {{ item.name }}
                     </view>
 <!--                    <view class="dot"></view>-->
-                    <image v-if="" src="/static/index/dot.png" class="dot"></image>
+                    <image v-if="item.selected==true" src="/static/index/dot.png" class="dot"></image>
                   </view>
                   <view class="adr">
                     <text>{{ item.addressx }}</text>
@@ -155,6 +155,7 @@ export default class Wellet extends Vue {
   show = false;
   showOther = true;
   isClassify = false;
+  cont_dot = false;
   currentCategory = 0;
   percents = 0;
   currentText = '';
@@ -187,7 +188,6 @@ export default class Wellet extends Vue {
     this.btnText = this.$t('home.txt22', ['创建钱包']);
     this.getwalletList(getCurrentWallet().category);
     this.getList();
-
   }
 
   clickCancel() {
@@ -425,6 +425,7 @@ export default class Wellet extends Vue {
   }
 
   selectMoney(item) {
+    console.log("ref", this.$refs.class)
     this.$emit('changeWallet', item);
     item['category_name'] = this.currentText
     item['category'] = this.currentCategory
@@ -433,6 +434,7 @@ export default class Wellet extends Vue {
     this.$forceUpdate();
     this.close();
 
+
     if(this.isTx()){
       android.refresh(false,0)
     }else {
@@ -440,7 +442,6 @@ export default class Wellet extends Vue {
         url:'/pages/index/index'
       })
     }
-
   }
 
   goTo(url) {
