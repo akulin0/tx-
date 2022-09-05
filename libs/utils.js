@@ -32,7 +32,8 @@ export function toPage(url) {
         '/pages/my/agreementList'
     ];
     if (isTx() && whiteList.some(i=>url.startsWith(i))) {
-       android.startNewActivity(true, `${window.location.href}${url.slice(1,url.length)}`);
+        const location =  window.location
+        android.startNewActivity(true, `${location.origin}${location.pathname}#${url}`);
     } else if (url.startsWith('http')) {
         window.location.href = url;
     } else {
