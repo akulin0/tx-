@@ -1,15 +1,16 @@
 <template>
-	<view :class="[btn === false?'index':'index-night']">
+	<view :class="[btn === false?'index':'index-night']" style="height: 100%; background-color: white;">
 		<view class="index-content" v-if="walletInfo.id" :style="{'margin-top': isTx() ? '0':'60rpx'}">
 			<view :class="[btn === false?'header flexs headpiece':'header-night flexs headpiece']">
 				<view class="changes flexs header-img" @click="open">
 					<span style="margin-left: 20rpx;width:70%;" class="text-sty">{{walletInfo.name}}</span>
 					<span>
-						<image class="icon-switch" :src="[btn === false?require('../../static/index/31right.png'):require('../../static/index/night/fh-n.png')]"></image>
+						<image class="icon-switch" src='../../static/index/31right.png'></image>
 					</span>
 				</view>
 				<view class="flexs headerimg">
-					<image :src="[btn === false?require('../../static/index/money.png'):require('../../static/index/night/qb-n.png')]" @click="goTo('/pages/index/addcreate?type=1')" mode=""></image>
+					<image src="../../static/index/money.png" @click="goTo('/pages/index/addcreate?type=1')" mode=""></image>
+<!--          <image :src="[btn === false?require('../../static/index/money.png'):require('../../static/index/night/qb-n.png')]" @click="goTo('/pages/index/addcreate?type=1')" mode=""></image>-->
 					<!-- <image src="/static/index/sao.png" @click="scan()" mode=""></image> -->
 				</view>
 			</view>
@@ -37,6 +38,7 @@
 									:style="{fontSize:$i18n.locale == 'en-US'?'22rpx':''}">{{$t("home.txt3", ["钱包详情"]) }}</span> -->
 								<image style="margin-left: 8rpx;margin-top: 6rpx;" class="righta"
                        :src="btn === false?require('../../static/index/right3.png'):require('../../static/index/night/xq-n.png')" alt="">
+
 									<view class="details">
 										详情
 									</view>
@@ -370,6 +372,7 @@
 				})
 				_coinList = data.list;
 				this.coinLists = _coinList;
+        console.log("_coinList", this.coinLists)
         this.totalMoney = data.sum_value;
         uni.setStorageSync("coin_id", data.list.map((item) => {
           return item.coin_id
@@ -648,8 +651,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //background-image: url("/static/my/bj.png");
-    //background-size: 100% 100%;
+    background-image: url("/static/my/bj.png");
+    background-size: 100% 100%;
   }
   .index-content{
     width: 100%;

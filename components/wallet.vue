@@ -786,6 +786,7 @@ export default class Wellet extends Vue {
     align-items: center;
     flex-direction: column;
     background-color: #F6F6F8;
+    margin-top: 20rpx;
     .nav-item {
       margin-bottom: 34rpx;
 

@@ -1,7 +1,8 @@
 <template>
 	<view class="nightMode page">
-    <u-navbar  v-if="!isTx()"  :is-back="true" title="" :title-width="227" class="zhiti":title-bold="true">
-    </u-navbar>
+<!--    <u-navbar  v-if="!isTx()"  :is-back="true" title="" :title-width="227" class="zhiti":title-bold="true">-->
+<!--    </u-navbar>-->
+    <view class="icon-left" @click="dark()"></view>
 		<view class="night-text">
       <img class="night-logo" src="/static/my/dark.png" alt="moon">
 			<view class="text-top">
@@ -29,14 +30,21 @@ export default{
 	// console.log('kaishi',this.btn)
   // },
   mounted() {
-    this.btn = localStorage.getItem("btn") === "true";
+    this.btn = uni.getStorageSync("btn") === "true";
   },
+
   methods: {
+    dark() {
+      history.back()
+    },
     nightOpen(){
       this.btn = !this.btn;
-      localStorage.setItem("btn", this.btn);
+      console.log("nightopen", this.btn)
+      uni.setStorageSync("btn", this.btn);
       window.location.reload();
-    }
+
+    },
+
   }
 }
 </script>
@@ -85,7 +93,12 @@ export default{
         margin-top: 60%;
       }
     }
-
-
+    .icon-left {
+      content:url("/static/my/left.png");
+      width: 21rpx;
+      height: 39rpx;
+      position: absolute;
+      transform: translate(-340rpx, 40rpx);
+    }
 	}
 </style>
