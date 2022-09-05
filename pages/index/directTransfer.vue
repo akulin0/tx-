@@ -118,7 +118,7 @@ export default class Idnex extends Vue {
     address: '',
     money: '',
   };
-  symbol = '';
+  symbol = 'Gwei';
   list = [];
   current = 1;
   balance = '';
@@ -132,7 +132,7 @@ export default class Idnex extends Vue {
   onLoad(opt: any) {
     this.flag = false;
     this.data.address = opt.address;
-    this.symbol = opt.symbol;
+    // this.symbol = opt.symbol;
     this.balance = opt.balance;
     this.currentWallet = {...getCurrentWallet()};
   }
