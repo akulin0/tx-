@@ -37,27 +37,46 @@
         </view>
       </view>
       <view style="width: 100%;height: 20rpx;background-color: #F5F5F5;"></view>
+      <view class="commonfont" style="margin-left: 30rpx;">
+        {{ $t('home.txt87', ['矿工费']) }}
+      </view>
       <view class="mystyle" v-show="currentWallet.category!=3">
-        <view class="commonfont">
-          {{ $t('home.txt87', ['矿工费']) }}
-        </view>
-        <view class="flex-j-a">
-          <view class="transdemo" v-for="(item,index) in list" :key="index" @click="current=index"
-                :style="current==index?'border-color:#2DA5E1':''">
-            <view class="demofont" :style="current==index?'color:#2DA5E1':''">{{ item.t }}</view>
-            <view class="demofonts" :style="current==index?'color:#2DA5E1':''">
-              <view>{{ feeInfo[item.v] || 0 }}{{ symbol }}</view>
-              <view>≈${{ feeInfo[item.m] || 0 }}</view>
-            </view>
-            <view class="demofontsub" :style="current==index?'color:#2DA5E1':''">
-              ≈{{ item.s }}{{ $t('home.txt88', ['分钟']) }}
-            </view>
-            <image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>
+        <view class="flex-j-box">
+          <view @click="close_custom" style="display: flex;flex-direction: row;">
+              <view class="transdemo" v-for="(item,index) in list" :key="index" @click="current=index"
+                    :style="current==index?'border-color:#2DA5E1':''">
+                <view class="demofont" :style="current==index?'color:#2DA5E1':''">{{ item.t }}</view>
+                <view class="demofonts" :style="current==index?'color:#2DA5E1':''">
+                  <view>{{ feeInfo[item.v] || 0 }}{{ symbol }}</view>
+                  <view>≈${{ feeInfo[item.m] || 0 }}</view>
+                </view>
+                <view class="demofontsub" :style="current==index?'color:#2DA5E1':''">
+                  ≈{{ item.s }}{{ $t('home.txt88', ['秒']) }}
+                </view>
+                <image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>
+              </view>
           </view>
-
+          <!--自定义-->
+<!--          <view @click="customize">-->
+<!--            <view class="transdemo" v-for="(index) in custom" @click="current=index" :style="current==index?'border-color:#2DA5E1':''">-->
+<!--              <view :style="current==index?'color:#2DA5E1':''" class="cust">自定义</view>-->
+<!--              <image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>-->
+<!--            </view>-->
+<!--          </view>-->
         </view>
-
-
+      </view>
+      <view class="box-state" v-if="state === true">
+        <view class="text-stay">自定义矿工费</view>
+        <view class="text-box">
+          <text>Gas Price(Gwei)</text>
+          <text style="position: relative;transform: translateX(20rpx);">Gas Limit(gas)</text>
+        </view>
+        <view class="box-input">
+            <input class="uni-input" type="digit" value="5" />
+            <input class="uni-input" type="digit" value="21000"/>
+        </view>
+        <view class="text-stay" style="position: relative;transform: translateY(-10px);" >预计时间：3秒</view>
+<!--        {{feeInfo[item.v]}}-->
       </view>
       <base-button v-if="data.address&&data.money" style="margin: 60rpx auto;width: 690rpx;" ref="button"
                    @submit="confim()" :title="btnTitle"/>
@@ -101,8 +120,11 @@ import {
 } from '@/m-subpack/base';
 
 import {getCurrentWallet, getWalletPrivateKey, getWalletPwd} from '@/libs/wallet';
+import UniDataPickerView from "@/uni_modules/uni-data-picker/components/uni-data-pickerview/uni-data-pickerview.vue";
 
-@Component({})
+@Component({
+  components: {UniDataPickerView}
+})
 @Assets()
 export default class Idnex extends Vue {
 
@@ -118,7 +140,7 @@ export default class Idnex extends Vue {
     address: '',
     money: '',
   };
-  symbol = '';
+  symbol = 'BNB';
   list = [];
   current = 1;
   balance = '';
@@ -128,7 +150,8 @@ export default class Idnex extends Vue {
   currentWallet = {};
   flag = false;
   Currency_name = "";
-
+  custom = '';
+  state = false
 
   onLoad(opt: any) {
     this.flag = false;
@@ -144,8 +167,6 @@ export default class Idnex extends Vue {
     this.id = uni.getStorageSync(`coin_id`);
     this.coin_id = this.id[index]
 
-    // console.log("this.coin_id", this.coin_id)
-
     this.title = this.$t('home.txt80', ['直接转账']);
     this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
     this.btnTitle = this.$t('home.txt56', ['确认']);
@@ -154,21 +175,28 @@ export default class Idnex extends Vue {
       t: this.$t('home.txt89', ['慢']),
       v: 'safeGasPrice',
       m: 'safeGasPriceDollar',
-      s: '60'
+      s: '3'
     },
       {
         t: this.$t('home.txt90', ['推荐']),
         v: 'proposeGasPrice',
         m: 'proposeGasPriceDollar',
-        s: '30'
+        s: '3'
       },
       {
         t: this.$t('home.txt91', ['快']),
         v: 'fastGasPrice',
         m: 'fastGasPriceDollar',
-        s: '10'
-      }
+        s: '3'
+      },
     ];
+
+    this.custom = [{
+      t: this.$t('home.txt91', ['快']),
+      v: 'fastGasPrice',
+      m: 'fastGasPriceDollar',
+      s: '10'
+    },];
 
 
     // await this.init();
@@ -226,7 +254,7 @@ export default class Idnex extends Vue {
       url: '/walletselect_fee',
       method: 'post',
       params: {
-        coin_id: coin_id
+        coin_id: this.coin_id
       }
     });
     this.feeInfo = data;
@@ -236,7 +264,7 @@ export default class Idnex extends Vue {
     this.gasPriceDollar = data.proposeGasPriceDollar;
 
     uni.hideLoading();
-    console.log('data: ', data);
+    console.log('feeInfo: ', this.feeInfo);
 
   }
 
@@ -262,6 +290,8 @@ export default class Idnex extends Vue {
         icon: 'none',
       });
     }
+
+
     this.flag = true;
     this.confim();
     // setTimeout(() => {
@@ -346,6 +376,14 @@ export default class Idnex extends Vue {
   cancel() {
     this.show = false;
     this.pass = '';
+  }
+
+  customize() {
+    this.state = true;
+  }
+
+  close_custom() {
+    this.state = false;
   }
 }
 // import {
@@ -738,7 +776,8 @@ export default class Idnex extends Vue {
     border: 1px solid #CCCCCC;
     border-radius: 10rpx;
     position: relative;
-
+    justify-content: center;
+    margin: 10rpx;
     .select {
       position: absolute;
       top: -2rpx;
@@ -841,5 +880,51 @@ export default class Idnex extends Vue {
   font-size: 30rpx;
   line-height: 96rpx;
   color: #fff;
+}
+
+.cust {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #666666;
+  line-height: 62rpx;
+}
+
+.box-state {
+  margin: 30rpx 40rpx;
+  height: 350rpx;
+  width: 680rpx;
+  background-color: #F5F6F8;
+  border-radius: 12rpx;
+}
+
+.flex-j-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.uni-input {
+  width: 280rpx;
+  height: 70rpx;
+  background-color: white;
+  border-radius: 12rpx;
+  padding: 10rpx;
+}
+
+.box-input {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10rpx;
+}
+
+.text-stay {
+  padding: 30rpx
+}
+
+.text-box {
+  display: flex;
+  margin-right: 96rpx;
+  justify-content: space-around;
 }
 </style>
