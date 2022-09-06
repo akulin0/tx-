@@ -127,6 +127,7 @@
 		onLoad(opt) {
 				let newInfo =	JSON.parse(opt.info);
 				this.info = {...newInfo,otherType:true}
+        uni.setStorageSync("symbol", this.info.symbol)
 		}
 		
 		onReachBottom() {

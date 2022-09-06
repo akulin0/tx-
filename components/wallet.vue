@@ -40,7 +40,6 @@
             <view class="nav-item" v-for="(item,index) in bitlist" :key="index">
               <image :src="item.icon_select" v-if="currentCategory==item.category" mode="" style="height: 60rpx; width: 60rpx;"></image>
               <image :src="item.icon_un_select" v-else @click="changeSelect(item, index)" mode="" style="height: 60rpx; width: 60rpx;"></image>
-
             </view>
           </view>
 
@@ -407,9 +406,11 @@ export default class Wellet extends Vue {
   }
 
   changeSelect(item, index) {
-    let inde = uni.getStorageSync("chin")
-    this.chin = inde[index]
+    // let inde = uni.getStorageSync("chin")
+    // this.chin = inde[index]
     // console.log("index", inde)
+    let arra = ['以太坊', '波场', 'FIL', '币安链', '火币链']
+    this.chin = arra[index]
     this.currentCategory = item.category;
     this.currentText = this.currentCategoryText[this.currentCategory];
     this.getwalletList(item.category);

@@ -52,9 +52,9 @@
 					url: '/wallet-getChainCategory',
 					method: 'get',
 				})
-      uni.setStorageSync("chin", data.map((item) => {
-          return item.title
-      }));
+      // uni.setStorageSync("chin", data.map((item) => {
+      //     return item.title
+      // }));
 
 			this.list = data;
 			 uni.hideLoading();

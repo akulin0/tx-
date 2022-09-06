@@ -93,7 +93,7 @@
 						{{walletInfo.category_name}}{{$t("home.txt8", ["资产"])}}
 					</view>
 					<!-- <u-icon @click="refreshWalletkBalance()" name="reload" style="margin-left: 10rpx;" size="30"> -->
-					</u-icon>
+<!--					</u-icon>-->
 				</view>
 				<view class="flexs">
 					<!-- <view style="width: 200rpx;">
@@ -302,7 +302,7 @@
       if(!this.walletInfo){
         this.checkLogin()
       }
-      console.log(this.walletInfo,'------------');
+      // console.log(this.walletInfo,'------------');
 
       this.token = uni.getStorageSync("token");
 			this.isPassword = uni.getStorageSync("isPassword");
@@ -373,6 +373,7 @@
 				_coinList = data.list;
 				this.coinLists = _coinList;
         console.log("_coinList", this.coinLists)
+
         this.totalMoney = data.sum_value;
         uni.setStorageSync("coin_id", data.list.map((item) => {
           return item.coin_id

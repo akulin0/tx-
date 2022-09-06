@@ -18,7 +18,7 @@
           <view class="commonfont flex-j-a">
             <view>{{ $t('home.txt83', ['转账金额']) }}</view>
             <view style="font-weight: 500;" @click="topage('/pages/index/tokenList')">
-              {{ symbol }}
+              {{ Currency_name }}
               <u-icon name="arrow-right" size="28"></u-icon>
             </view>
           </view>
@@ -118,7 +118,7 @@ export default class Idnex extends Vue {
     address: '',
     money: '',
   };
-  symbol = 'Gwei';
+  symbol = '';
   list = [];
   current = 1;
   balance = '';
@@ -127,6 +127,7 @@ export default class Idnex extends Vue {
   unit1 = '';
   currentWallet = {};
   flag = false;
+  Currency_name = "";
 
 
   onLoad(opt: any) {
@@ -135,6 +136,7 @@ export default class Idnex extends Vue {
     // this.symbol = opt.symbol;
     this.balance = opt.balance;
     this.currentWallet = {...getCurrentWallet()};
+    this.Currency_name = uni.getStorageSync("symbol")
   }
 
   async onShow() {
