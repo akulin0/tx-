@@ -522,6 +522,7 @@
 		goTo(url, index) {
       this.toPage(url)
       uni.setStorageSync("index", index)
+      console.log("index", index)
 		}
 
 		open() {

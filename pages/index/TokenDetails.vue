@@ -158,7 +158,7 @@
 			// setTimeout(()=>{
 			// 	this.infoList = [...this.infoList, ...infoList];
 			// },1000)
-			
+      uni.setStorageSync("from_address", this.walletInfo.address)
 		}
 		// 获取资产记录列表
 		async getList(type) {

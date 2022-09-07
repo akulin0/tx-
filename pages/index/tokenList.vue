@@ -9,9 +9,9 @@
 		</u-navbar>
 		<view class="content">
 			<view class="goods-items flexs flex-j-a" v-for="(item,index) in coinLists" :key="index"
-				@click="toPage(item)" v-if="isShow(item)">
+				@click="toPage(item)">
 				<view class="log flex-align">
-					<image class="logo" :src="item.icon" mode=""></image>
+					<image class="logo" :src="item.icon_url" mode=""></image>
 					<view>{{item.symbol}}</view>
 				</view>
 				<view class="logr">
@@ -27,144 +27,144 @@
 </template>
 
 <script lang="ts">
-	import {
-		Assets
-	} from "@/decorator/wallet"
-	import {
-		Component,
-		Vue
-	} from "vue-property-decorator";
-
-	import {
-		request,
-		navigateBack
-	} from "@/m-subpack/base";
-
-
-	@Component({})
-	@Assets()
-	export default class Idnex extends Vue {
-		placeholder = "";
-		keyword = '';
-		seaText = "";
-		actionSty = {
-			color: "#2DA5E1"
-		};
-
-		async onShow() {
-			this.placeholder = this.$t('home.txt118', ['搜索代币名称/合约/项目名称']);
-			this.seaText = this.$t('home.txt24', ['取消']);
-			this.init();
-
-		}
-
-		toPage(item) {
-			delete item.address;
-			navigateBack(item);
-		}
-
-		isShow(item) {
-			const keyword = this.keyword.toUpperCase()
-			return (item.symbol.toUpperCase().indexOf(keyword) >= 0);
-		}
-
-		cancle() {
-			uni.navigateBack({
-				delta: 1
-			})
-		}
-	}
 	// import {
-	// 	request
+	// 	Assets
+	// } from "@/decorator/wallet"
+	// import {
+	// 	Component,
+	// 	Vue
+	// } from "vue-property-decorator";
+  //
+	// import {
+	// 	request,
+	// 	navigateBack
 	// } from "@/m-subpack/base";
-	// export default {
-	// 	data() {
-	// 		return {
-	// 			Rate: 0,
-	// 			keyword: '',
-	// 			actionSty: {
-	// 				color: "#2DA5E1"
-	// 			},
-	// 			coinList: [],
-	// 			coinLists: [],
-	// 			walletInfo: {},
-	// 			placeholder: this.$t('home.txt118', ['搜索代币名称/合约/项目名称']),
-	// 			seaText: this.$t('home.txt24', ['取消'])
 
-	// 		}
-	// 	},
-	// 	onLoad() {
-	// 		this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
-	// 		this.getCoinList()
-	// 		this.getRate()
-	// 	},
-	// 	methods: {
-	// 		async getRate() {
-	// 			let {
-	// 				data,
-	// 				errorMessage
-	// 			} = await request({
-	// 				url: '/walletConversionRate',
-	// 				method: 'get',
-	// 				params: {
-	// 					"category": this.walletInfo.category
-	// 				}
-	// 			})
-	// 			this.Rate = data || 0
-	// 			console.log(data, '汇率')
 
-	// 		},
-	// 		// 获取资产列表余额
-	// 		async getWalletkBalance(id, index) {
-	// 			let {
-	// 				data,
-	// 				errorMessage
-	// 			} = await request({
-	// 				url: '/walletget-balance',
-	// 				method: 'get',
-	// 				params: {
-	// 					"coin_id": id,
-	// 					"wallet_id": this.walletInfo.id
-	// 				}
-	// 			})
-	// 			this.coinLists = [...this.coinList]
-
-	// 			this.coinLists[index].balance = Number(data.balance).toFixed(4)
-	// 			this.coinLists[index].Moneys = Number(data.balance * this.Rate).toFixed(4)
-	// 		},
-	// 		// 获取当前钱包添加的币种列表
-	// 		async getCoinList() {
-	// 			console.log('11', this.walletInfo);
-	// 			this.coinList = []
-	// 			let {
-	// 				data,
-	// 				errorMessage
-	// 			} = await request({
-	// 				url: '/wallet-get-added-coin-list',
-	// 				method: 'get',
-	// 				params: {
-	// 					"wallet_id": this.walletInfo.id,
-	// 				}
-	// 			})
-	// 			this.coinList = [...data]
-	// 			console.log(11111, this.coinList);
-	// 			this.coinList.map((item, index) => {
-	// 				this.getWalletkBalance(item.coin_id, index)
-	// 			})
-
-	// 		},
-	// 		toPage(item) {
-	// 			uni.redirectTo({
-	// 				url: '/pages/index/directTransfer?coin_id=' + item.coin_id + '&symbol=' + item.symbol
-	// 			})
-	// 		},
-	// 		cancle() {
-	// 			uni.navigateBack({
-	// 				delta: 1
-	// 			})
-	// 		},
+	// @Component({})
+	// @Assets()
+	// export default class Idnex extends Vue {
+	// 	placeholder = "";
+	// 	keyword = '';
+	// 	seaText = "";
+	// 	actionSty = {
+	// 		color: "#2DA5E1"
+	// 	};
+  //
+	// 	async onShow() {
+	// 		this.placeholder = this.$t('home.txt118', ['搜索代币名称/合约/项目名称']);
+	// 		this.seaText = this.$t('home.txt24', ['取消']);
+	// 		this.init();
+  //
+	// 	}
+  //
+	// 	toPage(item) {
+	// 		delete item.address;
+	// 		navigateBack(item);
+	// 	}
+  //
+	// 	isShow(item) {
+	// 		const keyword = this.keyword.toUpperCase()
+	// 		return (item.symbol.toUpperCase().indexOf(keyword) >= 0);
+	// 	}
+  //
+	// 	cancle() {
+	// 		uni.navigateBack({
+	// 			delta: 1
+	// 		})
 	// 	}
 	// }
+	import {
+		request
+	} from "@/m-subpack/base";
+	export default {
+		data() {
+			return {
+				Rate: 0,
+				keyword: '',
+				actionSty: {
+					color: "#2DA5E1"
+				},
+				coinList: [],
+				coinLists: [],
+				walletInfo: {},
+				placeholder: this.$t('home.txt118', ['搜索代币名称/合约/项目名称']),
+				seaText: this.$t('home.txt24', ['取消'])
+
+			}
+		},
+		onLoad() {
+			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
+			this.getCoinList()
+			this.getRate()
+		},
+		methods: {
+			async getRate() {
+				let {
+					data,
+					errorMessage
+				} = await request({
+					url: '/walletConversionRate',
+					method: 'get',
+					params: {
+						"category": this.walletInfo.category
+					}
+				})
+				this.Rate = data || 0
+				console.log(data, '汇率')
+
+
+			},
+			// 获取资产列表余额
+			async getWalletkBalance(id, index) {
+				let {
+					data,
+					errorMessage
+				} = await request({
+					url: '/walletget-balance',
+					method: 'get',
+					params: {
+            "coin_id": id,
+						"wallet_id": this.walletInfo.id
+					}
+				})
+				this.coinLists = [...this.coinList]
+
+				this.coinLists[index].balance = Number(0)
+				this.coinLists[index].Moneys = Number(0)
+
+			},
+			// 获取当前钱包添加的币种列表
+			async getCoinList() {
+				console.log('11', this.walletInfo);
+				this.coinList = []
+				let {
+					data,
+					errorMessage
+				} = await request({
+					url: '/wallet-get-added-coin-list',
+					method: 'get',
+					params: {
+						"wallet_id": this.walletInfo.id,
+					}
+				})
+				this.coinList = [...data]
+				this.coinList.map((item, index) => {
+					return this.getWalletkBalance(item.coin_id, index)
+				})
+			},
+			toPage(item) {
+				uni.redirectTo({
+					url: '/pages/index/directTransfer?coin_id=' + item.coin_id + '&symbol=' + item.symbol
+				})
+			},
+			cancle() {
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+		}
+	}
 </script>
 
 <style scoped lang="scss">
@@ -195,6 +195,8 @@
 					font-size: 28rpx;
 					font-weight: bold;
 					color: #333333;
+          display: flex;
+          justify-content: flex-end;
 				}
 
 				.logr-s {

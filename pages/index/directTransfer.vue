@@ -12,20 +12,20 @@
                    @click="topage(`/pages/my/addressBook?type=1`)"></image>
           </view>
           <input type="text" :placeholder="placeholder" placeholder-style="color:#B3B3B3;font-size:28rpx"
-                 class="i-items" v-model="data.address"/>
+                 class="i-items" v-model="data.address" @input="func"/>
         </view>
         <view class="input-item">
           <view class="commonfont flex-j-a">
             <view>{{ $t('home.txt83', ['转账金额']) }}</view>
             <view style="font-weight: 500;" @click="topage('/pages/index/tokenList')">
-              {{ Currency_name }}
+              {{ Currency}}
               <u-icon name="arrow-right" size="28"></u-icon>
             </view>
           </view>
           <view class="moenyval">
             <input type="number" @keyup="inputChangeMoney(data.money)" :placeholder="placeholder1"
                    placeholder-style="color:#B3B3B3;font-size:28rpx"
-                   class="i-items" v-model="data.money"/>
+                   class="i-items" v-model="data.money" @input="func"/>
             <!-- <span class="all" @click='all()'>{{$t('home.txt85',['全部'])}}</span> -->
           </view>
         </view>
@@ -33,7 +33,7 @@
           <view>
             {{ $t('home.txt86', ['余额']) }}
           </view>
-          <view style="font-weight: 500;">{{ balance }} {{ symbol }}</view>
+          <view style="font-weight: 500;">{{ balance }} {{ Currency_name }}</view>
         </view>
       </view>
       <view style="width: 100%;height: 20rpx;background-color: #F5F5F5;"></view>
@@ -57,12 +57,12 @@
               </view>
           </view>
           <!--自定义-->
-<!--          <view @click="customize">-->
-<!--            <view class="transdemo" v-for="(index) in custom" @click="current=index" :style="current==index?'border-color:#2DA5E1':''">-->
-<!--              <view :style="current==index?'color:#2DA5E1':''" class="cust">自定义</view>-->
-<!--              <image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>-->
-<!--            </view>-->
-<!--          </view>-->
+          <view @click="customize">
+            <view class="transdemo" v-for="(index) in custom" @click="current=index" :style="current==index?'border-color:#2DA5E1':''">
+              <view :style="current==index?'color:#2DA5E1':''" class="cust">自定义</view>
+              <image src="/static/index/select.png" v-show="current==index" class="select" mode=""></image>
+            </view>
+          </view>
         </view>
       </view>
       <view class="box-state" v-if="state === true">
@@ -72,11 +72,13 @@
           <text style="position: relative;transform: translateX(20rpx);">Gas Limit(gas)</text>
         </view>
         <view class="box-input">
-            <input class="uni-input" type="digit" value="5" />
-            <input class="uni-input" type="digit" value="21000"/>
+            <input class="uni-input" type="digit" value="5" v-model="Gwei"/>
+            <input class="uni-input" type="digit" v-model="rate"/>
         </view>
-        <view class="text-stay" style="position: relative;transform: translateY(-10px);" >预计时间：3秒</view>
-<!--        {{feeInfo[item.v]}}-->
+        <view class="mode-box">
+            <view class="text-stay" style="position: relative;transform: translateY(-20rpx);" >预计时间：3秒</view>
+            <view class="mode-input text-stay" style="position: relative;transform: translateY(-20rpx);">{{(rate * Gwei) / 1000000000}}BNB≈${{(((rate * Gwei) / 1000000000) * usdPrice).toFixed(4)}}</view>
+        </view>
       </view>
       <base-button v-if="data.address&&data.money" style="margin: 60rpx auto;width: 690rpx;" ref="button"
                    @submit="confim()" :title="btnTitle"/>
@@ -149,9 +151,15 @@ export default class Idnex extends Vue {
   unit1 = '';
   currentWallet = {};
   flag = false;
-  Currency_name = "";
+  Currency_name = ""
   custom = '';
-  state = false
+  state = false;
+  rate = '21000';
+  from = uni.getStorageSync("from_address");
+  func = this.debounce(this.getFee,1200);
+  usdPrice = '';
+  Gwei = '5';
+  Currency = this.getQueryString();
 
   onLoad(opt: any) {
     this.flag = false;
@@ -159,7 +167,7 @@ export default class Idnex extends Vue {
     // this.symbol = opt.symbol;
     this.balance = opt.balance;
     this.currentWallet = {...getCurrentWallet()};
-    this.Currency_name = uni.getStorageSync("symbol")
+    this.Currency_name = uni.getStorageSync("symbol");
   }
 
   async onShow() {
@@ -226,7 +234,7 @@ export default class Idnex extends Vue {
         break;
     }
     if (!this.gasPrice && this.currentWallet.category != 3) this.getFee(this.coin_id);
-    console.log(this.getFee, '-------');
+    console.log(this.getFee, '--11-----');
   }
 
 
@@ -244,17 +252,21 @@ export default class Idnex extends Vue {
   }
 
   //获取矿工手续费
-  async getFee(coin_id) {
+  async getFee() {
     uni.showLoading({
       title: this.$t('home.txt17', ['加载中'])
     });
+    const {address} = getCurrentWallet();
     const {
       data
     } = await request({
       url: '/walletselect_fee',
       method: 'post',
       params: {
-        coin_id: this.coin_id
+        coin_id: this.coin_id,
+        amount: this.data.money,
+        from: address,
+        to: this.data.address,
       }
     });
     this.feeInfo = data;
@@ -262,10 +274,9 @@ export default class Idnex extends Vue {
     this.data.gas = data.gasLimit;
     this.gasPrice = data.proposeGasPrice;
     this.gasPriceDollar = data.proposeGasPriceDollar;
-
-    uni.hideLoading();
-    console.log('feeInfo: ', this.feeInfo);
-
+    this.usdPrice = data.usdPrice;
+        uni.hideLoading();
+    // console.log('feeInfo: ', this.feeInfo);
   }
 
   //转账
@@ -309,7 +320,6 @@ export default class Idnex extends Vue {
       return this.$refs.inputDialog.open();
     }
 
-
     // debugger
     this.show = false;
     let current = '';
@@ -345,7 +355,8 @@ export default class Idnex extends Vue {
           private_key: await getWalletPrivateKey(category_name, address),
           //转账手续费 1、慢 2、标准 3、快
           transaction_fee_type: current,
-          gas_price: gasPrice
+          gas_price: gasPrice,
+          gas_limit: this.data.gas,
         }
       });
 
@@ -364,7 +375,6 @@ export default class Idnex extends Vue {
       //TODO handle the exception
       this.pass = '';
     }
-
 
     // if(errorCode!=0){
     // 	this.pass=''
@@ -385,6 +395,48 @@ export default class Idnex extends Vue {
   close_custom() {
     this.state = false;
   }
+
+
+  debounce (func,time) {
+    let context, args, timeId, timestamp
+    function timeout() {
+      const now = Date.now() - timestamp
+      if (now >= 0 && now < time) {
+        timeId = setTimeout(timeout, time - now)
+      } else {
+        timeId = null
+        func.apply(context, args)
+      }
+    }
+    function action() {
+      context = this
+      args = arguments
+      timestamp = Date.now()
+      if (!timeId) timeId = setTimeout(timeout, time)
+    }
+    return action
+  }
+
+  getQueryString() {
+    var qs = window.location.hash.substr(1, window.location.hash.length), // 获取url中"?"符后的字串
+        args = {}, // 保存参数数据的对象
+        newStr = qs.match(/\?(\S*)?/)[1];
+    console.log("newStr", newStr)
+    let items = newStr.length ? newStr.split("&") : [];
+    let item = null;
+    let len = items.length;
+    for(var i = 0; i < len; i++) {
+      item = items[i].split("=");
+      var name = decodeURIComponent(item[0]),
+          value = decodeURIComponent(item[1]);
+      if(name) {
+        args[name] = value;
+      }
+    }
+    console.log("args", args)
+    return args.symbol;
+  }
+
 }
 // import {
 // 	request
@@ -926,5 +978,14 @@ export default class Idnex extends Vue {
   display: flex;
   margin-right: 96rpx;
   justify-content: space-around;
+}
+
+.mode-input {
+
+}
+
+.mode-box {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
