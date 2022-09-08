@@ -296,7 +296,6 @@
       if (this.isTx()) {
         uni.hideTabBar();
       }
-
       this.walletInfo = getCurrentWallet()
 
       if(!this.walletInfo){
@@ -373,6 +372,7 @@
 				_coinList = data.list;
 				this.coinLists = _coinList;
         console.log("_coinList", this.coinLists)
+        uni.setStorageSync("_coinList",this.coinLists)
 
         this.totalMoney = data.sum_value;
         uni.setStorageSync("coin_id", data.list.map((item) => {

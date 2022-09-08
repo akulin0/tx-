@@ -12,20 +12,20 @@
                    @click="topage(`/pages/my/addressBook?type=1`)"></image>
           </view>
           <input type="text" :placeholder="placeholder" placeholder-style="color:#B3B3B3;font-size:28rpx"
-                 class="i-items" v-model="data.address" @input="func"/>
+                 class="i-items" v-model="address" @input="func"/>
         </view>
         <view class="input-item">
           <view class="commonfont flex-j-a">
             <view>{{ $t('home.txt83', ['转账金额']) }}</view>
             <view style="font-weight: 500;" @click="topage('/pages/index/tokenList')">
-              {{ Currency}}
+              {{ Currency }}
               <u-icon name="arrow-right" size="28"></u-icon>
             </view>
           </view>
           <view class="moenyval">
-            <input type="number" @keyup="inputChangeMoney(data.money)" :placeholder="placeholder1"
+            <input type="number" @keyup="inputChangeMoney(money)" :placeholder="placeholder1"
                    placeholder-style="color:#B3B3B3;font-size:28rpx"
-                   class="i-items" v-model="data.money" @input="func"/>
+                   class="i-items" v-model="money" @input="func"/>
             <!-- <span class="all" @click='all()'>{{$t('home.txt85',['全部'])}}</span> -->
           </view>
         </view>
@@ -33,7 +33,7 @@
           <view>
             {{ $t('home.txt86', ['余额']) }}
           </view>
-          <view style="font-weight: 500;">{{ balance }} {{ Currency_name }}</view>
+          <view style="font-weight: 500;">{{ balance }} {{ Currency }}</view>
         </view>
       </view>
       <view style="width: 100%;height: 20rpx;background-color: #F5F5F5;"></view>
@@ -80,7 +80,7 @@
             <view class="mode-input text-stay" style="position: relative;transform: translateY(-20rpx);">{{(rate * Gwei) / 1000000000}}BNB≈${{(((rate * Gwei) / 1000000000) * usdPrice).toFixed(4)}}</view>
         </view>
       </view>
-      <base-button v-if="data.address&&data.money" style="margin: 60rpx auto;width: 690rpx;" ref="button"
+      <base-button v-if="address&&money" style="margin: 60rpx auto;width: 690rpx;" ref="button"
                    @submit="confim()" :title="btnTitle"/>
       <button v-else class="nosubmit">{{ $t('home.txt56', ['确认']) }}</button>
       <!-- 			<u-popup v-model="show" mode="center" border-radius="20" :closeable='false'>
@@ -139,9 +139,9 @@ export default class Idnex extends Vue {
   data = {
     gwei: '',
     gas: '',
-    address: '',
-    money: '',
   };
+  address =  '';
+  money = '';
   symbol = 'BNB';
   list = [];
   current = 1;
@@ -151,30 +151,40 @@ export default class Idnex extends Vue {
   unit1 = '';
   currentWallet = {};
   flag = false;
-  Currency_name = ""
+  Currency_name = "";
   custom = '';
   state = false;
   rate = '21000';
   from = uni.getStorageSync("from_address");
-  func = this.debounce(this.getFee,1200);
   usdPrice = '';
   Gwei = '5';
-  Currency = this.getQueryString();
+  sy = uni.getStorageSync("_coinList")[0].symbol;
+  Currency = this.getQueryString() ? this.getQueryString() : this.sy;
+  coin_id = uni.getStorageSync("_coinList")[0].coin_id;
+  id = '';
+  // coin_list = uni.getStorageSync("_coinList")[0].coin_id;
+  func = this.debounce(this.getFee,1200);
 
   onLoad(opt: any) {
-    this.flag = false;
-    this.data.address = opt.address;
-    // this.symbol = opt.symbol;
-    this.balance = opt.balance;
-    this.currentWallet = {...getCurrentWallet()};
-    this.Currency_name = uni.getStorageSync("symbol");
+    // let z = Object.keys(opt).length
+    // if (z !== 0) {
+      this.flag = false;
+      this.address = opt ? opt.address: "";
+      // this.symbol = opt.symbol;
+      this.balance = opt.balance ? opt.balance : uni.getStorageSync("_coinList")[0].balance;
+      this.currentWallet = {...getCurrentWallet()};
+      this.Currency_name = uni.getStorageSync("symbol");
+      // this.coin_id = uni.getStorageSync("_coinList")[0].coin_id;
+      this.getFee();
+    // }
   }
 
   async onShow() {
-    let index = uni.getStorageSync("index");
-    this.id = uni.getStorageSync(`coin_id`);
-    this.coin_id = this.id[index]
-
+    this.getQueryString()
+    // let index = uni.getStorageSync("index");
+    // this.id = uni.getStorageSync("coin_id");
+    // this.coin_id = this.id[index] ? this.id[index] : this.coin_list;
+    // console.log("onShow", index);
     this.title = this.$t('home.txt80', ['直接转账']);
     this.placeholder = this.$t('home.txt82', ['请输入或粘贴钱包地址']);
     this.btnTitle = this.$t('home.txt56', ['确认']);
@@ -198,23 +208,22 @@ export default class Idnex extends Vue {
         s: '3'
       },
     ];
-
     this.custom = [{
-      t: this.$t('home.txt91', ['快']),
+      t: "自定义",
       v: 'fastGasPrice',
       m: 'fastGasPriceDollar',
-      s: '10'
-    },];
+      s: '3'
+    }];
 
 
     // await this.init();
     this.currentWallet = getCurrentWallet();
-
-    if (!this.symbol) {
-      this.symbol = this.coinLists[0].symbol;
-      this.coin_id = this.coinLists[0].coin_id;
-      this.balance = this.coinLists[0].balance;
-    }
+    // console.log("this.symbol", !this.symbol)
+    // if (!this.symbol) {
+    //   this.symbol = this.coinLists[0].symbol;
+    //   this.coin_id = this.coinLists[0].coin_id;
+    //   this.balance = this.coinLists[0].balance;
+    // }
     console.log('1111111111111111111');
     console.log(this.currentWallet.category, '----------');
     switch (this.currentWallet.category) {
@@ -233,15 +242,15 @@ export default class Idnex extends Vue {
       default:
         break;
     }
-    if (!this.gasPrice && this.currentWallet.category != 3) this.getFee(this.coin_id);
-    console.log(this.getFee, '--11-----');
+    if (!this.gasPrice && this.currentWallet.category != 3) this.getFee();
+    // console.log(this.getFee(this.coin_id), '--11-----');
   }
 
 
   async topage(url) {
     const data = await navigateTo(url);
-    if (data.address) {
-      this.data.address = data.address;
+    if (address) {
+      this.address = data.address;
     } else {
       this.symbol = data.symbol;
       this.coin_id = data.coin_id;
@@ -253,9 +262,11 @@ export default class Idnex extends Vue {
 
   //获取矿工手续费
   async getFee() {
+    let coin_id = this.coin_id;
     uni.showLoading({
       title: this.$t('home.txt17', ['加载中'])
     });
+    // console.log("money", this.data.money)
     const {address} = getCurrentWallet();
     const {
       data
@@ -263,10 +274,10 @@ export default class Idnex extends Vue {
       url: '/walletselect_fee',
       method: 'post',
       params: {
-        coin_id: this.coin_id,
-        amount: this.data.money,
+        coin_id: coin_id,
+        amount: this.money,
         from: address,
-        to: this.data.address,
+        to: this.address,
       }
     });
     this.feeInfo = data;
@@ -319,17 +330,21 @@ export default class Idnex extends Vue {
     if (!this.flag) {
       return this.$refs.inputDialog.open();
     }
-
+    if (typeof this.current === "object") {
+        this.current = 3
+    }
     // debugger
     this.show = false;
     let current = '';
     let gasPrice = '';
-    if (this.current == 3) {
+    console.log("if,current", this.current)
+    if (this.current == 4) {
       gasPrice = Number(this.data.gwei);
     } else {
       current = this.current;
       gasPrice = Number(this.data.gwei);
     }
+
     try {
       console.log(this.pass, '============');
       // if (this.pass !== await getWalletPwd()) {
@@ -338,6 +353,7 @@ export default class Idnex extends Vue {
       //     icon: 'none'
       //   });
       // }
+
       this.$refs.inputDialog.open();
       const {address, category_name,id,category} = getCurrentWallet();
       const {
@@ -346,9 +362,9 @@ export default class Idnex extends Vue {
         url: '/wallettransaction',
         method: 'post',
         data: {
-          amount: this.data.money,
+          amount: this.money,
           coin_id: this.coin_id,
-          target_address: this.data.address,
+          target_address: this.address,
           wallet_id: id,
           address: address,
           category: category,
@@ -418,10 +434,16 @@ export default class Idnex extends Vue {
   }
 
   getQueryString() {
+    // uni.getStorageSync("_coinList")[0].symbol
     var qs = window.location.hash.substr(1, window.location.hash.length), // 获取url中"?"符后的字串
-        args = {}, // 保存参数数据的对象
-        newStr = qs.match(/\?(\S*)?/)[1];
-    console.log("newStr", newStr)
+        args = {}; // 保存参数数据的对象
+
+    if (!qs.includes("?")) {
+      return ''
+    }
+    // console.log("qs", qs)
+    // let newStr = qs.substring("?");
+    let newStr = qs.match(/\?(\S*)?/)[1];
     let items = newStr.length ? newStr.split("&") : [];
     let item = null;
     let len = items.length;
@@ -433,10 +455,9 @@ export default class Idnex extends Vue {
         args[name] = value;
       }
     }
-    console.log("args", args)
+    this.coin_id = args.coin_id;
     return args.symbol;
   }
-
 }
 // import {
 // 	request

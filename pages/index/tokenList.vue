@@ -130,9 +130,9 @@
 				})
 				this.coinLists = [...this.coinList]
 
-				this.coinLists[index].balance = Number(0)
-				this.coinLists[index].Moneys = Number(0)
-
+				this.coinLists[index].balance = Number(data.balance).toFixed(4)
+				this.coinLists[index].Moneys = Number(data.balance * this.Rate).toFixed(4)
+        console.log("get", this.coinLists)
 			},
 			// 获取当前钱包添加的币种列表
 			async getCoinList() {
@@ -155,7 +155,7 @@
 			},
 			toPage(item) {
 				uni.redirectTo({
-					url: '/pages/index/directTransfer?coin_id=' + item.coin_id + '&symbol=' + item.symbol
+					url: '/pages/index/directTransfer?coin_id=' + item.coin_id + '&symbol=' + item.symbol + '&balance=' + item.balance
 				})
 			},
 			cancle() {
