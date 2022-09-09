@@ -60,7 +60,7 @@
 						
 						<view class="dotted-line"></view>
 						<view class="totalfooter flexs tex-ion" :style="{fontSize:$i18n.locale == 'en-US'?'22rpx':'26rpx'}">
-							<view class="rows" @click.stop="goTo('/pages/index/userMoney')" style="margin-right: 20rpx;">
+							<view class="rows" @click.stop="goTo('/pages/index/userMoney?type=1')" style="margin-right: 20rpx;">
 								<image src="/static/index/total31.png" alt="" class="inc">
 									<span style="margin-left: 12rpx;" class="text-loction"> {{
 								  $t("home.txt5", ["转账"])
@@ -292,6 +292,7 @@
 		updateProgress = 0;
     totalMoney = 0
 		coinLists = [];
+
 		onShow() {
       if (this.isTx()) {
         uni.hideTabBar();
@@ -521,8 +522,9 @@
 
 		goTo(url, index) {
       this.toPage(url)
+      console.log("url", url)
       uni.setStorageSync("index", index)
-      console.log("index", index)
+      uni.setStorageSync("href_url", url)
 		}
 
 		open() {
@@ -531,7 +533,6 @@
 
 		changeWallet(item ? : any) {
 			this.changeCurrentWallet(item);
-
 		}
 
 

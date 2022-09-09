@@ -83,7 +83,7 @@
 			// 返回箭头的颜色
 			backIconColor: {
 				type: String,
-				default: '#606266'
+				default: '#000000'
 			},
 			// 左边返回的图标
 			backIconName: {
@@ -93,7 +93,7 @@
 			// 左边返回图标的大小，rpx
 			backIconSize: {
 				type: [String, Number],
-				default: '44'
+				default: '50'
 			},
 			// 返回的文字提示
 			backText: {

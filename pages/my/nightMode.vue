@@ -25,12 +25,12 @@ export default{
       btn: false,
     }
   },
-  // onLoad() {
-  // 	this.btn = localStorage.getItem("btn") === "false"? false : true;
+  onLoad() {
+  	// this.btn = localStorage.getItem("btn") === "false"? false : true;
 	// console.log('kaishi',this.btn)
-  // },
+  },
   mounted() {
-    this.btn = uni.getStorageSync("btn") === "true";
+    // this.btn = uni.getStorageSync("btn") === "true";
   },
 
   methods: {
@@ -39,7 +39,7 @@ export default{
     },
     nightOpen(){
       this.btn = !this.btn;
-      console.log("nightopen", this.btn)
+      // console.log("nightopen", this.btn)
       uni.setStorageSync("btn", this.btn);
       window.location.reload();
 

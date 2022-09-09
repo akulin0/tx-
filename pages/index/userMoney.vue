@@ -2,8 +2,9 @@
 <template>
   <base-layout>
     <view :class="[btn === false?'box':'box-night']">
-      <u-navbar v-if="!isTx()"  :is-back="true" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;"
-                :title-bold="true" :custom-back="goBack"></u-navbar>
+      <u-navbar v-if="!isTx()"  :is-back="false" :title="navTitle" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true" :custom-back="goBack">
+        <image src="/static/left.png" style="width: 21rpx; height: 39rpx; margin: 15rpx;" @click="back()" class="left"></image>
+        </u-navbar>
       <view class="usermoney">
         <view class="flex-j-a">
           <view v-for="(item,index) in list" :key='index' :class="[btn === false?'transitem':'transitem-night']" @click="topage(item.u)">
@@ -221,8 +222,16 @@ export default {
       uni.switchTab({
         url: '/pages/index/index'
       });
+    },
+    back () {
+      let info = uni.getStorageSync("info")
+      let url = uni.getStorageSync("href_url")
+      if (url.includes("type=1")) {
+        uni.removeStorageSync("href_url")
+        return window.location.href = "/#/"
+      }
+      window.location.href = "#/pages/index/TokenDetails?info=" + info
     }
-
   }
 }
 </script>
@@ -410,4 +419,11 @@ export default {
     white-space : nowrap;
   }
 }
+  .left {
+    font-size: 44rpx;
+    font-weight: normal;
+    top: 0rpx;
+    color: rgb(96, 98, 102);
+    padding: 14rpx 14rpx 14rpx 24rpx;
+  }
 </style>

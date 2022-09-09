@@ -1,8 +1,10 @@
 <!-- Token详情 -->
 <template>
 	<base-layout>
-		<u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="navTitle" :title-bold="true"
-			style="border-bottom: 1px solid #E6E6E6;"></u-navbar>
+		<u-navbar v-if="!isTx()"  :is-back="false" :is-fixed="true" :title="navTitle" :title-bold="true"
+			style="border-bottom: 1px solid #E6E6E6;">
+      <image src="/static/left.png" style="width: 21rpx; height: 39rpx; margin: 15rpx;" @click="back()" class="left"></image>
+    </u-navbar>
 		<view class="content">
 			<view class="head-box">
 				<view class="flex-align box">
@@ -66,7 +68,7 @@
 				</view>
 
 			</view>
-			<view class="btn-box flex-j-a">
+			<view class="btn-box flex-j-a" @click="whole">
 				<view class="btn1 flex-center" @click="toPage(`/pages/index/userMoney?info=${JSON.stringify(info)}`)">{{$t('home.txt117',['转账'])}}
 				</view>
 				<view class="btn2 flex-center color-r" @click="toPage(`/pages/index/getMoney?info=${JSON.stringify(info)}`)">{{$t('home.txt92',['收款'])}}</view>
@@ -251,6 +253,12 @@
 				return
 			}
 		}
+    whole() {
+      uni.setStorageSync("info", JSON.stringify(this.info))
+    }
+    back () {
+      window.location.href = "/#/"
+    }
 	}
 
 
@@ -471,6 +479,13 @@
 			flex-direction: row;
 			align-items: center;
 		}
-		
 	}
+
+  .left {
+    font-size: 44rpx;
+    font-weight: normal;
+    top: 0rpx;
+    color: rgb(96, 98, 102);
+    padding: 14rpx 14rpx 14rpx 24rpx;
+  }
 </style>

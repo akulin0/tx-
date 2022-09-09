@@ -31,6 +31,7 @@
 <script>
 	import uQRCode from "@/m-subpack/base/libs/uqrcode.js";
 	import tkiQrcode from "@/components/tki-qrcode/tki-qrcode"
+  import {getCurrentWallet} from "../../libs/wallet"
 	export default {
 		data() {
 			return {
@@ -43,7 +44,7 @@
 			}
 		},
 		created() {
-			this.walletInfo = JSON.parse(uni.getStorageSync("currentWallet"))
+			this.walletInfo = getCurrentWallet()
 			this.make()
 			this.drawPage()
 			console.log("walletInfo: ",this.walletInfo);

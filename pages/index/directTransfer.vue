@@ -2,8 +2,12 @@
 <template>
   <base-layout>
     <view>
-      <u-navbar v-if="!isTx()"  :is-back="true" :is-fixed="true" :title="title" style="border-bottom: 1px solid #E6E6E6;"
-                :title-bold="true"></u-navbar>
+
+      <u-navbar v-if="!isTx()"  :is-back="false" :is-fixed="true" :title="title" style="border-bottom: 1px solid #E6E6E6;" :title-bold="true">
+        <image src="/static/left.png" style="width: 21rpx; height: 39rpx; margin: 15rpx;" @click="back()" class="left"></image>
+      </u-navbar>
+<!--      <image src="/static/left.png" @click="Refresh" style="height: 39rpx; width: 21rpx;"></image>-->
+<!--      <view v-if="!isTx()" class="arrow">直接转账</view>-->
       <view class="importbox">
         <view class="input-item">
           <view class="commonfont flex-j-a">
@@ -123,9 +127,10 @@ import {
 
 import {getCurrentWallet, getWalletPrivateKey, getWalletPwd} from '@/libs/wallet';
 import UniDataPickerView from "@/uni_modules/uni-data-picker/components/uni-data-pickerview/uni-data-pickerview.vue";
+import Image from "@/m-common/common/components/image.vue";
 
 @Component({
-  components: {UniDataPickerView}
+  components: {Image, UniDataPickerView}
 })
 @Assets()
 export default class Idnex extends Vue {
@@ -248,16 +253,23 @@ export default class Idnex extends Vue {
 
 
   async topage(url) {
+    console.log(url);
+    // if (navigator.userAgent.includes("TelegramXAPP")) {
+    //   console.log("点击", url)
+    //   let s =" http://192.168.2.162:8080/#" + url
+    //   android.startNewActivity(true, s);
+    // }
+
     const data = await navigateTo(url);
-    if (address) {
-      this.address = data.address;
-    } else {
-      this.symbol = data.symbol;
-      this.coin_id = data.coin_id;
-      this.balance = data.balance;
-      console.log(this);
-      // debugger
-    }
+    // if (address) {
+    //   this.address = data.address;
+    // } else {
+    //   this.symbol = data.symbol;
+    //   this.coin_id = data.coin_id;
+    //   this.balance = data.balance;
+    //   console.log(this);
+    //   // debugger
+    // }
   }
 
   //获取矿工手续费
@@ -457,6 +469,16 @@ export default class Idnex extends Vue {
     }
     this.coin_id = args.coin_id;
     return args.symbol;
+  }
+
+  back () {
+    let info = uni.getStorageSync("info")
+
+    if (window.location.href.includes("type=1")) {
+      return window.location.href = "#/pages/index/userMoney"
+    } else {
+      window.location.href = "#/pages/index/userMoney?info=" + info
+    }
   }
 }
 // import {
@@ -1001,12 +1023,21 @@ export default class Idnex extends Vue {
   justify-content: space-around;
 }
 
-.mode-input {
-
-}
-
 .mode-box {
   display: flex;
   justify-content: space-between;
+}
+
+.arrow {
+  position: relative;
+  transform: translate(195rpx, 20rpx);
+}
+
+.box-back {
+  display: flex;
+}
+
+.left {
+  padding: 14rpx 14rpx 14rpx 24rpx;
 }
 </style>
